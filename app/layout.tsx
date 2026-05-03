@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Assistant } from "next/font/google";
 import "./globals.css";
+import { BackToTop } from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ScrollHint } from "@/components/scroll-hint";
@@ -30,6 +31,7 @@ export default function RootLayout({
         <Footer />
         <ScrollHint />
         <ScrollReveal />
+        <BackToTop />
         <WhatsappButton />
       </body>
     </html>

@@ -69,6 +69,15 @@ main > section:nth-of-type(3).scroll-reveal {
   animation: scroll-hint-float 1.8s ease-in-out infinite;
 }
 
+.back-to-top::before {
+  position: absolute;
+  inset: -6px;
+  content: "";
+  border: 1px solid rgb(var(--cyan-rgb) / 0.2);
+  border-radius: inherit;
+  animation: back-to-top-glow 2.8s ease-in-out infinite;
+}
+
 .home-motion-bg {
   background:
     linear-gradient(115deg, rgba(0, 207, 230, 0.18), transparent 30%),
@@ -162,6 +171,19 @@ main > section:nth-of-type(3).scroll-reveal {
   }
 }
 
+@keyframes back-to-top-glow {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: scale(1.08);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal {
     opacity: 1;
@@ -172,7 +194,8 @@ main > section:nth-of-type(3).scroll-reveal {
   .home-motion-bg::before,
   .home-motion-bg::after,
   .home-logo-orbit::before,
-  .scroll-hint {
+  .scroll-hint,
+  .back-to-top::before {
     animation: none;
   }
 }
