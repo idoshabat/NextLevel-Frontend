@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatedStat } from "@/components/animated-stat";
 import {
   ArrowLeft,
   CalendarDays,
@@ -16,9 +17,9 @@ import {
 } from "lucide-react";
 
 const highlights = [
-  { value: "6+", label: "קבוצות גיל" },
-  { value: "12", label: "אימונים שבועיים" },
-  { value: "1:1", label: "יחס אישי לשחקנים" },
+  { value: 6, suffix: "+", label: "קבוצות גיל" },
+  { value: 12, label: "אימונים שבועיים" },
+  { value: 1, suffix: ":1", label: "יחס אישי לשחקנים" },
 ];
 
 const tracks = [
@@ -154,17 +155,12 @@ export default function HomePage() {
 
       <section className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-4 pb-[clamp(64px,8vw,96px)] md:grid-cols-3">
         {highlights.map((item) => (
-          <div
-            className="rounded-lg border border-white/10 bg-white/[0.055] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+          <AnimatedStat
             key={item.label}
-          >
-            <p className="m-0 text-[clamp(2.2rem,4vw,3.6rem)] font-extrabold leading-none text-[var(--cyan)]">
-              {item.value}
-            </p>
-            <p className="mt-2 text-[1.05rem] font-extrabold text-[#f7fbff]/88">
-              {item.label}
-            </p>
-          </div>
+            end={item.value}
+            label={item.label}
+            suffix={item.suffix}
+          />
         ))}
       </section>
 

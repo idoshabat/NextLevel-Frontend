@@ -11,6 +11,11 @@ import { WhatsappButton } from "@/components/whatsapp-button";
 export const metadata: Metadata = {
   title: "Next Level | אקדמיית כדורסל",
   description: "אקדמיית כדורסל Next Level",
+  icons: {
+    icon: "/assets/logo-navbar.png",
+    shortcut: "/assets/logo-navbar.png",
+    apple: "/assets/logo-navbar.png",
+  },
 };
 
 const assistant = Assistant({

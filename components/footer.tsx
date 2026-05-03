@@ -34,9 +34,46 @@ const contactLinks = [
   {
     href: "https://www.instagram.com/next_level_basketball_academy/",
     label: "@next_level_basketball_academy",
-    icon: AtSign,
+    // icon: AtSign,
+    icon: InstagramIcon
   },
 ];
+
+function InstagramIcon({
+  size = 21,
+  strokeWidth = 2.4,
+}: {
+  size?: number;
+  strokeWidth?: number;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+      />
+      <circle cx="17.5" cy="6.5" r="1.35" fill="currentColor" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -131,14 +168,14 @@ export function Footer() {
             © {currentYear} Next Level Basketball Academy. כל הזכויות שמורות.
           </p>
           <p className="m-0">
-            נבנה על ידי{" "}
+           Build by{" "}
             <a
               className="font-extrabold text-[var(--cyan)] transition duration-300 hover:text-[var(--cyan-light)]"
               href="https://example.com"
               target="_blank"
               rel="noreferrer"
             >
-              עידו שבת
+              Ido Shabat
             </a>
           </p>
         </div>
