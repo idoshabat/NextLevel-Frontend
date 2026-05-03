@@ -121,7 +121,7 @@ export function Navbar() {
               return (
                 <a
                   key={item.href}
-                  className="group/icon grid size-11 place-items-center text-[#f7fbff]/78 transition duration-300 hover:-translate-y-1 hover:text-(--cyan) max-[560px]:size-10"
+                  className="navbar-contact-link group/icon grid size-11 place-items-center text-[#f7fbff]/78 transition duration-300 hover:-translate-y-1 max-[560px]:size-10"
                   href={item.href}
                   aria-label={item.label}
                   title={item.label}
@@ -137,7 +137,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="hidden size-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-lg bg-white/6 text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.12)] hover:text-(--cyan) max-[980px]:flex max-[560px]:size-10"
+            className="hidden size-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-lg bg-white/6 text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.12)] hover:text-[var(--cyan)] max-[980px]:flex max-[560px]:size-10"
             type="button"
             aria-label={isOpen ? "סגירת תפריט" : "פתיחת תפריט"}
             aria-expanded={isOpen}
@@ -172,7 +172,7 @@ export function Navbar() {
               return (
                 <Link
                   key={item.href}
-                  className={`group relative inline-flex min-h-11 items-center justify-center overflow-hidden whitespace-nowrap rounded-lg px-4 py-3 text-[1.08rem] font-extrabold transition duration-300 after:absolute after:inset-x-4 after:bottom-1.5 after:h-px after:origin-center after:scale-x-0 after:bg-(--cyan) after:transition after:duration-300 hover:-translate-y-px hover:bg-white/[0.07] hover:text-[#f7fbff] hover:after:scale-x-100 max-[980px]:min-h-12 max-[980px]:text-base ${
+                  className={`group relative inline-flex min-h-11 items-center justify-center overflow-hidden whitespace-nowrap rounded-lg px-4 py-3 text-[1.08rem] font-extrabold transition duration-300 after:absolute after:inset-x-4 after:bottom-1.5 after:h-px after:origin-center after:scale-x-0 after:bg-[var(--cyan)] after:transition after:duration-300 hover:-translate-y-px hover:bg-white/[0.07] hover:text-[#f7fbff] hover:after:scale-x-100 max-[980px]:min-h-12 max-[980px]:text-base ${
                     isActive
                       ? "bg-cyan-500 after:scale-x-0 hover:bg-cyan-500 hover:text-[#f7fbff]"
                       : "text-[#f7fbff]/75"

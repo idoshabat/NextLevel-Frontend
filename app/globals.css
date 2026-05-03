@@ -28,7 +28,6 @@ body {
   background:
     radial-gradient(circle at 20% 0%, var(--cyan-soft), transparent 28rem),
     linear-gradient(145deg, #030405 0%, #090d10 48%, #020303 100%);
-  font-family: Assistant, Arial, Helvetica, sans-serif;
 }
 
 a {
@@ -38,6 +37,10 @@ a {
 
 button {
   font: inherit;
+}
+
+.navbar-contact-link:hover {
+  color: var(--cyan);
 }
 
 .scroll-reveal {

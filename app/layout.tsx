@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Assistant } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
@@ -11,6 +12,11 @@ export const metadata: Metadata = {
   description: "אקדמיית כדורסל Next Level",
 };
 
+const assistant = Assistant({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl">
-      <body>
+      <body className={assistant.className}>
         <Navbar />
         <main className="min-h-screen pt-24">{children}</main>
         <Footer />
