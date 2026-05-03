@@ -75,12 +75,24 @@ function InstagramIcon({
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const mobilePanelState = isOpen ? "max-[980px]:block" : "max-[980px]:hidden";
+  const mobilePanelState = isOpen
+    ? "max-[980px]:pointer-events-auto max-[980px]:translate-y-0 max-[980px]:scale-100 max-[980px]:opacity-100"
+    : "max-[980px]:pointer-events-none max-[980px]:-translate-y-3 max-[980px]:scale-[0.98] max-[980px]:opacity-0";
+  const mobileBackdropState = isOpen
+    ? "max-[980px]:pointer-events-auto max-[980px]:opacity-100"
+    : "max-[980px]:pointer-events-none max-[980px]:opacity-0";
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 p-0">
+      <button
+        className={`hidden max-[980px]:fixed max-[980px]:inset-0 max-[980px]:top-19 max-[980px]:z-0 max-[980px]:block max-[980px]:cursor-default max-[980px]:bg-black/62 max-[980px]:backdrop-blur-[3px] max-[980px]:transition max-[980px]:duration-300 ${mobileBackdropState}`}
+        type="button"
+        aria-label="סגירת תפריט"
+        tabIndex={isOpen ? 0 : -1}
+        onClick={() => setIsOpen(false)}
+      />
       <nav
-        className="relative flex min-h-22 w-full items-center justify-between gap-6 overflow-hidden bg-[linear-gradient(90deg,rgba(2,3,4,0.96),rgba(8,15,18,0.9)_48%,rgba(2,3,4,0.96))] px-[clamp(16px,4vw,56px)] py-3 shadow-[0_22px_70px_rgba(0,0,0,0.42),inset_0_-1px_0_rgb(var(--cyan-rgb)/0.16)] backdrop-blur-2xl before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgb(var(--cyan-rgb)/0.85),transparent)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_18%_0%,rgb(var(--cyan-rgb)/0.18),transparent_24rem),radial-gradient(circle_at_82%_0%,rgba(255,255,255,0.08),transparent_22rem)] max-[980px]:min-h-19 max-[980px]:overflow-visible max-[980px]:px-4 max-[980px]:py-2.5"
+        className="relative z-10 flex min-h-22 w-full items-center justify-between gap-6 overflow-hidden bg-[linear-gradient(90deg,rgba(2,3,4,0.96),rgba(8,15,18,0.9)_48%,rgba(2,3,4,0.96))] px-[clamp(16px,4vw,56px)] py-3 shadow-[0_22px_70px_rgba(0,0,0,0.42),inset_0_-1px_0_rgb(var(--cyan-rgb)/0.16)] backdrop-blur-2xl before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgb(var(--cyan-rgb)/0.85),transparent)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_18%_0%,rgb(var(--cyan-rgb)/0.18),transparent_24rem),radial-gradient(circle_at_82%_0%,rgba(255,255,255,0.08),transparent_22rem)] max-[980px]:min-h-19 max-[980px]:overflow-visible max-[980px]:px-4 max-[980px]:py-2.5"
         aria-label="ניווט ראשי"
         dir="ltr"
       >
@@ -150,11 +162,11 @@ export function Navbar() {
         </div>
 
         <div
-          className={`absolute left-1/2 z-10 flex -translate-x-1/2 items-center max-[980px]:left-0 max-[980px]:right-0 max-[980px]:top-full max-[980px]:translate-x-0 max-[980px]:bg-[#030405]/95 max-[980px]:p-2.5 max-[980px]:shadow-[0_18px_60px_rgba(0,0,0,0.44)] max-[980px]:backdrop-blur-[18px] ${mobilePanelState}`}
+          className={`absolute left-1/2 z-10 flex -translate-x-1/2 items-center max-[980px]:left-0 max-[980px]:right-0 max-[980px]:top-full max-[980px]:origin-top max-[980px]:translate-x-0 max-[980px]:bg-[#030405]/95 max-[980px]:p-2.5 max-[980px]:shadow-[0_18px_60px_rgba(0,0,0,0.44)] max-[980px]:backdrop-blur-[18px] max-[980px]:transition max-[980px]:duration-300 max-[980px]:ease-out ${mobilePanelState}`}
           dir="rtl"
         >
           <div className="flex items-center gap-1  p-1  max-[980px]:grid max-[980px]:w-full max-[980px]:grid-cols-2 max-[980px]:gap-1.5 max-[980px]:bg-transparent max-[980px]:p-0 max-[980px]:shadow-none max-[560px]:grid-cols-1">
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               const isActive = pathname === item.href;
 
               return (
@@ -168,6 +180,9 @@ export function Navbar() {
                   href={item.href}
                   onClick={() => setIsOpen(false)}
                   aria-current={isActive ? "page" : undefined}
+                  style={{
+                    transitionDelay: isOpen ? `${index * 28}ms` : "0ms",
+                  }}
                 >
                   {item.label}
                 </Link>
