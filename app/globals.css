@@ -39,3 +39,137 @@ a {
 button {
   font: inherit;
 }
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 52px, 0) scale(0.985);
+  transition:
+    opacity 860ms ease,
+    transform 860ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+main > section:nth-of-type(2).scroll-reveal {
+  transition-delay: 90ms;
+}
+
+main > section:nth-of-type(3).scroll-reveal {
+  transition-delay: 140ms;
+}
+
+.scroll-hint {
+  animation: scroll-hint-float 1.8s ease-in-out infinite;
+}
+
+.home-motion-bg {
+  background:
+    linear-gradient(115deg, rgba(0, 207, 230, 0.18), transparent 30%),
+    radial-gradient(circle at 72% 18%, rgba(111, 239, 255, 0.22), transparent 20rem),
+    linear-gradient(rgba(247, 251, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 251, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at center, #102126 0%, #050708 48%, #030405 100%);
+  background-size: auto, auto, 72px 72px, 72px 72px, auto;
+  transform: scale(1.04);
+}
+
+.home-motion-bg::before,
+.home-motion-bg::after {
+  position: absolute;
+  inset: -20%;
+  content: "";
+  pointer-events: none;
+}
+
+.home-motion-bg::before {
+  background:
+    linear-gradient(90deg, transparent 0 43%, rgba(0, 207, 230, 0.18) 44% 45%, transparent 46% 100%),
+    repeating-linear-gradient(104deg, transparent 0 42px, rgba(247, 251, 255, 0.08) 43px 44px, transparent 45px 108px);
+  animation: home-court-drift 16s linear infinite;
+}
+
+.home-motion-bg::after {
+  background:
+    radial-gradient(circle, rgba(0, 207, 230, 0.24) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(247, 251, 255, 0.18) 0 1px, transparent 2px);
+  background-position:
+    0 0,
+    38px 26px;
+  background-size:
+    140px 140px,
+    110px 110px;
+  animation: home-light-sweep 18s ease-in-out infinite alternate;
+  opacity: 0.75;
+}
+
+.home-logo-orbit::before {
+  position: absolute;
+  inset: 10%;
+  content: "";
+  border: 1px solid rgb(var(--cyan-rgb) / 0.22);
+  border-radius: inherit;
+  animation: home-logo-pulse 4.8s ease-in-out infinite;
+}
+
+@keyframes home-court-drift {
+  from {
+    transform: translate3d(-2%, 0, 0) rotate(-2deg);
+  }
+
+  to {
+    transform: translate3d(6%, 2%, 0) rotate(-2deg);
+  }
+}
+
+@keyframes home-light-sweep {
+  from {
+    transform: translate3d(-3%, -2%, 0);
+  }
+
+  to {
+    transform: translate3d(4%, 3%, 0);
+  }
+}
+
+@keyframes home-logo-pulse {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
+@keyframes scroll-hint-float {
+  0%,
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-50%, 8px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .home-motion-bg::before,
+  .home-motion-bg::after,
+  .home-logo-orbit::before,
+  .scroll-hint {
+    animation: none;
+  }
+}

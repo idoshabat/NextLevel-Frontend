@@ -9,7 +9,9 @@ import { useState } from "react";
 const navItems = [
   { href: "/", label: "ראשי" },
   { href: "/about", label: "אודות" },
-  { href: "/team", label: "צוות" },
+  // { href: "/team", label: "צוות" },
+  { href: "/players", label: "שחקנים שלנו" },
+  { href: "/gallery", label: "גלריה" },
   { href: "/programs", label: "תוכניות" },
   { href: "/camps", label: "מחנות" },
   { href: "/contact", label: "צור קשר" },
@@ -28,7 +30,7 @@ const contactItems = [
     icon: Mail,
   },
   {
-    href: "https://www.instagram.com/nextlevel.academy",
+    href: "https://www.instagram.com/next_level_basketball_academy/",
     label: "אינסטגרם",
     icon: InstagramIcon,
   },
@@ -78,16 +80,16 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 p-0">
       <nav
-        className="relative flex min-h-[88px] w-full items-center justify-between gap-6 overflow-hidden bg-[linear-gradient(90deg,rgba(2,3,4,0.96),rgba(8,15,18,0.9)_48%,rgba(2,3,4,0.96))] px-[clamp(16px,4vw,56px)] py-3 shadow-[0_22px_70px_rgba(0,0,0,0.42),inset_0_-1px_0_rgb(var(--cyan-rgb)/0.16)] backdrop-blur-2xl before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgb(var(--cyan-rgb)/0.85),transparent)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_18%_0%,rgb(var(--cyan-rgb)/0.18),transparent_24rem),radial-gradient(circle_at_82%_0%,rgba(255,255,255,0.08),transparent_22rem)] max-[980px]:min-h-[78px] max-[980px]:px-4 max-[980px]:py-2.5"
+        className="relative flex min-h-22 w-full items-center justify-between gap-6 overflow-hidden bg-[linear-gradient(90deg,rgba(2,3,4,0.96),rgba(8,15,18,0.9)_48%,rgba(2,3,4,0.96))] px-[clamp(16px,4vw,56px)] py-3 shadow-[0_22px_70px_rgba(0,0,0,0.42),inset_0_-1px_0_rgb(var(--cyan-rgb)/0.16)] backdrop-blur-2xl before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgb(var(--cyan-rgb)/0.85),transparent)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_18%_0%,rgb(var(--cyan-rgb)/0.18),transparent_24rem),radial-gradient(circle_at_82%_0%,rgba(255,255,255,0.08),transparent_22rem)] max-[980px]:min-h-19 max-[980px]:overflow-visible max-[980px]:px-4 max-[980px]:py-2.5"
         aria-label="ניווט ראשי"
         dir="ltr"
       >
         <Link
-          className="group relative z-10 inline-flex min-w-[220px] items-center gap-3 max-[980px]:min-w-0"
+          className="group relative z-10 inline-flex min-w-55 items-center gap-3 max-[980px]:min-w-0"
           href="/"
           onClick={() => setIsOpen(false)}
         >
-          <span className="relative grid h-[76px] w-[110px] place-items-center overflow-hidden transition duration-300 group-hover:scale-105 max-[980px]:h-16 max-[980px]:w-[106px] max-[560px]:h-14 max-[560px]:w-[92px]">
+          <span className="relative grid h-19 w-27.5 place-items-center overflow-hidden transition duration-300 group-hover:scale-105 max-[980px]:h-16 max-[980px]:w-26.5 max-[560px]:h-14 max-[560px]:w-23">
             <Image
               className="h-full w-full object-contain p-0.5 transition duration-300 group-hover:brightness-110"
               src="/assets/logo-navbar.png"
@@ -100,14 +102,14 @@ export function Navbar() {
         </Link>
 
         <div className="relative z-10 flex items-center gap-2 max-[560px]:gap-1.5" dir="rtl">
-          <div className="flex items-center gap-2 max-[560px]:gap-1.5">
+          <div className="flex items-center gap-2 max-[980px]:hidden max-[560px]:gap-1.5">
             {contactItems.map((item) => {
               const Icon = item.icon;
 
               return (
                 <a
                   key={item.href}
-                  className="group/icon grid size-11 place-items-center text-[#f7fbff]/78 transition duration-300 hover:-translate-y-1 hover:text-[var(--cyan)] max-[560px]:size-10"
+                  className="group/icon grid size-11 place-items-center text-[#f7fbff]/78 transition duration-300 hover:-translate-y-1 hover:text-(--cyan) max-[560px]:size-10"
                   href={item.href}
                   aria-label={item.label}
                   title={item.label}
@@ -123,24 +125,24 @@ export function Navbar() {
           </div>
 
           <button
-            className="hidden size-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-lg bg-white/[0.06] text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.12)] hover:text-[var(--cyan)] max-[980px]:flex max-[560px]:size-10"
+            className="hidden size-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-lg bg-white/6 text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.12)] hover:text-(--cyan) max-[980px]:flex max-[560px]:size-10"
             type="button"
             aria-label={isOpen ? "סגירת תפריט" : "פתיחת תפריט"}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((current) => !current)}
           >
             <span
-              className={`block h-0.5 w-[18px] rounded-full bg-current transition duration-300 ${
+              className={`block h-0.5 w-4.5 rounded-full bg-current transition duration-300 ${
                 isOpen ? "translate-y-2 rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-[18px] rounded-full bg-current transition duration-300 ${
+              className={`block h-0.5 w-4.5 rounded-full bg-current transition duration-300 ${
                 isOpen ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-[18px] rounded-full bg-current transition duration-300 ${
+              className={`block h-0.5 w-4.5 rounded-full bg-current transition duration-300 ${
                 isOpen ? "-translate-y-2 -rotate-45" : ""
               }`}
             />
@@ -158,9 +160,9 @@ export function Navbar() {
               return (
                 <Link
                   key={item.href}
-                  className={`group relative inline-flex min-h-11 items-center justify-center overflow-hidden whitespace-nowrap rounded-lg px-4 py-3 text-[1.08rem] font-extrabold transition duration-300 after:absolute after:inset-x-4 after:bottom-1.5 after:h-px after:origin-center after:scale-x-0 after:bg-[var(--cyan)] after:transition after:duration-300 hover:-translate-y-px hover:bg-white/[0.07] hover:text-[#f7fbff] hover:after:scale-x-100 max-[980px]:min-h-[48px] max-[980px]:text-base ${
+                  className={`group relative inline-flex min-h-11 items-center justify-center overflow-hidden whitespace-nowrap rounded-lg px-4 py-3 text-[1.08rem] font-extrabold transition duration-300 after:absolute after:inset-x-4 after:bottom-1.5 after:h-px after:origin-center after:scale-x-0 after:bg-(--cyan) after:transition after:duration-300 hover:-translate-y-px hover:bg-white/[0.07] hover:text-[#f7fbff] hover:after:scale-x-100 max-[980px]:min-h-12 max-[980px]:text-base ${
                     isActive
-                      ? "bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] text-[#001013] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.38),inset_0_1px_0_rgba(255,255,255,0.5)] after:scale-x-0"
+                      ? "bg-cyan-500 after:scale-x-0 hover:bg-cyan-500 hover:text-[#f7fbff]"
                       : "text-[#f7fbff]/75"
                   }`}
                   href={item.href}

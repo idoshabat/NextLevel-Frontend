@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { ScrollHint } from "@/components/scroll-hint";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { WhatsappButton } from "@/components/whatsapp-button";
 
 export const metadata: Metadata = {
@@ -18,6 +21,9 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main className="min-h-screen pt-24">{children}</main>
+        <Footer />
+        <ScrollHint />
+        <ScrollReveal />
         <WhatsappButton />
       </body>
     </html>
