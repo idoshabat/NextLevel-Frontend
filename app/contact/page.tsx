@@ -143,8 +143,8 @@ export default function ContactPage() {
                   </option>
                   <option>אימון ניסיון</option>
                   <option>אימון אישי</option>
-                  <option>קבוצה שבועית</option>
-                  <option>מחנה חופשה</option>
+                  <option>רכישת כרטיסייה</option>
+                  <option>מחנה סלובניה 2026</option>
                 </select>
               </label>
             </div>
