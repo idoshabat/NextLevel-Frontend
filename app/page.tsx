@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   Globe2,
   HeartHandshake,
+  MapPin,
   ShieldCheck,
   Sparkles,
   Target,
@@ -21,6 +22,8 @@ const highlights = [
   { value: 12, label: "אימונים שבועיים" },
   { value: 1, suffix: ":1", label: "יחס אישי לשחקנים" },
 ];
+
+const heroVideo = "/assets/mp_.mp4";
 
 const tracks = [
   {
@@ -98,9 +101,20 @@ export default function HomePage() {
   return (
     <div className="overflow-hidden">
       <section className="relative isolate flex min-h-[calc(100vh-96px)] items-center">
-        <div className="home-motion-bg absolute inset-0 -z-20" aria-hidden="true" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(3,4,5,0.95)_0%,rgba(3,4,5,0.78)_42%,rgba(3,4,5,0.38)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(0deg,#030405,transparent)]" />
+        <div className="home-motion-bg absolute inset-0 -z-30" aria-hidden="true" />
+        <video
+          aria-hidden="true"
+          autoPlay
+          className="home-hero-video absolute inset-0 -z-20 h-full w-full object-cover"
+          loop
+          muted
+          playsInline
+          preload="metadata"
+        >
+          <source src={heroVideo} type="video/webm" />
+        </video>
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(3,4,5,0.68)_0%,rgba(3,4,5,0.46)_42%,rgba(3,4,5,0.18)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(0deg,rgba(3,4,5,0.92),transparent)]" />
 
         <div className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-10 py-[clamp(52px,8vw,88px)] lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="max-w-[760px]">
@@ -118,6 +132,10 @@ export default function HomePage() {
             <p className="mt-4 max-w-[660px] text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#a8b3bd]">
               אימונים מקצועיים בקבוצות קטנות, צוות שמכיר כל שחקן ותהליך שמחבר
               בין טכניקה, אתלטיות, חשיבה מהירה ואהבה למשחק.
+            </p>
+            <p className="mt-5 inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--cyan-rgb)/0.35)] bg-[#030405]/52 px-4 py-2 text-[1rem] font-extrabold text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
+              <MapPin size={19} strokeWidth={2.5} className="text-[var(--cyan)]" />
+              נס ציונה
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -139,7 +157,7 @@ export default function HomePage() {
 
           <div className="relative mx-auto grid w-full max-w-[520px] place-items-center lg:justify-self-end">
             <div className="absolute inset-8 rounded-full bg-[rgb(var(--cyan-rgb)/0.18)] blur-3xl" />
-            <div className="home-logo-orbit relative grid aspect-square w-[min(78vw,470px)] place-items-center rounded-full border border-[rgb(var(--cyan-rgb)/0.32)] bg-[#030405]/60 shadow-[0_30px_120px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md">
+            {/* <div className="home-logo-orbit relative grid aspect-square w-[min(78vw,470px)] place-items-center rounded-full border border-[rgb(var(--cyan-rgb)/0.32)] bg-[#030405]/60 shadow-[0_30px_120px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md">
               <Image
                 className="h-auto w-[72%] object-contain drop-shadow-[0_14px_45px_rgba(0,0,0,0.55)]"
                 src="/assets/logo.png"
@@ -148,12 +166,12 @@ export default function HomePage() {
                 height={440}
                 priority
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-4 pb-[clamp(64px,8vw,96px)] md:grid-cols-3">
+      <section className="home-band home-band-light mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-4 py-[clamp(48px,7vw,84px)] md:grid-cols-3">
         {highlights.map((item) => (
           <AnimatedStat
             key={item.label}
@@ -164,7 +182,7 @@ export default function HomePage() {
         ))}
       </section>
 
-      <section className="mx-auto w-[min(1180px,calc(100%_-_32px))] pb-[clamp(72px,10vw,120px)]">
+      <section className="home-band home-band-deep mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
         <div className="mb-7 max-w-[760px]">
           <p className="mb-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
             מה קורה באקדמיה
@@ -198,7 +216,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-[min(1180px,calc(100%_-_32px))] pb-[clamp(72px,10vw,120px)]">
+      <section className="home-band home-band-smoke mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="lg:sticky lg:top-32">
             <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
@@ -243,7 +261,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-[min(1180px,calc(100%_-_32px))] pb-[clamp(72px,10vw,120px)]">
+      <section className="home-band home-band-court mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
         <div className="mb-7 max-w-[760px]">
           <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
             <Users size={18} strokeWidth={2.4} />
@@ -271,7 +289,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-[min(1180px,calc(100%_-_32px))] pb-[clamp(72px,10vw,120px)]">
+      <section className="home-band home-band-light mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
         <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-[760px]">
             <p className="mb-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">

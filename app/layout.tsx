@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Assistant } from "next/font/google";
+import { Assistant, Rubik } from "next/font/google";
 import "./globals.css";
 import { BackToTop } from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
@@ -21,6 +21,12 @@ export const metadata: Metadata = {
 const assistant = Assistant({
   subsets: ["hebrew", "latin"],
   weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-assistant",
+});
+
+const rubik = Rubik({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export default function RootLayout({
@@ -30,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl">
-      <body className={assistant.className}>
+      <body className={`${rubik.className} ${assistant.variable}`}>
         <Navbar />
         <main className="min-h-screen pt-24">{children}</main>
         <Footer />

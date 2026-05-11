@@ -83,8 +83,8 @@ export function Footer() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(36px,7vw,72px)]">
-        <div className="grid gap-9 max-[640px]:gap-8 lg:grid-cols-[1.2fr_0.75fr_0.9fr]">
+      <div className="relative mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(36px,7vw,72px)] max-[640px]:py-7">
+        <div className="grid gap-9 max-[640px]:gap-5 lg:grid-cols-[1.2fr_0.75fr_0.9fr]">
           <div className="max-[640px]:text-center">
             <Link
               className="inline-flex items-center max-[640px]:justify-center"
@@ -92,7 +92,7 @@ export function Footer() {
               aria-label="Next Level - מעבר לעמוד הבית"
             >
               <Image
-                className="h-auto w-32 object-contain max-[640px]:w-28"
+                className="h-auto w-32 object-contain max-[640px]:w-20"
                 src="/assets/logo-navbar.png"
                 alt="Next Level"
                 width={160}
@@ -100,31 +100,35 @@ export function Footer() {
               />
             </Link>
 
-            <p className="mt-4 max-w-[520px] text-[1rem] leading-[1.8] text-[#a8b3bd] max-[640px]:mx-auto max-[640px]:text-[0.98rem]">
+            <p className="mt-4 max-w-[520px] text-[1rem] leading-[1.8] text-[#a8b3bd] max-[640px]:mx-auto max-[640px]:mt-2 max-[640px]:max-w-[330px] max-[640px]:text-[0.88rem] max-[640px]:leading-[1.55]">
               אקדמיית כדורסל לילדים ונוער, עם אימונים מקצועיים, יחס אישי
               ותהליך שמפתח טכניקה, ביטחון, חשיבה קבוצתית ואהבה למשחק.
             </p>
 
-            <div className="mt-5 inline-flex items-start gap-2 text-[#f7fbff]/78 max-[640px]:max-w-[320px] max-[640px]:justify-center">
+            <div className="mt-5 inline-flex items-start gap-2 text-[#f7fbff]/78 max-[640px]:mt-3 max-[640px]:max-w-[300px] max-[640px]:justify-center">
               <MapPin
-                className="mt-1 shrink-0 text-[var(--cyan)]"
+                className="mt-1 shrink-0 text-[var(--cyan)] max-[640px]:mt-0.5"
                 size={20}
                 strokeWidth={2.4}
               />
-              <span className="text-[0.98rem] leading-[1.7]">
-                אימונים קבוצתיים ואישיים במגרשי האקדמיה ובמתחמים שותפים.
+              <span className="text-[0.98rem] leading-[1.7] max-[640px]:text-[0.84rem] max-[640px]:leading-[1.5]">
+                נס ציונה - אימונים קבוצתיים ואישיים במגרשי האקדמיה ובמתחמים
+                שותפים.
               </span>
             </div>
           </div>
 
-          <nav aria-label="קישורי תחתית" className="max-[640px]:text-center">
-            <h2 className="m-0 text-[1.1rem] font-extrabold text-[#f7fbff] max-[640px]:text-[1.05rem]">
+          <nav
+            aria-label="קישורי תחתית"
+            className="max-[640px]:hidden max-[640px]:text-center"
+          >
+            <h2 className="m-0 text-[1.1rem] font-extrabold text-[#f7fbff] max-[640px]:text-[0.98rem]">
               ניווט מהיר
             </h2>
-            <div className="mt-4 grid gap-2 max-[640px]:grid-cols-2 max-[640px]:gap-2.5">
+            <div className="mt-4 grid gap-2 max-[640px]:mt-2.5 max-[640px]:grid-cols-4 max-[640px]:gap-1.5">
               {navLinks.map((link) => (
                 <Link
-                  className="w-fit text-[1rem] font-bold text-[#a8b3bd] transition duration-300 hover:translate-x-[-4px] hover:text-[var(--cyan)] max-[640px]:mx-auto max-[640px]:rounded-lg max-[640px]:bg-white/[0.045] max-[640px]:px-3 max-[640px]:py-2 max-[640px]:text-[0.95rem]"
+                  className="w-fit text-[1rem] font-bold text-[#a8b3bd] transition duration-300 hover:translate-x-[-4px] hover:text-[var(--cyan)] max-[640px]:mx-auto max-[640px]:w-full max-[640px]:rounded-md max-[640px]:bg-white/[0.045] max-[640px]:px-1.5 max-[640px]:py-1.5 max-[640px]:text-center max-[640px]:text-[0.76rem] max-[640px]:leading-tight"
                   href={link.href}
                   key={link.href}
                 >
@@ -135,25 +139,25 @@ export function Footer() {
           </nav>
 
           <div className="min-w-0 max-[640px]:text-center">
-            <h2 className="m-0 text-[1.1rem] font-extrabold text-[#f7fbff] max-[640px]:text-[1.05rem]">
+            <h2 className="m-0 text-[1.1rem] font-extrabold text-[#f7fbff] max-[640px]:text-[0.98rem]">
               פרטי התקשרות
             </h2>
-            <div className="mt-4 grid gap-3">
+            <div className="mt-4 grid gap-3 max-[640px]:mt-2.5 max-[640px]:grid-cols-2 max-[640px]:gap-1.5">
               {contactLinks.map((item) => {
                 const Icon = item.icon;
 
                 return (
                   <a
-                    className="group inline-flex w-fit min-w-0 items-center gap-3 text-[#a8b3bd] transition duration-300 hover:text-[var(--cyan)] max-[640px]:w-full max-[640px]:justify-start max-[640px]:rounded-lg max-[640px]:bg-white/[0.045] max-[640px]:p-3 max-[640px]:text-right"
+                    className="group inline-flex w-fit min-w-0 items-center gap-3 text-[#a8b3bd] transition duration-300 hover:text-[var(--cyan)] max-[640px]:w-full max-[640px]:justify-start max-[640px]:gap-2 max-[640px]:rounded-md max-[640px]:bg-white/[0.045] max-[640px]:p-2 max-[640px]:text-right"
                     href={item.href}
                     key={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                   >
-                    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/[0.06] text-[var(--cyan)] transition duration-300 group-hover:bg-[rgb(var(--cyan-rgb)/0.14)]">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/[0.06] text-[var(--cyan)] transition duration-300 group-hover:bg-[rgb(var(--cyan-rgb)/0.14)] max-[640px]:size-7 max-[640px]:rounded-md">
                       <Icon size={19} strokeWidth={2.4} />
                     </span>
-                    <span className="min-w-0 [overflow-wrap:anywhere] font-bold leading-[1.45]">
+                    <span className="min-w-0 [overflow-wrap:anywhere] font-bold leading-[1.45] max-[640px]:text-[0.76rem] max-[640px]:leading-[1.25]">
                       {item.label}
                     </span>
                   </a>
@@ -163,12 +167,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5 text-[0.92rem] text-[#a8b3bd] max-[640px]:mt-8 max-[640px]:justify-center max-[640px]:text-center max-[640px]:text-[0.86rem]">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5 text-[0.92rem] text-[#a8b3bd] max-[640px]:mt-5 max-[640px]:flex-col max-[640px]:justify-center max-[640px]:gap-2.5 max-[640px]:pt-3 max-[640px]:text-center max-[640px]:text-[0.76rem]">
           <p className="m-0">
             © {currentYear} Next Level Basketball Academy. כל הזכויות שמורות.
           </p>
-          <p className="m-0">
-           Build by{" "}
+          <p className="m-0 max-[640px]:rounded-full max-[640px]:border max-[640px]:border-white/10 max-[640px]:bg-white/[0.045] max-[640px]:px-3 max-[640px]:py-1.5">
+            Build by{" "}
             <a
               className="font-extrabold text-[var(--cyan)] transition duration-300 hover:text-[var(--cyan-light)]"
               href="https://example.com"

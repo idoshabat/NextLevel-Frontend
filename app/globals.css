@@ -39,17 +39,32 @@ button {
   font: inherit;
 }
 
+.font-assistant {
+  font-family: var(--font-assistant), Arial, sans-serif;
+}
+
 .navbar-contact-link:hover {
   color: var(--cyan);
 }
 
 .scroll-reveal {
   opacity: 0;
-  transform: translate3d(0, 52px, 0) scale(0.985);
   transition:
     opacity 860ms ease,
     transform 860ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
+}
+
+.scroll-reveal-from-right {
+  transform: translate3d(72px, 0, 0) scale(0.985);
+}
+
+.scroll-reveal-from-left {
+  transform: translate3d(-72px, 0, 0) scale(0.985);
+}
+
+.scroll-reveal-no-motion {
+  transition: none !important;
 }
 
 .scroll-reveal-visible {
@@ -87,6 +102,62 @@ main > section:nth-of-type(3).scroll-reveal {
     radial-gradient(circle at center, #102126 0%, #050708 48%, #030405 100%);
   background-size: auto, auto, 72px 72px, 72px 72px, auto;
   transform: scale(1.04);
+}
+
+.home-hero-video {
+  background: #030405;
+  filter: grayscale(1) contrast(1.08) brightness(1);
+  opacity: 0.6;
+  transform: scale(1.02);
+}
+
+.home-band {
+  position: relative;
+  isolation: isolate;
+}
+
+.home-band::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  width: 100vw;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.home-band-light::before {
+  background:
+    radial-gradient(circle at 78% 18%, rgb(var(--cyan-rgb) / 0.16), transparent 24rem),
+    linear-gradient(135deg, #11191c 0%, #0b1113 48%, #151a1b 100%);
+}
+
+.home-band-deep::before {
+  background:
+    linear-gradient(rgba(247, 251, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 251, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 16% 20%, rgb(var(--cyan-rgb) / 0.12), transparent 22rem),
+    linear-gradient(145deg, #030405 0%, #071113 52%, #020303 100%);
+  background-size:
+    68px 68px,
+    68px 68px,
+    auto,
+    auto;
+}
+
+.home-band-smoke::before {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(247, 251, 255, 0.1), transparent 20rem),
+    radial-gradient(circle at 82% 78%, rgb(var(--cyan-rgb) / 0.12), transparent 24rem),
+    linear-gradient(135deg, #182022 0%, #0e1517 48%, #1b1f20 100%);
+}
+
+.home-band-court::before {
+  background:
+    linear-gradient(115deg, transparent 0 42%, rgb(var(--cyan-rgb) / 0.08) 43% 44%, transparent 45% 100%),
+    repeating-linear-gradient(90deg, transparent 0 68px, rgba(247, 251, 255, 0.045) 69px 70px),
+    linear-gradient(150deg, #050708 0%, #0d171a 50%, #030405 100%);
 }
 
 .home-motion-bg::before,

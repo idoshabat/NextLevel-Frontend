@@ -9,6 +9,7 @@ import { useState } from "react";
 const navItems = [
   { href: "/", label: "ראשי" },
   { href: "/about", label: "אודות" },
+  { href: "/about-option", label: "אודות 2" },
   // { href: "/team", label: "צוות" },
   { href: "/players", label: "שחקנים שלנו" },
   { href: "/gallery", label: "גלריה" },
@@ -83,7 +84,7 @@ export function Navbar() {
     : "max-[980px]:pointer-events-none max-[980px]:opacity-0";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 p-0">
+    <header className="font-assistant fixed inset-x-0 top-0 z-50 p-0">
       <button
         className={`hidden max-[980px]:fixed max-[980px]:inset-0 max-[980px]:top-19 max-[980px]:z-0 max-[980px]:block max-[980px]:cursor-default max-[980px]:bg-black/62 max-[980px]:backdrop-blur-[3px] max-[980px]:transition max-[980px]:duration-300 ${mobileBackdropState}`}
         type="button"

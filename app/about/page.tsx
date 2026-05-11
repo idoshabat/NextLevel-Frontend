@@ -1,10 +1,6 @@
-"use client";
-
-import { useRef } from "react";
+import Link from "next/link";
 import {
   CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
   HeartHandshake,
   ShieldCheck,
   Sparkles,
@@ -13,45 +9,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-
-const coaches = [
-  {
-    name: "אבי אליהו",
-    role: "מאמן ראשי",
-    image: "https://i.pravatar.cc/640?img=12",
-    description: "מוביל אימוני יסודות, קבלת החלטות ומשחק קבוצתי.",
-  },
-  {
-    name: "טל דן",
-    role: "מאמנת יכולות אישיות",
-    image: "https://i.pravatar.cc/640?img=47",
-    description: "מתמחה בכדרור, קליעה, שינויי קצב וביטחון עם הכדור.",
-  },
-  {
-    name: "דורי אסף",
-    role: "מאמן אתלטיקה",
-    image: "https://i.pravatar.cc/640?img=15",
-    description: "בונה מהירות, קואורדינציה, יציבות וכוח מותאם לשחקני כדורסל.",
-  },
-  {
-    name: "עידו שבת",
-    role: "מאמנת קבוצות צעירות",
-    image: "https://i.pravatar.cc/640?img=32",
-    description: "יוצרת סביבת אימון חיובית עם דגש על הנאה, משמעת והתקדמות.",
-  },
-  {
-    name: "שמואל מלכוב",
-    role: "מאמן קליעה",
-    image: "https://i.pravatar.cc/640?img=59",
-    description: "עובד על טכניקת זריקה, עבודת רגליים ושחרור מהיר.",
-  },
-  // {
-  //   name: "שירה אברהם",
-  //   role: "מאמנת מנטלית",
-  //   image: "https://i.pravatar.cc/640?img=45",
-  //   description: "מחזקת ריכוז, התמדה, התמודדות עם לחץ ומנהיגות על המגרש.",
-  // },
-];
+import { coaches } from "@/data/coaches";
 
 const pillars = [
   {
@@ -81,15 +39,6 @@ const developmentPoints = [
 ];
 
 export default function AboutPage() {
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  const scrollCarousel = (direction: "next" | "previous") => {
-    carouselRef.current?.scrollBy({
-      left: direction === "next" ? -360 : 360,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <div className="min-h-screen overflow-hidden">
       <section className="mx-auto w-[min(1120px,calc(100%_-_32px))] py-[clamp(56px,8vw,96px)]">
@@ -99,7 +48,7 @@ export default function AboutPage() {
               Next Level Basketball Academy
             </p>
             <h1 className="m-0 text-[clamp(2.8rem,7vw,6.7rem)] leading-[0.95]">
-              אודותינו
+              מי אנחנו?
             </h1>
             <p className="mt-5 max-w-[480px] text-[clamp(1.05rem,2vw,1.25rem)] font-extrabold leading-[1.55] text-[#f7fbff]/86">
               יותר ממשחק, זו הדרך.
@@ -122,6 +71,77 @@ export default function AboutPage() {
               כשחקנים, אבל קודם כל כבני אדם חזקים, ערכיים ומאמינים בעצמם.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-[min(1120px,calc(100%_-_32px))] pb-[clamp(64px,9vw,112px)]">
+        <div className="mb-7 max-w-[820px]">
+          <p className="mb-2 text-[0.9rem] font-extrabold text-[var(--cyan)]">
+            הצוות שלנו
+          </p>
+          <h2 className="m-0 text-[clamp(2rem,4.5vw,4rem)] leading-none">
+            המנטורים שמובילים את הדרך
+          </h2>
+          <p className="mt-4 max-w-[720px] text-[1.02rem] leading-[1.75] text-[#a8b3bd]">
+            הצוות שלנו בנוי ממאמנים ושחקנים שמכירים את האתגרים, הלחץ
+            וההצלחות של הדרך, ויודעים להפוך ניסיון אישי להכוונה מקצועית.
+          </p>
+        </div>
+
+        <div className="grid gap-4">
+          {coaches.map((coach, index) => {
+            const imageFirst = index % 2 === 0;
+
+            return (
+              <Link
+                key={coach.name}
+                className={`group mx-auto grid w-full max-w-[780px] overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_14px_42px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.075] lg:h-[210px] ${
+                  imageFirst
+                    ? "lg:grid-cols-[240px_1fr]"
+                    : "lg:grid-cols-[1fr_240px]"
+                }`}
+                href={`/coaches/${coach.slug}`}
+                aria-label={`מעבר לעמוד של ${coach.name}`}
+                data-scroll-reveal
+                data-scroll-reveal-direction={index % 2 === 0 ? "right" : "left"}
+              >
+                <div
+                  className={`h-[170px] overflow-hidden bg-[#0b1114] sm:h-[190px] lg:h-full ${
+                    imageFirst ? "lg:order-1" : "lg:order-2"
+                  }`}
+                >
+                  <img
+                    className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                    src={coach.image}
+                    alt={`תמונה של ${coach.name}`}
+                    loading="lazy"
+                  />
+                </div>
+
+                <div
+                  className={`flex min-h-0 flex-col justify-center p-5 lg:p-6 ${
+                    imageFirst ? "lg:order-2" : "lg:order-1"
+                  }`}
+                >
+                  <p className="mb-1 text-[0.82rem] font-extrabold text-[var(--cyan)]">
+                    {coach.role}
+                  </p>
+                  <h3 className="m-0 text-[clamp(1.35rem,2.4vw,1.85rem)] leading-tight">
+                    {coach.name}
+                  </h3>
+                  <p className="mt-2 text-[0.9rem] font-extrabold leading-[1.65] text-[#f7fbff]/88">
+                    {coach.headline}
+                  </p>
+                  <p className="mt-2 line-clamp-2 max-w-[460px] text-[0.86rem] leading-[1.6] text-[#a8b3bd]">
+                    {coach.description}
+                  </p>
+                  <span className="mt-3 inline-flex w-fit text-[0.88rem] font-extrabold text-[var(--cyan)] transition duration-300 group-hover:translate-x-[-4px]">
+                    לפרופיל המאמן
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -191,76 +211,6 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="pb-[clamp(64px,9vw,112px)]">
-        <div className="mx-auto mb-6 flex w-[min(1120px,calc(100%_-_32px))] items-end justify-between gap-5">
-          <div>
-            <p className="mb-2 text-[0.9rem] font-extrabold text-[var(--cyan)]">
-              הצוות שלנו
-            </p>
-            <h2 className="m-0 text-[clamp(2rem,4.5vw,4rem)] leading-none">
-              המנטורים שמובילים את הדרך
-            </h2>
-            <p className="mt-4 max-w-[720px] text-[1.02rem] leading-[1.75] text-[#a8b3bd]">
-              הצוות שלנו בנוי ממאמנים ושחקנים שמכירים את האתגרים, הלחץ
-              וההצלחות של הדרך, ויודעים להפוך ניסיון אישי להכוונה מקצועית.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 max-[640px]:hidden" dir="ltr">
-            <button
-              className="grid size-11 cursor-pointer place-items-center rounded-lg bg-white/[0.06] text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.12)] hover:text-[var(--cyan)]"
-              type="button"
-              aria-label="מאמן קודם"
-              onClick={() => scrollCarousel("next")}
-            >
-              <ChevronLeft size={22} strokeWidth={2.4} />
-            </button>
-            <button
-              className="grid size-11 cursor-pointer place-items-center rounded-lg bg-white/[0.06] text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.12)] hover:text-[var(--cyan)]"
-              type="button"
-              aria-label="מאמן הבא"
-              onClick={() => scrollCarousel("previous")}
-            >
-              <ChevronRight size={22} strokeWidth={2.4} />
-            </button>
-          </div>
-        </div>
-
-        <div
-          ref={carouselRef}
-          className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-[max(16px,calc((100vw_-_1120px)/2))] pb-4 [scrollbar-color:rgb(var(--cyan-rgb)/0.6)_rgba(255,255,255,0.08)] [scrollbar-width:thin]"
-          dir="rtl"
-          aria-label="קרוסלת מאמנים"
-        >
-          {coaches.map((coach) => (
-            <article
-              key={coach.name}
-              className="group relative min-w-[min(78vw,320px)] snap-start overflow-hidden rounded-lg bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_20px_60px_rgba(0,0,0,0.28)]"
-            >
-              <div className="aspect-[4/5] overflow-hidden bg-[#0b1114]">
-                <img
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  src={coach.image}
-                  alt={`תמונה של ${coach.name}`}
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-5">
-                <p className="mb-1 text-[0.9rem] font-extrabold text-[var(--cyan)]">
-                  {coach.role}
-                </p>
-                <h3 className="m-0 text-[1.45rem] leading-tight">
-                  {coach.name}
-                </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-[#a8b3bd]">
-                  {coach.description}
-                </p>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
     </div>
