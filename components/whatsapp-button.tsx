@@ -1,4 +1,4 @@
-const whatsappPhone = "972501234567";
+const whatsappPhone = "972553090366";
 const whatsappMessage = "שלום, אשמח לקבל פרטים על אקדמיית Next Level";
 
 export function WhatsappButton() {

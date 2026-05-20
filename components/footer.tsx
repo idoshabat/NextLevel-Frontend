@@ -17,8 +17,8 @@ const navLinks = [
 
 const contactLinks = [
   {
-    href: "tel:0501234567",
-    label: "050-123-4567",
+    href: "tel:+972553090366",
+    label: "+972 55 309 0366",
     icon: Phone,
   },
   {
@@ -27,7 +27,7 @@ const contactLinks = [
     icon: Mail,
   },
   {
-    href: "https://wa.me/972501234567",
+    href: "https://wa.me/972553090366",
     label: "WhatsApp",
     icon: MessageCircle,
   },
@@ -157,7 +157,10 @@ export function Footer() {
                     <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/[0.06] text-[var(--cyan)] transition duration-300 group-hover:bg-[rgb(var(--cyan-rgb)/0.14)] max-[640px]:size-7 max-[640px]:rounded-md">
                       <Icon size={19} strokeWidth={2.4} />
                     </span>
-                    <span className="min-w-0 [overflow-wrap:anywhere] font-bold leading-[1.45] max-[640px]:text-[0.76rem] max-[640px]:leading-[1.25]">
+                    <span
+                      className="min-w-0 [overflow-wrap:anywhere] font-bold leading-[1.45] max-[640px]:text-[0.76rem] max-[640px]:leading-[1.25]"
+                      dir={item.href.startsWith("tel:") ? "ltr" : undefined}
+                    >
                       {item.label}
                     </span>
                   </a>

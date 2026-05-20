@@ -26,18 +26,45 @@ export default function AboutOptionPage() {
       <section className="relative isolate py-[clamp(56px,8vw,104px)]">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_10%,rgb(var(--cyan-rgb)/0.18),transparent_24rem),linear-gradient(145deg,#030405_0%,#101719_52%,#050708_100%)]" />
 
-        <div className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-end">
-          <div>
+        <div className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
+          <div className="relative max-w-[860px] overflow-hidden rounded-lg border border-white/10 bg-white/[0.045] p-[clamp(20px,4vw,42px)] shadow-[0_26px_90px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgb(var(--cyan-rgb)/0.14),transparent_34%),radial-gradient(circle_at_100%_0%,rgb(var(--cyan-rgb)/0.18),transparent_18rem)]" />
+            <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-px bg-[linear-gradient(180deg,transparent,var(--cyan),transparent)]" />
+
             <p className="mb-3 inline-flex items-center gap-2 text-[0.95rem] font-extrabold tracking-normal text-[var(--cyan)]">
               <Sparkles size={19} strokeWidth={2.4} />
               About Option 2
             </p>
-            <h1 className="m-0 text-[clamp(3.2rem,8vw,7.4rem)] leading-[0.88]">
-              מי אנחנו
-            </h1>
-            <p className="mt-5 max-w-[560px] text-[clamp(1.12rem,2vw,1.34rem)] font-extrabold leading-[1.55] text-[#f7fbff]/88">
-              אקדמיית כדורסל שמחברת בין אימון ברמה גבוהה, מנטורים מעורבים
-              ותהליך אישי לכל שחקן.
+
+            <div className="relative grid gap-3">
+              <div className="flex items-end justify-between gap-4 border-b border-white/10 pb-3">
+                <span className="text-[clamp(1.25rem,2.8vw,2.55rem)] font-black uppercase leading-none text-[#f7fbff]/78">
+                  We believe in
+                </span>
+                <span className="hidden h-2 w-28 rounded-full bg-[var(--cyan)] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.45)] sm:block" />
+              </div>
+
+              <h1 className="m-0 text-[clamp(3.1rem,8.5vw,8.7rem)] font-black uppercase leading-[0.78] tracking-normal text-[#f7fbff]">
+                Small
+                <br />
+                <span className="text-[var(--cyan)]">Details</span>
+              </h1>
+
+              <div className="grid gap-2 sm:grid-cols-[auto_1fr] sm:items-end">
+                <p className="m-0 text-[clamp(1.6rem,4vw,3.65rem)] font-black uppercase leading-none text-[#f7fbff]/88">
+                  that make
+                  <br />
+                  a big
+                </p>
+                <p className="m-0 text-[clamp(2.6rem,7vw,7.1rem)] font-black uppercase leading-[0.8] text-[var(--cyan)]">
+                  Difference
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-6 max-w-[620px] border-r-2 border-[var(--cyan)] pr-5 text-[clamp(1.1rem,2vw,1.34rem)] font-extrabold leading-[1.55] text-[#f7fbff]/88">
+              מי אנחנו: אקדמיית כדורסל שמחברת בין אימון ברמה גבוהה, מנטורים
+              מעורבים ותהליך אישי לכל שחקן.
             </p>
           </div>
 

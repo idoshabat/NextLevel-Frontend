@@ -2,7 +2,7 @@
 
 import { Send } from "lucide-react";
 
-const whatsappPhone = "972549408667";
+const whatsappPhone = "972553090366";
 
 function getFieldValue(formData: FormData, key: string) {
   return String(formData.get(key) || "").trim();

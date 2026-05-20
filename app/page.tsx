@@ -28,6 +28,21 @@ const highlights = [
 
 const heroVideo = "/assets/hero-video.mp4";
 
+const academyMoments = [
+  {
+    title: "אימון יסודות",
+    image: "https://res.cloudinary.com/djud4xysp/image/upload/v1779291371/NEXT%20LEVEL%20WEBSITE/Weekends/DSC_0956_1_k5hnzk.jpg",
+  },
+  {
+    title: "עבודה אישית",
+    image: "https://res.cloudinary.com/djud4xysp/image/upload/v1779291370/NEXT%20LEVEL%20WEBSITE/Weekends/DSC_7212_fzgteo.jpg",
+  },
+  {
+    title: "אנרגיה קבוצתית",
+    image: "https://res.cloudinary.com/djud4xysp/image/upload/v1779291364/NEXT%20LEVEL%20WEBSITE/Weekends/DSC_8458_rs9jtd.jpg",
+  },
+];
+
 const tracks = [
   {
     title: "אימוני יסודות",
@@ -175,9 +190,8 @@ export default function HomePage() {
               יסודות, ביטחון ואופי מנצח.
             </p>
             <p className="mt-4 max-w-[660px] text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#a8b3bd]">
-              אימונים מקצועיים בקבוצות קטנות, צוות שמכיר כל שחקן ותהליך שמחבר
-              בין טכניקה, אתלטיות, חשיבה מהירה ואהבה למשחק.
-            </p>
+                 אנו מספקים מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל שלבי ההתפתחות ומיצוי הפוטנציאל הטמון בכל שחקן ושחקן.
+           </p>
             <p className="mt-5 inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--cyan-rgb)/0.35)] bg-[#030405]/52 px-4 py-2 text-[1rem] font-extrabold text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
               <MapPin size={19} strokeWidth={2.5} className="text-[var(--cyan)]" />
               נס ציונה
@@ -225,6 +239,45 @@ export default function HomePage() {
             suffix={item.suffix}
           />
         ))}
+      </section>
+
+      <section className="home-band home-band-smoke mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(64px,9vw,108px)]">
+        <div className="mb-7 flex flex-wrap items-end justify-between gap-5">
+          <div className="max-w-[760px]">
+            <p className="mb-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
+              רגעים מהאקדמיה
+            </p>
+            <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
+              מקום לתמונות אמיתיות מהאימונים, המחנות והדרך.
+            </h2>
+          </div>
+          <p className="max-w-[320px] text-[1rem] font-bold leading-[1.7] text-[#a8b3bd]">
+            כאן אפשר להחליף בהמשך לתמונות של שחקנים, צוות, אימונים ורגעים
+            מהפרקט.
+          </p>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3 lg:items-stretch">
+          {academyMoments.map((moment) => (
+            <div
+              className="group relative overflow-hidden rounded-lg border border-white/10 bg-[#0b1114] shadow-[0_24px_80px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)]"
+              key={moment.title}
+            >
+              <div className="aspect-[4/5]">
+                <img
+                  className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  src={moment.image}
+                  alt={moment.title}
+                  loading="lazy"
+                />
+              </div>
+              <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,4,5,0.82),transparent_58%)]" />
+              <p className="absolute bottom-4 right-4 m-0 rounded-lg bg-[#030405]/68 px-3 py-2 text-[0.95rem] font-extrabold text-[#f7fbff] backdrop-blur-md">
+                {moment.title}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="home-band home-band-deep mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
@@ -275,6 +328,20 @@ export default function HomePage() {
               נקסט לבל משלבת מקצועיות, יחס אישי ואווירה שמחזירה את השחקנים
               למגרש עם רצון לעבוד ולהשתפר.
             </p>
+            <div className="mt-8 overflow-hidden rounded-lg border border-white/10 bg-[#0b1114] shadow-[0_24px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.08)]">
+              <div className="relative aspect-[16/11]">
+                <img
+                  className="h-full w-full object-cover grayscale"
+                  src="https://picsum.photos/seed/next-level-home-why/1100/760"
+                  alt="שחקנים באימון Next Level"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,4,5,0.72),transparent)]" />
+                <p className="absolute bottom-4 right-4 m-0 max-w-[280px] text-[1.05rem] font-extrabold leading-[1.55] text-[#f7fbff]">
+                  מקום לתמונה חזקה שמראה את האווירה והמקצוענות באימון.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="grid gap-4">

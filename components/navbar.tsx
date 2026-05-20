@@ -21,7 +21,7 @@ const navItems = [
 
 const contactItems = [
   {
-    href: "tel:0501234567",
+    href: "tel:+972553090366",
     label: "טלפון",
     icon: Phone,
   },

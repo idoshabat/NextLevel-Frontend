@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, HelpCircle, MessageCircle, Phone } from "lucide-react";
 
 const whatsappHref =
-  "https://wa.me/972501234567?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%A7%D7%93%D7%9E%D7%99%D7%99%D7%AA%20Next%20Level";
+  "https://wa.me/972553090366?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%A7%D7%93%D7%9E%D7%99%D7%99%D7%AA%20Next%20Level";
 
 const faqGroups = [
   {
@@ -99,7 +99,7 @@ export default function FaqPage() {
               </a>
               <a
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.06] px-5 py-3 text-[1.02rem] font-extrabold text-[#f7fbff] transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.6)] hover:bg-[rgb(var(--cyan-rgb)/0.12)]"
-                href="tel:0501234567"
+                href="tel:+972553090366"
               >
                 התקשרו אלינו
                 <Phone size={19} strokeWidth={2.5} />

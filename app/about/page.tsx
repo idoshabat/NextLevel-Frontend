@@ -67,17 +67,17 @@ export default function AboutPage() {
               שהוקמה כדי להקפיץ שחקנים לרמות
               הגבוהות ביותר בשכבות הגיל שלהם.
             </p>
-            <p className="m-0 text-[#f7fbff]">
-              המטרה: לספק מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל שלבי
-              ההתפתחות, ולמצות את הפוטנציאל הטמון בכל שחקן ושחקן.
-            </p>
             <p className="m-0">
               אנחנו מאמינים שההבדל בין שחקן טוב לשחקן מצוין נמצא בפרטים
               הקטנים: הרגלי עבודה, קבלת החלטות, טכניקה נקייה, ביטחון ומנטליות.
             </p>
+            <p className="m-0 text-[#f7fbff]">
+             המטרה: לספק מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל שלבי
+              ההתפתחות, ולמצות את הפוטנציאל הטמון בכל שחקן ושחקן.
+            </p>
           </div>
 
-          <div className="mx-auto mt-11 grid max-w-[820px] gap-5">
+          {/* <div className="mx-auto mt-11 grid max-w-[820px] gap-5">
             {featuredCoaches.map((coach) => (
               <Link
                 className="group grid gap-4 rounded-lg border border-white/10 bg-white/[0.045] p-4 text-right transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.07] sm:grid-cols-[1fr_116px] sm:items-center"
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 </div>
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -130,20 +130,18 @@ export default function AboutPage() {
             return (
               <Link
                 key={coach.name}
-                className={`group mx-auto grid w-full max-w-[780px] overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_14px_42px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.075] lg:h-[210px] ${
-                  imageFirst
-                    ? "lg:grid-cols-[240px_1fr]"
-                    : "lg:grid-cols-[1fr_240px]"
-                }`}
+                className={`group mx-auto grid w-full max-w-[780px] overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_14px_42px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.075] lg:h-[210px] ${imageFirst
+                  ? "lg:grid-cols-[240px_1fr]"
+                  : "lg:grid-cols-[1fr_240px]"
+                  }`}
                 href={`/coaches/${coach.slug}`}
                 aria-label={`מעבר לעמוד של ${coach.name}`}
                 data-scroll-reveal
                 data-scroll-reveal-direction={index % 2 === 0 ? "right" : "left"}
               >
                 <div
-                  className={`h-[170px] overflow-hidden bg-[#0b1114] sm:h-[190px] lg:h-full ${
-                    imageFirst ? "lg:order-1" : "lg:order-2"
-                  }`}
+                  className={`h-[170px] overflow-hidden bg-[#0b1114] sm:h-[190px] lg:h-full ${imageFirst ? "lg:order-1" : "lg:order-2"
+                    }`}
                 >
                   <img
                     className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
@@ -154,9 +152,8 @@ export default function AboutPage() {
                 </div>
 
                 <div
-                  className={`flex min-h-0 flex-col justify-center p-5 lg:p-6 ${
-                    imageFirst ? "lg:order-2" : "lg:order-1"
-                  }`}
+                  className={`flex min-h-0 flex-col justify-center p-5 lg:p-6 ${imageFirst ? "lg:order-2" : "lg:order-1"
+                    }`}
                 >
                   <p className="mb-1 text-[0.82rem] font-extrabold text-[var(--cyan)]">
                     {coach.role}
