@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   ChevronLeft,
   ChevronRight,
@@ -27,6 +28,7 @@ export function GalleryLightbox({ images }: GalleryLightboxProps) {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const dragPointRef = useRef<{ x: number; y: number } | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -75,6 +77,10 @@ export function GalleryLightbox({ images }: GalleryLightboxProps) {
     setZoom(2);
     setPan({ x: 0, y: 0 });
   };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const getBoundedPan = (nextPan: { x: number; y: number }, nextZoom = zoom) => {
     const image = imageRef.current;
@@ -200,6 +206,132 @@ export function GalleryLightbox({ images }: GalleryLightboxProps) {
     }
   };
 
+  const lightbox = activeImage ? (
+    <div
+      className="fixed inset-0 z-[100] grid place-items-center bg-black/88 p-4 backdrop-blur-md"
+      role="dialog"
+      aria-modal="true"
+      aria-label="תצוגת תמונה מוגדלת"
+      onClick={closeLightbox}
+    >
+      <div
+        className="absolute left-1/2 top-4 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/10 bg-[#030405]/72 p-1 text-[#f7fbff] shadow-[0_18px_50px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          className="grid size-10 place-items-center rounded-full transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)] disabled:cursor-not-allowed disabled:opacity-40"
+          type="button"
+          aria-label="הקטנת תמונה"
+          onClick={zoomOut}
+          disabled={zoom <= 1}
+        >
+          <Minus size={18} strokeWidth={2.5} />
+        </button>
+        <button
+          className="min-w-14 rounded-full px-2 py-2 text-center text-[0.82rem] font-extrabold text-[#f7fbff]/86 transition duration-300 hover:bg-white/10"
+          type="button"
+          aria-label="איפוס זום"
+          onClick={resetZoom}
+        >
+          {Math.round(zoom * 100)}%
+        </button>
+        <button
+          className="grid size-10 place-items-center rounded-full transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)] disabled:cursor-not-allowed disabled:opacity-40"
+          type="button"
+          aria-label="הגדלת תמונה"
+          onClick={zoomIn}
+          disabled={zoom >= 3}
+        >
+          <Plus size={18} strokeWidth={2.5} />
+        </button>
+        <button
+          className="grid size-10 place-items-center rounded-full transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)]"
+          type="button"
+          aria-label="איפוס זום"
+          onClick={resetZoom}
+        >
+          <RotateCcw size={17} strokeWidth={2.5} />
+        </button>
+      </div>
+
+      <button
+        className="absolute right-4 top-4 z-10 grid size-11 place-items-center rounded-full bg-white/10 text-[#f7fbff] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.18)] hover:text-[var(--cyan)]"
+        type="button"
+        aria-label="סגירת תמונה"
+        onClick={closeLightbox}
+      >
+        <X size={22} strokeWidth={2.5} />
+      </button>
+
+      {images.length > 1 ? (
+        <>
+          <button
+            className="absolute left-4 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-[#f7fbff] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.18)] hover:text-[var(--cyan)]"
+            type="button"
+            aria-label="תמונה קודמת"
+            onClick={(event) => {
+              event.stopPropagation();
+              showPrevious();
+            }}
+          >
+            <ChevronLeft size={24} strokeWidth={2.5} />
+          </button>
+          <button
+            className="absolute right-4 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-[#f7fbff] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.18)] hover:text-[var(--cyan)]"
+            type="button"
+            aria-label="תמונה הבאה"
+            onClick={(event) => {
+              event.stopPropagation();
+              showNext();
+            }}
+          >
+            <ChevronRight size={24} strokeWidth={2.5} />
+          </button>
+        </>
+      ) : null}
+
+      <div
+        ref={viewportRef}
+        className={`relative grid max-h-[88vh] max-w-[min(1120px,92vw)] place-items-center overflow-auto rounded-lg ${
+          zoom > 1 ? (isDragging ? "cursor-grabbing" : "cursor-grab") : ""
+        }`}
+        onClick={(event) => event.stopPropagation()}
+        onPointerDown={startDragging}
+        onPointerMove={dragImage}
+        onPointerUp={stopDragging}
+        onPointerCancel={stopDragging}
+        onDoubleClick={(event) => {
+          event.stopPropagation();
+          toggleDoubleClickZoom();
+        }}
+        onWheel={(event) => {
+          event.stopPropagation();
+
+          if (event.deltaY < 0) {
+            zoomIn();
+          } else {
+            zoomOut();
+          }
+        }}
+      >
+        <img
+          ref={imageRef}
+          className={`max-h-[88vh] max-w-full select-none rounded-lg object-contain shadow-[0_30px_100px_rgba(0,0,0,0.55)] ${
+            isDragging ? "" : "transition-transform duration-200"
+          }`}
+          src={activeImage.image}
+          alt={activeImage.title}
+          draggable={false}
+          style={{
+            transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
+            transformOrigin: "center",
+            touchAction: "none",
+          }}
+        />
+      </div>
+    </div>
+  ) : null;
+
   return (
     <>
       <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
@@ -235,131 +367,7 @@ export function GalleryLightbox({ images }: GalleryLightboxProps) {
         ))}
       </div>
 
-      {activeImage ? (
-        <div
-          className="fixed inset-0 z-[100] grid place-items-center bg-black/88 p-4 backdrop-blur-md"
-          role="dialog"
-          aria-modal="true"
-          aria-label="תצוגת תמונה מוגדלת"
-          onClick={closeLightbox}
-        >
-          <div
-            className="absolute left-1/2 top-4 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/10 bg-[#030405]/72 p-1 text-[#f7fbff] shadow-[0_18px_50px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              className="grid size-10 place-items-center rounded-full transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)] disabled:cursor-not-allowed disabled:opacity-40"
-              type="button"
-              aria-label="הקטנת תמונה"
-              onClick={zoomOut}
-              disabled={zoom <= 1}
-            >
-              <Minus size={18} strokeWidth={2.5} />
-            </button>
-            <button
-              className="min-w-14 rounded-full px-2 py-2 text-center text-[0.82rem] font-extrabold text-[#f7fbff]/86 transition duration-300 hover:bg-white/10"
-              type="button"
-              aria-label="איפוס זום"
-              onClick={resetZoom}
-            >
-              {Math.round(zoom * 100)}%
-            </button>
-            <button
-              className="grid size-10 place-items-center rounded-full transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)] disabled:cursor-not-allowed disabled:opacity-40"
-              type="button"
-              aria-label="הגדלת תמונה"
-              onClick={zoomIn}
-              disabled={zoom >= 3}
-            >
-              <Plus size={18} strokeWidth={2.5} />
-            </button>
-            <button
-              className="grid size-10 place-items-center rounded-full transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)]"
-              type="button"
-              aria-label="איפוס זום"
-              onClick={resetZoom}
-            >
-              <RotateCcw size={17} strokeWidth={2.5} />
-            </button>
-          </div>
-
-          <button
-            className="absolute right-4 top-4 z-10 grid size-11 place-items-center rounded-full bg-white/10 text-[#f7fbff] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.18)] hover:text-[var(--cyan)]"
-            type="button"
-            aria-label="סגירת תמונה"
-            onClick={closeLightbox}
-          >
-            <X size={22} strokeWidth={2.5} />
-          </button>
-
-          {images.length > 1 ? (
-            <>
-              <button
-                className="absolute left-4 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-[#f7fbff] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.18)] hover:text-[var(--cyan)]"
-                type="button"
-                aria-label="תמונה קודמת"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  showPrevious();
-                }}
-              >
-                <ChevronLeft size={24} strokeWidth={2.5} />
-              </button>
-              <button
-                className="absolute right-4 top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-[#f7fbff] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.18)] hover:text-[var(--cyan)]"
-                type="button"
-                aria-label="תמונה הבאה"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  showNext();
-                }}
-              >
-                <ChevronRight size={24} strokeWidth={2.5} />
-              </button>
-            </>
-          ) : null}
-
-          <div
-            ref={viewportRef}
-            className={`relative grid max-h-[88vh] max-w-[min(1120px,92vw)] place-items-center overflow-auto rounded-lg ${
-              zoom > 1 ? (isDragging ? "cursor-grabbing" : "cursor-grab") : ""
-            }`}
-            onClick={(event) => event.stopPropagation()}
-            onPointerDown={startDragging}
-            onPointerMove={dragImage}
-            onPointerUp={stopDragging}
-            onPointerCancel={stopDragging}
-            onDoubleClick={(event) => {
-              event.stopPropagation();
-              toggleDoubleClickZoom();
-            }}
-            onWheel={(event) => {
-              event.stopPropagation();
-
-              if (event.deltaY < 0) {
-                zoomIn();
-              } else {
-                zoomOut();
-              }
-            }}
-          >
-            <img
-              ref={imageRef}
-              className={`max-h-[88vh] max-w-full select-none rounded-lg object-contain shadow-[0_30px_100px_rgba(0,0,0,0.55)] ${
-                isDragging ? "" : "transition-transform duration-200"
-              }`}
-              src={activeImage.image}
-              alt={activeImage.title}
-              draggable={false}
-              style={{
-                transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
-                transformOrigin: "center",
-                touchAction: "none",
-              }}
-            />
-          </div>
-        </div>
-      ) : null}
+      {isMounted && lightbox ? createPortal(lightbox, document.body) : null}
     </>
   );
 }
