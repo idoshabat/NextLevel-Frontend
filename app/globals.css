@@ -18,12 +18,18 @@
 }
 
 html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--background);
 }
 
 body {
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
   color: var(--foreground);
   background:
     radial-gradient(circle at 20% 0%, var(--cyan-soft), transparent 28rem),
@@ -61,6 +67,16 @@ button {
 
 .scroll-reveal-from-left {
   transform: translate3d(-72px, 0, 0) scale(0.985);
+}
+
+@media (max-width: 640px) {
+  .scroll-reveal-from-right {
+    transform: translate3d(28px, 0, 0) scale(0.985);
+  }
+
+  .scroll-reveal-from-left {
+    transform: translate3d(-28px, 0, 0) scale(0.985);
+  }
 }
 
 .scroll-reveal-no-motion {
