@@ -25,7 +25,8 @@ const highlights = [
   { value: 1, suffix: ":1", label: "יחס אישי לשחקנים" },
 ];
 
-const heroVideo = "/assets/mp_.mp4";
+const heroVideoWebm = "/assets/home-basketball-training.webm";
+const heroVideoMp4 = "/assets/mp_.mp4";
 
 const tracks = [
   {
@@ -147,9 +148,10 @@ export default function HomePage() {
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
         >
-          <source src={heroVideo} type="video/webm" />
+          <source src={heroVideoWebm} type="video/webm" />
+          <source src={heroVideoMp4} type="video/mp4" />
         </video>
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(3,4,5,0.68)_0%,rgba(3,4,5,0.46)_42%,rgba(3,4,5,0.18)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(0deg,rgba(3,4,5,0.92),transparent)]" />
