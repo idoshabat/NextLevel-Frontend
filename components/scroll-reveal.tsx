@@ -9,6 +9,12 @@ export function ScrollReveal() {
   const pathname = usePathname();
 
   useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+    let animationFrame = 0;
+    let timeout = 0;
+    let removeScrollListener: (() => void) | null = null;
+
+    const setupReveal = () => {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -33,6 +39,9 @@ export function ScrollReveal() {
     };
 
     window.addEventListener("scroll", updateScrollDirection, { passive: true });
+    removeScrollListener = () => {
+      window.removeEventListener("scroll", updateScrollDirection);
+    };
 
     elements.forEach((element, index) => {
       const direction = element.dataset.scrollRevealDirection;
@@ -50,7 +59,7 @@ export function ScrollReveal() {
       );
     });
 
-    const observer = new IntersectionObserver(
+    const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -73,14 +82,20 @@ export function ScrollReveal() {
         threshold: 0.01,
       }
     );
+    observer = revealObserver;
 
-    window.requestAnimationFrame(() => {
-      elements.forEach((element) => observer.observe(element));
+    animationFrame = window.requestAnimationFrame(() => {
+      elements.forEach((element) => revealObserver.observe(element));
     });
+    };
+
+    timeout = window.setTimeout(setupReveal, 250);
 
     return () => {
-      window.removeEventListener("scroll", updateScrollDirection);
-      observer.disconnect();
+      window.clearTimeout(timeout);
+      window.cancelAnimationFrame(animationFrame);
+      removeScrollListener?.();
+      observer?.disconnect();
     };
   }, [pathname]);
 

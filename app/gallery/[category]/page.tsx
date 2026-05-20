@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Camera } from "lucide-react";
+import { GalleryLightbox } from "@/components/gallery/gallery-lightbox";
 import {
   galleryCategories,
   getGalleryImagesForCategory,
@@ -71,23 +72,7 @@ export default async function GalleryCategoryPage({
       </section>
 
       <section className="mx-auto w-[min(1180px,calc(100%_-_32px))] pb-[clamp(72px,10vw,120px)]">
-        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-          {items.map((item) => (
-            <article
-              className="group mb-4 break-inside-avoid overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.24)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]"
-              key={`${item.title}-${item.image}`}
-            >
-              <div className="overflow-hidden bg-[#0b1114]">
-                <img
-                  className="h-auto w-full object-cover transition duration-500 group-hover:scale-105"
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                />
-              </div>
-            </article>
-          ))}
-        </div>
+        <GalleryLightbox images={items} />
       </section>
     </div>
   );
