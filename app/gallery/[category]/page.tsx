@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Camera, Sparkles } from "lucide-react";
+import { ArrowRight, Camera } from "lucide-react";
 import {
   galleryCategories,
-  galleryItems,
+  getGalleryImagesForCategory,
   type GalleryCategorySlug,
 } from "@/data/gallery";
 
@@ -12,6 +12,8 @@ type GalleryCategoryPageProps = {
     category: string;
   }>;
 };
+
+export const revalidate = 300;
 
 export function generateStaticParams() {
   return galleryCategories.map((category) => ({
@@ -29,7 +31,9 @@ export default async function GalleryCategoryPage({
     notFound();
   }
 
-  const items = galleryItems[category.slug as GalleryCategorySlug];
+  const items = await getGalleryImagesForCategory(
+    category.slug as GalleryCategorySlug
+  );
 
   return (
     <div className="overflow-hidden">
@@ -73,25 +77,13 @@ export default async function GalleryCategoryPage({
               className="group mb-4 break-inside-avoid overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.24)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]"
               key={`${item.title}-${item.image}`}
             >
-              <div className="relative overflow-hidden bg-[#0b1114]">
+              <div className="overflow-hidden bg-[#0b1114]">
                 <img
                   className="h-auto w-full object-cover transition duration-500 group-hover:scale-105"
                   src={item.image}
                   alt={item.title}
                   loading="lazy"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(0deg,rgba(3,4,5,0.92),transparent)] p-4">
-                  <p className="m-0 inline-flex items-center gap-2 rounded-lg bg-[#030405]/74 px-3 py-2 text-[0.88rem] font-extrabold text-[var(--cyan)] backdrop-blur-md">
-                    <Sparkles size={15} strokeWidth={2.5} />
-                    {item.category}
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-4">
-                <h3 className="m-0 text-[1.25rem] leading-tight">
-                  {item.title}
-                </h3>
               </div>
             </article>
           ))}

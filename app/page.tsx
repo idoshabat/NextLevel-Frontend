@@ -9,8 +9,10 @@ import {
   Globe2,
   HeartHandshake,
   MapPin,
+  MessageCircle,
   ShieldCheck,
   Sparkles,
+  Star,
   Target,
   Trophy,
   Users,
@@ -70,6 +72,42 @@ const audiences = [
   "שחקנים שמתכוננים למחנות או רמה תחרותית",
 ];
 
+const joinSteps = [
+  {
+    title: "משאירים פרטים",
+    text: "ממלאים פנייה קצרה או שולחים הודעה, ואנחנו חוזרים אליכם עם כמה שאלות התאמה.",
+    icon: MessageCircle,
+  },
+  {
+    title: "שיחת התאמה קצרה",
+    text: "מבינים את גיל השחקן, הרמה, המטרות והמסגרת שהכי נכונה עבורו.",
+    icon: Users,
+  },
+  {
+    title: "מגיעים לאימון ניסיון",
+    text: "השחקן נכנס לאימון, מכיר את הצוות ומרגיש את הקצב של Next Level מקרוב.",
+    icon: Trophy,
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "הילד חזר מהאימון עם ביטחון אחר לגמרי. סוף סוף יש מקום שרואה גם את השחקן וגם את האדם.",
+    name: "הורה לשחקן באקדמיה",
+  },
+  {
+    quote:
+      "האימונים מדויקים, מאתגרים ועם אנרגיה גבוהה. כל שבוע מרגישים התקדמות אמיתית.",
+    name: "שחקן קבוצת נוער",
+  },
+  {
+    quote:
+      "הצוות שם לב לפרטים הקטנים: עבודת רגליים, קבלת החלטות, ביטחון ודרך חשיבה.",
+    name: "משפחת שחקן מתקדם",
+  },
+];
+
 const previews = [
   {
     title: "תוכניות אימון",
@@ -120,14 +158,15 @@ export default function HomePage() {
           <div className="max-w-[760px]">
             <p className="mb-4 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
               <Users size={19} strokeWidth={2.4} />
-              אקדמיית כדורסל לילדים ונוער
+              אקדמיית כדורסל לילדים ונוער בנס ציונה
             </p>
 
             <h1 className="m-0 text-[clamp(3.4rem,9vw,8.2rem)] leading-[0.88]">
               Next Level
             </h1>
             <p className="mt-5 max-w-[680px] text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-[1.45] text-[#f7fbff]">
-              המקום שבו שחקנים צעירים בונים יסודות, ביטחון ואופי מנצח.
+              אקדמיית כדורסל לילדים ונוער בנס ציונה, שבה שחקנים צעירים בונים
+              יסודות, ביטחון ואופי מנצח.
             </p>
             <p className="mt-4 max-w-[660px] text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#a8b3bd]">
               אימונים מקצועיים בקבוצות קטנות, צוות שמכיר כל שחקן ותהליך שמחבר
@@ -258,6 +297,92 @@ export default function HomePage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section className="home-band home-band-court mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
+        <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-[760px]">
+            <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
+              <MessageCircle size={18} strokeWidth={2.4} />
+              איך מצטרפים
+            </p>
+            <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
+              שלושה צעדים פשוטים לאימון הראשון.
+            </h2>
+          </div>
+
+          <Link
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.24),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
+            href="/contact"
+          >
+            להתחלת התהליך
+            <ArrowLeft size={20} strokeWidth={2.6} />
+          </Link>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          {joinSteps.map((step, index) => {
+            const Icon = step.icon;
+
+            return (
+              <article
+                className="relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.075]"
+                key={step.title}
+              >
+                <span className="absolute left-5 top-4 text-[4.4rem] font-black leading-none text-white/[0.045]">
+                  {index + 1}
+                </span>
+                <div className="mb-5 grid size-12 place-items-center rounded-lg bg-[rgb(var(--cyan-rgb)/0.14)] text-[var(--cyan)]">
+                  <Icon size={24} strokeWidth={2.4} />
+                </div>
+                <h3 className="m-0 text-[1.5rem] leading-tight">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-[1rem] leading-[1.75] text-[#a8b3bd]">
+                  {step.text}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="home-band home-band-deep mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
+        <div className="mb-7 max-w-[760px]">
+          <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
+            <Star size={18} strokeWidth={2.4} />
+            מה אומרים עלינו
+          </p>
+          <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
+            הורים ושחקנים מרגישים את ההבדל.
+          </h2>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <article
+              className="rounded-lg border border-white/10 bg-white/[0.055] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+              key={testimonial.name}
+            >
+              <div className="mb-5 flex gap-1 text-[var(--cyan)]">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star
+                    fill="currentColor"
+                    key={index}
+                    size={17}
+                    strokeWidth={2}
+                  />
+                ))}
+              </div>
+              <p className="m-0 text-[1.06rem] font-extrabold leading-[1.75] text-[#f7fbff]/88">
+                "{testimonial.quote}"
+              </p>
+              <p className="mt-5 text-[0.95rem] font-bold text-[#a8b3bd]">
+                {testimonial.name}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
 

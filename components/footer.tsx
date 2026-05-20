@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AtSign, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 const currentYear = new Date().getFullYear();
 
@@ -171,6 +171,12 @@ export function Footer() {
           <p className="m-0">
             © {currentYear} Next Level Basketball Academy. כל הזכויות שמורות.
           </p>
+          <Link
+            className="font-bold transition duration-300 hover:text-[var(--cyan)]"
+            href="/privacy"
+          >
+            מדיניות פרטיות
+          </Link>
           <p className="m-0 max-[640px]:rounded-full max-[640px]:border max-[640px]:border-white/10 max-[640px]:bg-white/[0.045] max-[640px]:px-3 max-[640px]:py-1.5">
             Build by{" "}
             <a

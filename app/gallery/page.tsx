@@ -1,8 +1,20 @@
 import Link from "next/link";
 import { ArrowLeft, Camera, Images } from "lucide-react";
-import { galleryCategories, galleryItems } from "@/data/gallery";
+import {
+  galleryCategories,
+  getGalleryCategoryPreview,
+} from "@/data/gallery";
 
-export default function GalleryPage() {
+export const revalidate = 300;
+
+export default async function GalleryPage() {
+  const categories = await Promise.all(
+    galleryCategories.map(async (category) => ({
+      ...category,
+      preview: await getGalleryCategoryPreview(category),
+    }))
+  );
+
   return (
     <div className="overflow-hidden">
       <section className="relative isolate py-[clamp(56px,8vw,96px)]">
@@ -43,7 +55,7 @@ export default function GalleryPage() {
         </div>
 
         <div className="grid gap-4 lg:grid-cols-3">
-          {galleryCategories.map((category) => (
+          {categories.map((category) => (
             <Link
               className="group overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.24)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]"
               href={`/gallery/${category.slug}`}
@@ -52,13 +64,13 @@ export default function GalleryPage() {
               <div className="relative aspect-[16/11] overflow-hidden bg-[#0b1114]">
                 <img
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  src={category.image}
+                  src={category.preview.image}
                   alt={category.title}
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,4,5,0.9),rgba(3,4,5,0.08))]" />
                 <div className="absolute bottom-4 right-4 rounded-lg bg-[#030405]/76 px-3 py-2 text-[0.88rem] font-extrabold text-[var(--cyan)] backdrop-blur-md">
-                  {galleryItems[category.slug].length} תמונות
+                  {category.preview.count} תמונות
                 </div>
               </div>
 

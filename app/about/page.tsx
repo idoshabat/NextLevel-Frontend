@@ -1,12 +1,10 @@
 import Link from "next/link";
 import {
   CheckCircle2,
-  HeartHandshake,
   ShieldCheck,
   Sparkles,
   Target,
   Trophy,
-  Users,
   Zap,
 } from "lucide-react";
 import { coaches } from "@/data/coaches";
@@ -38,38 +36,75 @@ const developmentPoints = [
   "בניית שחקנים חזקים קודם כל כבני אדם",
 ];
 
+const featuredCoachSlugs = ["tal-dan", "avi-eliyahu", "dori-asaf"];
+const featuredCoaches = featuredCoachSlugs
+  .map((slug) => coaches.find((coach) => coach.slug === slug))
+  .filter(Boolean) as typeof coaches;
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen overflow-hidden">
-      <section className="mx-auto w-[min(1120px,calc(100%_-_32px))] py-[clamp(56px,8vw,96px)]">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <p className="mb-3 text-[0.95rem] font-extrabold tracking-normal text-[var(--cyan)]">
-              Next Level Basketball Academy
+      <section className="relative isolate py-[clamp(56px,8vw,100px)]">
+        <div className="about-poster-bg absolute inset-0 -z-10" aria-hidden="true" />
+
+        <div className="mx-auto w-[min(1080px,calc(100%_-_32px))] rounded-lg border border-white/10 bg-[#030405]/82 px-[clamp(20px,5vw,56px)] py-[clamp(32px,7vw,68px)] shadow-[0_26px_90px_rgba(0,0,0,0.36),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
+          <div className="mx-auto max-w-[900px] text-center">
+            <p className="mb-4 text-[clamp(1.8rem,5vw,4.3rem)] font-black uppercase leading-none tracking-normal text-[var(--cyan)]">
+              We believe in
             </p>
-            <h1 className="m-0 text-[clamp(2.8rem,7vw,6.7rem)] leading-[0.95]">
-              מי אנחנו?
+            <h1 className="m-0 text-[clamp(3rem,9vw,7.6rem)] font-black uppercase leading-[0.86] tracking-normal text-[#f7fbff]">
+              The small details
             </h1>
-            <p className="mt-5 max-w-[480px] text-[clamp(1.05rem,2vw,1.25rem)] font-extrabold leading-[1.55] text-[#f7fbff]/86">
-              יותר ממשחק, זו הדרך.
+            <p className="mt-3 text-[clamp(1.8rem,5vw,4.4rem)] font-black uppercase leading-none tracking-normal text-[#f7fbff]">
+              that make a{" "}
+              <span className="text-[var(--cyan)]">big difference</span>
             </p>
           </div>
 
-          <div className="border-r border-[rgb(var(--cyan-rgb)/0.45)] pr-6 max-[640px]:border-r-0 max-[640px]:pr-0">
-            <h2 className="m-0 text-[clamp(1.65rem,3vw,2.6rem)] leading-tight">
-              בית מקצועי, חם ותומך לשחקנים שרוצים לקחת את עצמם לשלב הבא.
-            </h2>
-            <p className="mt-5 max-w-[720px] text-[clamp(1.05rem,2vw,1.22rem)] leading-[1.85] text-[#a8b3bd]">
-              החזון שלנו הוא להיות הבית המקצועי הערכי והמוביל בישראל לפיתוח
-              שחקני ושחקניות כדורסל. אנחנו מאמינים שכל שחקן יכול לפרוץ דרך
-              ולהגיע למקסימום הפוטנציאל שלו, אם יקבל את הכלים הנכונים,
-              ההכוונה המדויקת והליווי המתאים בכל שלב.
+          <div className="mx-auto mt-10 grid max-w-[880px] gap-5 text-center text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#d6dde3]">
+            <p className="m-0">
+              Next Level Basketball היא אקדמיה לפיתוח יכולות אישיות בכדורסל,
+              שהוקמה כדי להקפיץ שחקנים לרמות
+              הגבוהות ביותר בשכבות הגיל שלהם.
             </p>
-            <p className="mt-4 max-w-[720px] text-[clamp(1.02rem,1.8vw,1.16rem)] leading-[1.8] text-[#f7fbff]/78">
-              המטרה שלנו היא ליצור מעטפת שלמה: מאמנים שעברו את הדרך בעצמם,
-              שיטת אימון פרקטית, יחס אישי ותהליך שמפתח את הילד או הילדה
-              כשחקנים, אבל קודם כל כבני אדם חזקים, ערכיים ומאמינים בעצמם.
+            <p className="m-0 text-[#f7fbff]">
+              המטרה: לספק מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל שלבי
+              ההתפתחות, ולמצות את הפוטנציאל הטמון בכל שחקן ושחקן.
             </p>
+            <p className="m-0">
+              אנחנו מאמינים שההבדל בין שחקן טוב לשחקן מצוין נמצא בפרטים
+              הקטנים: הרגלי עבודה, קבלת החלטות, טכניקה נקייה, ביטחון ומנטליות.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-11 grid max-w-[820px] gap-5">
+            {featuredCoaches.map((coach) => (
+              <Link
+                className="group grid gap-4 rounded-lg border border-white/10 bg-white/[0.045] p-4 text-right transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.07] sm:grid-cols-[1fr_116px] sm:items-center"
+                href={`/coaches/${coach.slug}`}
+                key={coach.slug}
+              >
+                <div>
+                  <h2 className="m-0 text-[1.28rem] leading-tight">
+                    <span className="text-[var(--cyan)]">{coach.name}</span>
+                    <span className="mx-2 text-[#f7fbff]/42">/</span>
+                    <span className="text-[#f7fbff]/86">{coach.role}</span>
+                  </h2>
+                  <p className="mt-2 text-[0.98rem] leading-[1.75] text-[#c4cbd1]">
+                    {coach.bio[0]}
+                  </p>
+                </div>
+
+                <div className="order-first h-[116px] overflow-hidden rounded-lg border-2 border-[var(--cyan)] bg-[#0b1114] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.2)] sm:order-none">
+                  <img
+                    className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                    src={coach.image}
+                    alt={`תמונה של ${coach.name}`}
+                    loading="lazy"
+                  />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -93,6 +93,55 @@ main > section:nth-of-type(3).scroll-reveal {
   animation: back-to-top-glow 2.8s ease-in-out infinite;
 }
 
+.gallery-loading-shimmer {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgb(var(--cyan-rgb) / 0.08), transparent 32%),
+    rgba(255, 255, 255, 0.065);
+}
+
+.gallery-loading-shimmer::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 42%,
+    rgb(var(--cyan-rgb) / 0.16) 50%,
+    rgba(255, 255, 255, 0.08) 58%,
+    transparent 100%
+  );
+  transform: translateX(100%);
+  animation: gallery-loading-sweep 1.45s ease-in-out infinite;
+}
+
+.about-poster-bg {
+  background:
+    radial-gradient(circle at 50% 10%, rgb(var(--cyan-rgb) / 0.14), transparent 22rem),
+    linear-gradient(150deg, rgba(247, 251, 255, 0.055) 0 1px, transparent 1px),
+    repeating-radial-gradient(ellipse at 15% 42%, transparent 0 18px, rgba(247, 251, 255, 0.055) 19px 20px, transparent 21px 40px),
+    repeating-radial-gradient(ellipse at 86% 58%, transparent 0 24px, rgba(247, 251, 255, 0.05) 25px 26px, transparent 27px 50px),
+    linear-gradient(145deg, #030405 0%, #06090a 48%, #020303 100%);
+  background-size:
+    auto,
+    88px 88px,
+    auto,
+    auto,
+    auto;
+}
+
+.about-poster-bg::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, transparent 0 48%, rgb(var(--cyan-rgb) / 0.08) 49% 50%, transparent 51% 100%),
+    radial-gradient(circle at 50% 100%, rgba(247, 251, 255, 0.07), transparent 26rem);
+  opacity: 0.8;
+}
+
 .home-motion-bg {
   background:
     linear-gradient(115deg, rgba(0, 207, 230, 0.18), transparent 30%),
@@ -255,6 +304,16 @@ main > section:nth-of-type(3).scroll-reveal {
   }
 }
 
+@keyframes gallery-loading-sweep {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal {
     opacity: 1;
@@ -265,6 +324,7 @@ main > section:nth-of-type(3).scroll-reveal {
   .home-motion-bg::before,
   .home-motion-bg::after,
   .home-logo-orbit::before,
+  .gallery-loading-shimmer::after,
   .scroll-hint,
   .back-to-top::before {
     animation: none;
