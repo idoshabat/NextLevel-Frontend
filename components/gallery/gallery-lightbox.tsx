@@ -339,6 +339,8 @@ export function GalleryLightbox({ images }: GalleryLightboxProps) {
           <article
             className="group mb-4 break-inside-avoid overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.24)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]"
             key={`${item.title}-${item.image}`}
+            data-scroll-reveal
+            data-scroll-reveal-direction={index % 2 === 0 ? "right" : "left"}
           >
             <button
               className="block w-full cursor-zoom-in text-right"

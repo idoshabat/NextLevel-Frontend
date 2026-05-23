@@ -36,8 +36,8 @@ export default async function GalleryPage() {
               בחרו קטגוריה וצפו בגלריה המתאימה.
             </h2>
             <p className="mt-5 max-w-[720px] text-[clamp(1.05rem,2vw,1.22rem)] leading-[1.85] text-[#a8b3bd]">
-              התמונות כאן הן דוגמאות זמניות. בהמשך אפשר להחליף כל קטגוריה
-              בתמונות אמיתיות מהאימונים, המחנות והאירועים של Next Level.
+              הצצה לאימונים, למחנות ולרגעים שמרכיבים את הדרך של השחקנים
+              באקדמיה.
             </p>
           </div>
         </div>
@@ -55,11 +55,13 @@ export default async function GalleryPage() {
         </div>
 
         <div className="grid gap-4 lg:grid-cols-3">
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <Link
               className="group overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.24)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]"
               href={`/gallery/${category.slug}`}
               key={category.slug}
+              data-scroll-reveal
+              data-scroll-reveal-direction={index % 2 === 0 ? "right" : "left"}
             >
               <div className="relative aspect-[16/11] overflow-hidden bg-[#0b1114]">
                 <img

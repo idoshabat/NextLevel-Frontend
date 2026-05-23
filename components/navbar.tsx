@@ -11,7 +11,6 @@ const navItems = [
   { href: "/about", label: "אודות" },
   // { href: "/about-option", label: "אודות 2" },
   // { href: "/team", label: "צוות" },
-  { href: "/players", label: "שחקנים שלנו" },
   { href: "/gallery", label: "גלריה" },
   { href: "/programs", label: "תוכניות" },
   { href: "/camps", label: "מחנות" },

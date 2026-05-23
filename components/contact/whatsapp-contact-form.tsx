@@ -43,6 +43,8 @@ export function WhatsappContactForm() {
     <form
       className="rounded-lg border border-white/10 bg-white/[0.055] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.09)] backdrop-blur-md"
       onSubmit={handleSubmit}
+      data-scroll-reveal
+      data-scroll-reveal-direction="left"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-2">

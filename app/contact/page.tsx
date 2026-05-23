@@ -60,7 +60,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_10%,rgb(var(--cyan-rgb)/0.2),transparent_24rem)]" />
 
         <div className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
+          <div data-scroll-reveal data-scroll-reveal-direction="right">
             <p className="mb-3 text-[0.95rem] font-extrabold tracking-normal text-[var(--cyan)]">
               צרו קשר
             </p>
@@ -72,7 +72,11 @@ export default function ContactPage() {
               השאירו פרטים או שלחו הודעה ישירה, ונחזור אליכם עם כל המידע.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div
+              className="mt-8 flex flex-wrap gap-3"
+              data-scroll-reveal
+              data-scroll-reveal-direction="left"
+            >
               <a
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_34px_rgb(var(--cyan-rgb)/0.35),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
                 href={whatsappHref}
@@ -97,7 +101,7 @@ export default function ContactPage() {
 
       <section className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-4 pb-[clamp(72px,10vw,120px)] lg:grid-cols-[1.2fr_0.8fr]">
         <div className="grid gap-4 sm:grid-cols-2">
-          {contactMethods.map((method) => {
+          {contactMethods.map((method, index) => {
             const Icon = method.icon;
 
             return (
@@ -105,6 +109,8 @@ export default function ContactPage() {
                 className="group rounded-lg border border-white/10 bg-white/[0.055] p-5 transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.075]"
                 href={method.href}
                 key={method.title}
+                data-scroll-reveal
+                data-scroll-reveal-direction={index % 2 === 0 ? "right" : "left"}
                 target={method.href.startsWith("http") ? "_blank" : undefined}
                 rel={method.href.startsWith("http") ? "noreferrer" : undefined}
               >
@@ -126,13 +132,15 @@ export default function ContactPage() {
         </div>
 
         <div className="grid gap-4">
-          {details.map((item) => {
+          {details.map((item, index) => {
             const Icon = item.icon;
 
             return (
               <div
                 className="rounded-lg border border-white/10 bg-white/[0.055] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
                 key={item.title}
+                data-scroll-reveal
+                data-scroll-reveal-direction={index % 2 === 0 ? "left" : "right"}
               >
                 <div className="mb-4 inline-grid size-11 place-items-center rounded-lg bg-[rgb(var(--cyan-rgb)/0.14)] text-[var(--cyan)]">
                   <Icon size={22} strokeWidth={2.4} />
@@ -147,7 +155,11 @@ export default function ContactPage() {
             );
           })}
 
-          <div className="rounded-lg border border-[rgb(var(--cyan-rgb)/0.32)] bg-[rgb(var(--cyan-rgb)/0.1)] p-5">
+          <div
+            className="rounded-lg border border-[rgb(var(--cyan-rgb)/0.32)] bg-[rgb(var(--cyan-rgb)/0.1)] p-5"
+            data-scroll-reveal
+            data-scroll-reveal-direction="left"
+          >
             <h2 className="m-0 text-[1.45rem] leading-tight">
               רוצים לראות את התוכניות קודם?
             </h2>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getCloudinaryImageUrl } from "@/lib/cloudinary";
 import {
   ArrowLeft,
   CalendarDays,
@@ -11,6 +12,27 @@ import {
   Users,
 } from "lucide-react";
 
+function cloudinaryFallback(publicId: string, transformation: string) {
+  const encodedPublicId = publicId.split("/").map(encodeURIComponent).join("/");
+
+  return `https://res.cloudinary.com/djud4xysp/image/upload/${transformation}/${encodedPublicId}`;
+}
+
+function campImage(publicId: string) {
+  const transformation = "f_auto,q_auto,w_900,h_720,c_fill,g_auto";
+
+  return getCloudinaryImageUrl(
+    publicId,
+    cloudinaryFallback(publicId, transformation),
+    {
+      width: 900,
+      height: 720,
+      crop: "fill",
+      gravity: "auto",
+    }
+  );
+}
+
 const camps = [
   {
     title: "בלגרד 2024",
@@ -18,7 +40,7 @@ const camps = [
     status: "הסתיים",
     statusTone: "muted",
     date: "קיץ 2024",
-    image: "https://picsum.photos/seed/next-level-belgrade-2024/900/720",
+    image: campImage("NEXT LEVEL WEBSITE/Camps/Serbia (2025)/IMG_8522_sgteiu"),
     description:
       "מחנה בינלאומי ראשון שנתן לשחקנים טעימה מאימונים בקצב גבוה, תרבות כדורסל אירופאית וחוויה קבוצתית מחוץ לארץ.",
     highlights: [
@@ -33,7 +55,7 @@ const camps = [
     status: "הסתיים",
     statusTone: "muted",
     date: "קיץ 2025",
-    image: "https://picsum.photos/seed/next-level-belgrade-2025/900/720",
+    image: campImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_4350_c7k9h4"),
     description:
       "המשך טבעי למחנה הראשון, עם רמת אימון גבוהה יותר, דגש על תחרותיות, משמעת קבוצתית והתמודדות עם אתגרים חדשים.",
     highlights: [
@@ -48,7 +70,7 @@ const camps = [
     status: "הרשמה פתוחה",
     statusTone: "active",
     date: "יוני 2026",
-    image: "https://picsum.photos/seed/next-level-slovenia-2026/900/720",
+    image: campImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_3908_ohowgk"),
     description:
       "המחנה הקרוב של האקדמיה יוצא לסלובניה ביוני 2026. המחנה מיועד לשחקנים שרוצים להתאמן בסביבה מקצועית, לחוות כדורסל בינלאומי ולהתקדם ברמה האישית והקבוצתית.",
     highlights: [
@@ -252,8 +274,7 @@ export default function CampsPage() {
                   </Link>
                 ) : (
                   <p className="mt-auto rounded-lg bg-white/[0.055] px-4 py-3 text-[0.95rem] font-extrabold text-[#f7fbff]/72">
-                    המחנה הסתיים. ניתן להשאיר כארכיון ולערוך בהמשך עם תמונות
-                    וסיפורים אמיתיים.
+                    המחנה הסתיים. מוזמנים להתרשם מהמחנות הפעילים שלנו.
                   </p>
                 )}
               </div>

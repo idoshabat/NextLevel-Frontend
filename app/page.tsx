@@ -47,18 +47,67 @@ const heroPoster = getCloudinaryImageUrl(heroPosterPublicId, "", {
   format: "auto",
 });
 
+function cloudinaryFallback(publicId: string, transformation: string) {
+  const encodedPublicId = publicId.split("/").map(encodeURIComponent).join("/");
+
+  return `https://res.cloudinary.com/djud4xysp/image/upload/${transformation}/${encodedPublicId}`;
+}
+
+function homeImage(
+  publicId: string,
+  options: {
+    width: number;
+    height?: number;
+    crop?: "fill" | "limit";
+  }
+) {
+  const transformation = [
+    "f_auto",
+    "q_auto",
+    `w_${options.width}`,
+    options.height ? `h_${options.height}` : null,
+    `c_${options.crop ?? "limit"}`,
+    options.height ? "g_auto" : null,
+  ]
+    .filter(Boolean)
+    .join(",");
+
+  return getCloudinaryImageUrl(
+    publicId,
+    cloudinaryFallback(publicId, transformation),
+    {
+      width: options.width,
+      height: options.height,
+      crop: options.crop ?? "limit",
+      gravity: options.height ? "auto" : undefined,
+    }
+  );
+}
+
 const academyMoments = [
   {
     title: "אימון יסודות",
-    image: "https://res.cloudinary.com/djud4xysp/image/upload/v1779291371/NEXT%20LEVEL%20WEBSITE/Weekends/DSC_0956_1_k5hnzk.jpg",
+    image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_0956_1_k5hnzk", {
+      width: 900,
+      height: 1125,
+      crop: "fill",
+    }),
   },
   {
     title: "עבודה אישית",
-    image: "https://res.cloudinary.com/djud4xysp/image/upload/v1779291370/NEXT%20LEVEL%20WEBSITE/Weekends/DSC_7212_fzgteo.jpg",
+    image: homeImage("NEXT LEVEL WEBSITE/Personal/DSC_7180_ulybx6", {
+      width: 900,
+      height: 1125,
+      crop: "fill",
+    }),
   },
   {
     title: "אנרגיה קבוצתית",
-    image: "https://res.cloudinary.com/djud4xysp/image/upload/v1779291364/NEXT%20LEVEL%20WEBSITE/Weekends/DSC_8458_rs9jtd.jpg",
+    image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_8458_rs9jtd", {
+      width: 900,
+      height: 1125,
+      crop: "fill",
+    }),
   },
 ];
 
@@ -149,7 +198,11 @@ const previews = [
     text: "מסלולים לפי גיל, רמה ומטרה: יסודות, שחקן מתקדם ואימון אישי.",
     href: "/programs",
     cta: "לתוכניות",
-    image: "https://picsum.photos/seed/next-level-home-programs/900/720",
+    image: homeImage("NEXT LEVEL WEBSITE/Personal/DSC_0863_pykhho", {
+      width: 900,
+      height: 720,
+      crop: "fill",
+    }),
     icon: Target,
   },
   {
@@ -157,7 +210,11 @@ const previews = [
     text: "בלגרד מאחורינו, סלובניה 2026 בדרך. מחנות שמשלבים כדורסל וחוויה.",
     href: "/camps",
     cta: "למחנות",
-    image: "https://picsum.photos/seed/next-level-home-camps/900/720",
+    image: homeImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_3706_xsxxo5", {
+      width: 900,
+      height: 720,
+      crop: "fill",
+    }),
     icon: Globe2,
   },
   {
@@ -165,7 +222,11 @@ const previews = [
     text: "הצצה לאימונים, רגעים מהדרך, מחנות והאנרגיה של האקדמיה.",
     href: "/gallery",
     cta: "לגלריה",
-    image: "https://picsum.photos/seed/next-level-home-gallery/900/720",
+    image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_8820_llzmmn", {
+      width: 900,
+      height: 720,
+      crop: "fill",
+    }),
     icon: Camera,
   },
 ];
@@ -275,12 +336,12 @@ export default function HomePage() {
               רגעים מהאקדמיה
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              מקום לתמונות אמיתיות מהאימונים, המחנות והדרך.
+              הרגעים הקטנים שמספרים את הדרך הגדולה.
             </h2>
           </div>
           <p className="max-w-[320px] text-[1rem] font-bold leading-[1.7] text-[#a8b3bd]">
-            כאן אפשר להחליף בהמשך לתמונות של שחקנים, צוות, אימונים ורגעים
-            מהפרקט.
+            מהאימון הראשון ועד רגעי השיא במחנות, כל תמונה משקפת עבודה,
+            מחויבות ואהבה למשחק.
           </p>
         </div>
 
@@ -355,17 +416,21 @@ export default function HomePage() {
               נקסט לבל משלבת מקצועיות, יחס אישי ואווירה שמחזירה את השחקנים
               למגרש עם רצון לעבוד ולהשתפר.
             </p>
-            <div className="mt-8 overflow-hidden rounded-lg border border-white/10 bg-[#0b1114] shadow-[0_24px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.08)]">
+            <div className="group mt-8 overflow-hidden rounded-lg border border-white/10 bg-[#0b1114] shadow-[0_24px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.08)]">
               <div className="relative aspect-[16/11]">
                 <img
-                  className="h-full w-full object-cover grayscale"
-                  src="https://picsum.photos/seed/next-level-home-why/1100/760"
+                  className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  src={homeImage("NEXT LEVEL WEBSITE/Personal/DSC_0217_l5c1xf", {
+                    width: 1100,
+                    height: 760,
+                    crop: "fill",
+                  })}
                   alt="שחקנים באימון Next Level"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,4,5,0.72),transparent)]" />
                 <p className="absolute bottom-4 right-4 m-0 max-w-[280px] text-[1.05rem] font-extrabold leading-[1.55] text-[#f7fbff]">
-                  מקום לתמונה חזקה שמראה את האווירה והמקצוענות באימון.
+                  סביבת אימון שמחברת מקצוענות, אנרגיה ויחס אישי לכל שחקן.
                 </p>
               </div>
             </div>
@@ -453,7 +518,11 @@ export default function HomePage() {
           <div className="aspect-[16/7] max-[640px]:aspect-[16/10]">
             <img
               className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
-              src="https://picsum.photos/seed/next-level-home-section-bridge/1400/760"
+              src={homeImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_5705-3_djzvui", {
+                width: 1400,
+                height: 760,
+                crop: "fill",
+              })}
               alt="רגע אימון באקדמיית Next Level"
               loading="lazy"
             />
@@ -461,7 +530,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,4,5,0.72),transparent_48%,rgba(3,4,5,0.34))]" />
           <div className="absolute inset-x-0 top-1/2 h-px bg-[linear-gradient(90deg,transparent,rgb(var(--cyan-rgb)/0.8),transparent)]" />
           <p className="absolute bottom-4 right-4 m-0 rounded-lg bg-[#030405]/70 px-4 py-2 text-[0.95rem] font-extrabold text-[#f7fbff] backdrop-blur-md">
-            מקום לתמונה רוחבית שתשבור בין שני אזורים
+            רגע אחד על הפרקט. עוד צעד בדרך לרמה הבאה.
           </p>
         </div>
       </div>

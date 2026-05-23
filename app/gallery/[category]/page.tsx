@@ -64,8 +64,8 @@ export default async function GalleryCategoryPage({
               {category.description}
             </h2>
             <p className="mt-5 max-w-[720px] text-[clamp(1.05rem,2vw,1.22rem)] leading-[1.85] text-[#a8b3bd]">
-              התמונות בעמוד הן דוגמאות זמניות, כדי לראות איך הגלריה תיראה
-              לאחר העלאת המדיה האמיתית.
+              רגעים מתוך הפעילות, האימונים והחוויה שמלווים את השחקנים
+              לאורך הדרך.
             </p>
           </div>
         </div>

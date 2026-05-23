@@ -13,8 +13,8 @@ export function PagePlaceholder({ title }: PagePlaceholderProps) {
           {title}
         </h1>
         <p className="mt-5 max-w-[620px] text-[clamp(1.05rem,2vw,1.25rem)] leading-[1.75] text-[#a8b3bd]">
-          עמוד זה מוכן למעבר ולבנייה בהמשך. בשלב הבא אפשר להתחיל להכניס תוכן, תמונות,
-          תוכניות אימון וטפסים לפי הצורך.
+          כל עמוד באתר נבנה כדי לתת להורים ולשחקנים תמונה ברורה של הדרך,
+          הערכים והמסגרת המקצועית של האקדמיה.
         </p>
       </div>
     </section>

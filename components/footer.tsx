@@ -7,7 +7,6 @@ const currentYear = new Date().getFullYear();
 const navLinks = [
   { href: "/", label: "ראשי" },
   { href: "/about", label: "אודות" },
-  { href: "/players", label: "שחקנים שלנו" },
   { href: "/gallery", label: "גלריה" },
   { href: "/programs", label: "תוכניות" },
   { href: "/camps", label: "מחנות" },
@@ -179,6 +178,12 @@ export function Footer() {
             href="/privacy"
           >
             מדיניות פרטיות
+          </Link>
+          <Link
+            className="font-bold transition duration-300 hover:text-[var(--cyan)]"
+            href="/accessibility"
+          >
+            הצהרת נגישות
           </Link>
           <p className="m-0 max-[640px]:rounded-full max-[640px]:border max-[640px]:border-white/10 max-[640px]:bg-white/[0.045] max-[640px]:px-3 max-[640px]:py-1.5">
             Build by{" "}
