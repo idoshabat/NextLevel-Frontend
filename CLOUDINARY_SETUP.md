@@ -40,6 +40,9 @@ NEXT LEVEL WEBSITE/
     cover
     any-image-name
     another-image-name
+  Home/
+    hero-video
+    hero-poster
 ```
 
 Example public ID:
@@ -71,6 +74,46 @@ If Cloudinary credentials are missing or the folder is empty, the site falls bac
 to dummy images from `data/gallery.ts`.
 
 No Cloudinary secret is exposed to the browser.
+
+## Homepage Hero Video
+
+The homepage is ready for production Cloudinary video delivery.
+
+Upload the original video to:
+
+```txt
+NEXT LEVEL WEBSITE/Home/hero-video
+```
+
+Upload one still image/poster frame to:
+
+```txt
+NEXT LEVEL WEBSITE/Home/hero-poster
+```
+
+The code serves:
+
+- a smaller mobile video: `w_800`
+- a larger desktop video: `w_1600`
+- automatic Cloudinary format/quality: `f_auto,q_auto:good`
+- a poster image that loads immediately before the video starts
+- local fallback: `public/assets/hero-video.mp4`
+
+Recommended source file before upload:
+
+- 10-15 seconds
+- no audio
+- 1080p max, 720p is usually enough
+- MP4/H.264 if exporting manually
+- under 30MB is okay for upload, Cloudinary will deliver optimized versions
+
+After uploading to Cloudinary, make sure Vercel has:
+
+```bash
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+```
+
+Then redeploy.
 
 ## Future Upload UI
 

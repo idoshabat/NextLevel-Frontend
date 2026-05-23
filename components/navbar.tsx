@@ -9,7 +9,7 @@ import { useState } from "react";
 const navItems = [
   { href: "/", label: "ראשי" },
   { href: "/about", label: "אודות" },
-  { href: "/about-option", label: "אודות 2" },
+  // { href: "/about-option", label: "אודות 2" },
   // { href: "/team", label: "צוות" },
   { href: "/players", label: "שחקנים שלנו" },
   { href: "/gallery", label: "גלריה" },

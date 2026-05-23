@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { preload } from "react-dom";
 import { AnimatedStat } from "@/components/animated-stat";
+import { getCloudinaryImageUrl, getCloudinaryVideoUrl } from "@/lib/cloudinary";
 import {
   ArrowLeft,
   CalendarDays,
@@ -26,7 +27,25 @@ const highlights = [
   { value: 1, suffix: ":1", label: "יחס אישי לשחקנים" },
 ];
 
-const heroVideo = "/assets/hero-video.mp4";
+const heroVideoPublicId = "NEXT LEVEL WEBSITE/Home/hero-video";
+const heroPosterPublicId = "NEXT LEVEL WEBSITE/Home/hero-poster";
+const heroVideoFallback = "/assets/hero-video.mp4";
+const heroVideoMobile = getCloudinaryVideoUrl(
+  heroVideoPublicId,
+  heroVideoFallback,
+  "f_auto,q_auto:good,w_800,c_limit"
+);
+const heroVideoDesktop = getCloudinaryVideoUrl(
+  heroVideoPublicId,
+  heroVideoFallback,
+  "f_auto,q_auto:good,w_1600,c_limit"
+);
+const heroPoster = getCloudinaryImageUrl(heroPosterPublicId, "", {
+  width: 1600,
+  crop: "limit",
+  quality: "auto",
+  format: "auto",
+});
 
 const academyMoments = [
   {
@@ -152,10 +171,12 @@ const previews = [
 ];
 
 export default function HomePage() {
-  preload(heroVideo, {
-    as: "video",
-    type: "video/mp4",
-  });
+  if (heroPoster) {
+    preload(heroPoster, {
+      as: "image",
+      fetchPriority: "high",
+    });
+  }
 
   return (
     <div className="overflow-hidden">
@@ -168,9 +189,15 @@ export default function HomePage() {
           loop
           muted
           playsInline
+          poster={heroPoster || undefined}
           preload="auto"
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source
+            src={heroVideoMobile}
+            type="video/mp4"
+            media="(max-width: 640px)"
+          />
+          <source src={heroVideoDesktop} type="video/mp4" />
         </video>
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(3,4,5,0.68)_0%,rgba(3,4,5,0.46)_42%,rgba(3,4,5,0.18)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(0deg,rgba(3,4,5,0.92),transparent)]" />
@@ -420,6 +447,24 @@ export default function HomePage() {
           })}
         </div>
       </section>
+
+      <div className="relative z-10 mx-auto -my-[clamp(38px,7vw,76px)] w-[min(1040px,calc(100%_-_32px))]">
+        <div className="group relative overflow-hidden rounded-lg border border-[rgb(var(--cyan-rgb)/0.34)] bg-[#0b1114] shadow-[0_28px_90px_rgba(0,0,0,0.36),0_0_44px_rgb(var(--cyan-rgb)/0.12),inset_0_1px_0_rgba(255,255,255,0.12)]">
+          <div className="aspect-[16/7] max-[640px]:aspect-[16/10]">
+            <img
+              className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+              src="https://picsum.photos/seed/next-level-home-section-bridge/1400/760"
+              alt="רגע אימון באקדמיית Next Level"
+              loading="lazy"
+            />
+          </div>
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,4,5,0.72),transparent_48%,rgba(3,4,5,0.34))]" />
+          <div className="absolute inset-x-0 top-1/2 h-px bg-[linear-gradient(90deg,transparent,rgb(var(--cyan-rgb)/0.8),transparent)]" />
+          <p className="absolute bottom-4 right-4 m-0 rounded-lg bg-[#030405]/70 px-4 py-2 text-[0.95rem] font-extrabold text-[#f7fbff] backdrop-blur-md">
+            מקום לתמונה רוחבית שתשבור בין שני אזורים
+          </p>
+        </div>
+      </div>
 
       <section className="home-band home-band-deep mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
         <div className="mb-7 max-w-[760px]">
