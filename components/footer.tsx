@@ -181,6 +181,12 @@ export function Footer() {
           </Link>
           <Link
             className="font-bold transition duration-300 hover:text-[var(--cyan)]"
+            href="/terms"
+          >
+            תקנון ותנאי שימוש
+          </Link>
+          <Link
+            className="font-bold transition duration-300 hover:text-[var(--cyan)]"
             href="/accessibility"
           >
             הצהרת נגישות

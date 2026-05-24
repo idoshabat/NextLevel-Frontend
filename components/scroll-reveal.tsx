@@ -10,83 +10,120 @@ export function ScrollReveal() {
 
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
+    let mutationObserver: MutationObserver | null = null;
     let animationFrame = 0;
     let timeout = 0;
     let removeScrollListener: (() => void) | null = null;
 
     const setupReveal = () => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const elements = Array.from(
-      document.querySelectorAll<HTMLElement>(revealSelector)
-    );
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      const observedElements = new Set<HTMLElement>();
+      let lastScrollY = window.scrollY;
+      let isScrollingDown = true;
 
-    if (reducedMotion) {
-      elements.forEach((element) => {
-        element.classList.add("scroll-reveal-visible");
+      const updateScrollDirection = () => {
+        const currentScrollY = window.scrollY;
+        isScrollingDown = currentScrollY >= lastScrollY;
+        lastScrollY = currentScrollY;
+      };
+
+      const prepareElement = (element: HTMLElement) => {
+        if (observedElements.has(element)) {
+          return;
+        }
+
+        observedElements.add(element);
+
+        if (reducedMotion) {
+          element.classList.add("scroll-reveal-visible");
+          return;
+        }
+
+        const direction = element.dataset.scrollRevealDirection;
+
+        element.classList.remove("scroll-reveal-visible");
+        element.classList.remove("scroll-reveal-from-left");
+        element.classList.remove("scroll-reveal-from-right");
+        element.classList.add("scroll-reveal");
+        element.classList.add(
+          direction === "left" || direction === "right"
+            ? `scroll-reveal-from-${direction}`
+            : observedElements.size % 2 === 0
+              ? "scroll-reveal-from-left"
+              : "scroll-reveal-from-right"
+        );
+
+        observer?.observe(element);
+      };
+
+      if (reducedMotion) {
+        document
+          .querySelectorAll<HTMLElement>(revealSelector)
+          .forEach(prepareElement);
+        return;
+      }
+
+      window.addEventListener("scroll", updateScrollDirection, {
+        passive: true,
       });
-      return;
-    }
+      removeScrollListener = () => {
+        window.removeEventListener("scroll", updateScrollDirection);
+      };
 
-    let lastScrollY = window.scrollY;
-    let isScrollingDown = true;
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (!isScrollingDown && window.scrollY > 8) {
+                entry.target.classList.add("scroll-reveal-no-motion");
+              }
 
-    const updateScrollDirection = () => {
-      const currentScrollY = window.scrollY;
-      isScrollingDown = currentScrollY >= lastScrollY;
-      lastScrollY = currentScrollY;
-    };
+              entry.target.classList.add("scroll-reveal-visible");
 
-    window.addEventListener("scroll", updateScrollDirection, { passive: true });
-    removeScrollListener = () => {
-      window.removeEventListener("scroll", updateScrollDirection);
-    };
-
-    elements.forEach((element, index) => {
-      const direction = element.dataset.scrollRevealDirection;
-
-      element.classList.remove("scroll-reveal-visible");
-      element.classList.remove("scroll-reveal-from-left");
-      element.classList.remove("scroll-reveal-from-right");
-      element.classList.add("scroll-reveal");
-      element.classList.add(
-        direction === "left" || direction === "right"
-          ? `scroll-reveal-from-${direction}`
-          : index % 2 === 0
-            ? "scroll-reveal-from-right"
-            : "scroll-reveal-from-left"
+              window.requestAnimationFrame(() => {
+                entry.target.classList.remove("scroll-reveal-no-motion");
+              });
+            } else {
+              entry.target.classList.remove("scroll-reveal-visible");
+            }
+          });
+        },
+        {
+          rootMargin: "0px 0px -4% 0px",
+          threshold: 0.01,
+        }
       );
-    });
 
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (!isScrollingDown && window.scrollY > 8) {
-              entry.target.classList.add("scroll-reveal-no-motion");
+      animationFrame = window.requestAnimationFrame(() => {
+        document
+          .querySelectorAll<HTMLElement>(revealSelector)
+          .forEach(prepareElement);
+      });
+
+      mutationObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (!(node instanceof HTMLElement)) {
+              return;
             }
 
-            entry.target.classList.add("scroll-reveal-visible");
+            if (node.matches(revealSelector)) {
+              prepareElement(node);
+            }
 
-            window.requestAnimationFrame(() => {
-              entry.target.classList.remove("scroll-reveal-no-motion");
-            });
-          } else {
-            entry.target.classList.remove("scroll-reveal-visible");
-          }
+            node
+              .querySelectorAll<HTMLElement>(revealSelector)
+              .forEach(prepareElement);
+          });
         });
-      },
-      {
-        rootMargin: "0px 0px -4% 0px",
-        threshold: 0.01,
-      }
-    );
-    observer = revealObserver;
+      });
 
-    animationFrame = window.requestAnimationFrame(() => {
-      elements.forEach((element) => revealObserver.observe(element));
-    });
+      mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
     };
 
     timeout = window.setTimeout(setupReveal, 250);
@@ -95,6 +132,7 @@ export function ScrollReveal() {
       window.clearTimeout(timeout);
       window.cancelAnimationFrame(animationFrame);
       removeScrollListener?.();
+      mutationObserver?.disconnect();
       observer?.disconnect();
     };
   }, [pathname]);
