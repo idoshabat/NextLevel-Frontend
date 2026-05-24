@@ -24,6 +24,18 @@ html {
   background: var(--background);
 }
 
+html.accessibility-text-small {
+  font-size: 93.75%;
+}
+
+html.accessibility-text-large {
+  font-size: 112.5%;
+}
+
+html.accessibility-text-xlarge {
+  font-size: 125%;
+}
+
 body {
   width: 100%;
   max-width: 100%;
@@ -43,6 +55,54 @@ a {
 
 button {
   font: inherit;
+}
+
+html.accessibility-high-contrast {
+  --background: #000;
+  --foreground: #fff;
+  --muted: #fff;
+  --cyan: #fff200;
+  --cyan-light: #fff8a6;
+  --cyan-rgb: 255 242 0;
+  --cyan-soft: rgb(var(--cyan-rgb) / 0.2);
+}
+
+html.accessibility-high-contrast body {
+  color: #fff !important;
+  background: #000 !important;
+}
+
+html.accessibility-high-contrast
+  :is(header, nav, footer, section, article, form, input, textarea, select) {
+  border-color: rgb(255 255 255 / 0.72) !important;
+}
+
+html.accessibility-high-contrast :is(input, textarea, select) {
+  color: #fff !important;
+  background: #000 !important;
+}
+
+html.accessibility-high-contrast :is(p, span, h1, h2, h3, h4, h5, h6, label) {
+  color: inherit;
+}
+
+html.accessibility-highlight-links a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.22em !important;
+}
+
+html.accessibility-highlight-links a:not([href^="tel:"]) {
+  color: var(--cyan) !important;
+}
+
+html.accessibility-reduce-motion *,
+html.accessibility-reduce-motion *::before,
+html.accessibility-reduce-motion *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
 }
 
 .font-assistant {

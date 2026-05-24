@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Assistant, Rubik } from "next/font/google";
 import "./globals.css";
+import { AccessibilityWidget } from "@/components/accessibility-widget";
 import { BackToTop } from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
@@ -44,6 +45,7 @@ export default function RootLayout({
         <ScrollReveal />
         <BackToTop />
         <WhatsappButton />
+        <AccessibilityWidget />
       </body>
     </html>
   );
