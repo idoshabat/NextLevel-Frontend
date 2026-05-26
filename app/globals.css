@@ -255,6 +255,7 @@ main > section:nth-of-type(3).scroll-reveal {
   z-index: -1;
   width: 100vw;
   content: "";
+  pointer-events: none;
   transform: translateX(-50%);
 }
 

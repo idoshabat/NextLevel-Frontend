@@ -22,9 +22,9 @@ import {
 } from "lucide-react";
 
 const highlights = [
-  { value: 6, suffix: "+", label: "קבוצות גיל" },
-  { value: 12, label: "אימונים שבועיים" },
-  { value: 1, suffix: ":1", label: "יחס אישי לשחקנים" },
+  { value: 6, suffix: "", label: "תוכניות ליווי ואימון" },
+  { value: 36, suffix: "", label: "יחידות אימון במסלולי העונה" },
+  { value: 8, suffix: "", label: "מפגשי וידאו במסלול PRO MAX" },
 ];
 
 const heroVideoPublicId = "NEXT LEVEL WEBSITE/Home/hero-video";
@@ -113,89 +113,86 @@ const academyMoments = [
 
 const tracks = [
   {
-    title: "אימוני יסודות",
-    text: "כדרור, מסירה, קליעה, עבודת רגליים והבנת משחק כבר מהאימון הראשון.",
+    title: "מסלולי PRO, MAX ו-PRO MAX",
+    text: "מעטפת מקצועית ומנטלית לשחקנים שרוצים לנהל תהליך אמיתי: אימונים אישיים, ניתוח וידאו, מעקב גופני וליווי אונליין.",
     icon: Target,
   },
   {
-    title: "קבוצות תחרותיות",
-    text: "קצב גבוה, משמעת קבוצתית וקבלת החלטות תחת לחץ משחק אמיתי.",
+    title: "CLASSIC וכרטיסיית 10 כניסות",
+    text: "אימוני סופ\"ש בקבוצות עבודה איכותיות, עם דגש על יסודות, יכולת אישית וגמישות לשחקנים שרוצים תגבור נקודתי.",
     icon: Trophy,
   },
   {
-    title: "מחנות וחופשות",
-    text: "ימים מרוכזים של כדורסל, אתלטיקה, אתגרים וחוויית קבוצה חזקה.",
+    title: "VIDEO ONLINE",
+    text: "ניתוח משחקים מרחוק, דף עבודה שבועי ושיפור Basketball IQ דרך העיניים של מאמני האקדמיה.",
     icon: CalendarDays,
   },
 ];
 
 const reasons = [
   {
-    title: "תהליך אישי בתוך מסגרת קבוצתית",
-    text: "כל שחקן מקבל דגשים שמתאימים לרמה, לאופי ולמטרות שלו, גם כשהאימון מתקיים בקבוצה.",
+    title: "הפרטים הקטנים שעושים הבדל גדול",
+    text: "האקדמיה נבנתה סביב הרעיון שההתקדמות האמיתית נמצאת בהרגלי עבודה, טכניקה נקייה, קבלת החלטות, ביטחון ומנטליות.",
     icon: HeartHandshake,
   },
   {
-    title: "יסודות שנשארים לאורך זמן",
-    text: "אנחנו בונים שליטה בכדור, קליעה, עבודת רגליים וקבלת החלטות בצורה מסודרת ולא מקרית.",
+    title: "מעטפת מקצועית ומנטלית",
+    text: "לצד האימון על הפרקט, השחקנים מקבלים ליווי בהתמודדות עם לחץ, שפת גוף, קשר מול המועדון והבנת המשחק.",
     icon: ShieldCheck,
   },
   {
-    title: "קצב, אנרגיה ותחרות בריאה",
-    text: "האימונים דוחפים קדימה, אבל שומרים על סביבת למידה שמחזקת ביטחון ואהבה למשחק.",
+    title: "מודל שמתאים לרמות שונות",
+    text: "הפעילות מותאמת אישית לכל הרמות, החל מכיתה ה' ועד לבוגרים, דרך מודל אימונים שמאפשר לכל שחקן לקבל את המסגרת הנכונה.",
     icon: Zap,
   },
 ];
 
 const audiences = [
-  "שחקנים בתחילת הדרך שרוצים בסיס נכון",
-  "שחקנים פעילים שרוצים לעלות רמה",
-  "ילדים ונוער שצריכים ביטחון עם הכדור",
-  "שחקנים שרוצים אימון אישי וממוקד",
-  "קבוצות גיל שמחפשות מסגרת מקצועית",
-  "שחקנים שמתכוננים למחנות או רמה תחרותית",
+  "ספורטאים החל מכיתה ה' ועד לבוגרים",
+  "שחקנים תחרותיים שרוצים מעטפת מקצוענית",
+  "שחקנים שרוצים לשפר Basketball IQ וקבלת החלטות",
+  "שחקנים שצריכים ליווי מנטלי והתמודדות עם לחץ",
+  "שחקנים שרוצים אימוני סופ\"ש איכותיים",
+  "שחקנים שמחפשים ניתוח וידאו ותמיכה מרחוק",
 ];
 
 const joinSteps = [
   {
     title: "משאירים פרטים",
-    text: "ממלאים פנייה קצרה או שולחים הודעה, ואנחנו חוזרים אליכם עם כמה שאלות התאמה.",
+    text: "בוחרים תוכנית שמעניינת אתכם או שולחים הודעת WhatsApp, ואנחנו חוזרים עם הכוונה ראשונית.",
     icon: MessageCircle,
   },
   {
-    title: "שיחת התאמה קצרה",
-    text: "מבינים את גיל השחקן, הרמה, המטרות והמסגרת שהכי נכונה עבורו.",
+    title: "מבינים את רמת השחקן",
+    text: "בודקים גיל, רמה, מטרות ואת סוג המעטפת הנכון: אימוני סופ\"ש, ליווי אישי, וידאו אונליין או מסלול מלא.",
     icon: Users,
   },
   {
-    title: "מגיעים לאימון ניסיון",
-    text: "השחקן נכנס לאימון, מכיר את הצוות ומרגיש את הקצב של Next Level מקרוב.",
+    title: "יוצאים לתהליך",
+    text: "מתחילים לעבוד עם תוכנית שמתאימה לשחקן ולמטרות שלו, על הפרקט או מרחוק.",
     icon: Trophy,
   },
 ];
 
 const testimonials = [
   {
-    quote:
-      "הילד חזר מהאימון עם ביטחון אחר לגמרי. סוף סוף יש מקום שרואה גם את השחקן וגם את האדם.",
-    name: "הורה לשחקן באקדמיה",
+    quote: "שירותי ליווי ותמיכה מרחוק באמצעות ניתוחי משחקי וידאו והכוונה מקצועית לפתרון בעיות בזמן אמת.",
+    name: "VIDEO ONLINE",
   },
   {
-    quote:
-      "האימונים מדויקים, מאתגרים ועם אנרגיה גבוהה. כל שבוע מרגישים התקדמות אמיתית.",
-    name: "שחקן קבוצת נוער",
+    quote: "תוכנית הליווי המנטלי והמקצועי שנותנת יתרון על פני המתחרים בכל שבוע מחדש.",
+    name: "MAX",
   },
   {
-    quote:
-      "הצוות שם לב לפרטים הקטנים: עבודת רגליים, קבלת החלטות, ביטחון ודרך חשיבה.",
-    name: "משפחת שחקן מתקדם",
+    quote: "המסלול היוקרתי והמקיף ביותר, המדמה את התנאים של שחקן מקצועני בליגות הבכירות.",
+    name: "PRO MAX",
   },
 ];
 
 const previews = [
   {
     title: "תוכניות אימון",
-    text: "מסלולים לפי גיל, רמה ומטרה: יסודות, שחקן מתקדם ואימון אישי.",
+    text: "PRO MAX, MAX, PRO, CLASSIC, כרטיסיית 10 כניסות ו-VIDEO ONLINE.",
     href: "/programs",
     cta: "לתוכניות",
     image: homeImage("NEXT LEVEL WEBSITE/Personal/DSC_0863_pykhho", {
@@ -207,7 +204,7 @@ const previews = [
   },
   {
     title: "מחנות",
-    text: "בלגרד מאחורינו, סלובניה 2026 בדרך. מחנות שמשלבים כדורסל וחוויה.",
+    text: "בלגרד 2024 ו-2025 כבר מאחורינו. סלובניה 2026 היא התחנה הבאה ביוני הקרוב.",
     href: "/camps",
     cta: "למחנות",
     image: homeImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_3706_xsxxo5", {
@@ -219,7 +216,7 @@ const previews = [
   },
   {
     title: "גלריה",
-    text: "הצצה לאימונים, רגעים מהדרך, מחנות והאנרגיה של האקדמיה.",
+    text: "רגעים מסופ\"שים, מחנות ואימונים אישיים מתוך הפעילות האמיתית של האקדמיה.",
     href: "/gallery",
     cta: "לגלריה",
     image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_8820_llzmmn", {
@@ -274,12 +271,13 @@ export default function HomePage() {
               Next Level
             </h1>
             <p className="mt-5 max-w-[680px] text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-[1.45] text-[#f7fbff]">
-              אקדמיית כדורסל לילדים ונוער בנס ציונה, שבה שחקנים צעירים בונים
-              יסודות, ביטחון ואופי מנצח.
+              אקדמיה לפיתוח יכולות אישיות בכדורסל, שנועדה להקפיץ שחקנים
+              לרמות הגבוהות ביותר בשכבות הגיל שלהם.
             </p>
             <p className="mt-4 max-w-[660px] text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#a8b3bd]">
-                 אנו מספקים מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל שלבי ההתפתחות ומיצוי הפוטנציאל הטמון בכל שחקן ושחקן.
-           </p>
+              המטרה שלנו היא לספק מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל
+              שלבי ההתפתחות, ולמצות את הפוטנציאל הטמון בכל שחקן ושחקן.
+            </p>
             <p className="mt-5 inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--cyan-rgb)/0.35)] bg-[#030405]/52 px-4 py-2 text-[1rem] font-extrabold text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
               <MapPin size={19} strokeWidth={2.5} className="text-[var(--cyan)]" />
               נס ציונה
@@ -290,7 +288,7 @@ export default function HomePage() {
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_34px_rgb(var(--cyan-rgb)/0.35),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
                 href="/contact"
               >
-                קביעת אימון ניסיון
+                בדיקת התאמה
                 <ArrowLeft size={20} strokeWidth={2.6} />
               </Link>
               <Link
@@ -336,12 +334,12 @@ export default function HomePage() {
               רגעים מהאקדמיה
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              הרגעים הקטנים שמספרים את הדרך הגדולה.
+              הפרטים הקטנים שמרכיבים את הדרך הגדולה.
             </h2>
           </div>
           <p className="max-w-[320px] text-[1rem] font-bold leading-[1.7] text-[#a8b3bd]">
-            מהאימון הראשון ועד רגעי השיא במחנות, כל תמונה משקפת עבודה,
-            מחויבות ואהבה למשחק.
+            אימוני סופ"ש, עבודה אישית ומחנות הם חלק מאותה שיטה: עבודה מדויקת,
+            מעטפת מקצועית וליווי שממשיך מעבר לאימון עצמו.
           </p>
         </div>
 
@@ -369,13 +367,23 @@ export default function HomePage() {
       </section>
 
       <section className="home-band home-band-deep mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
-        <div className="mb-7 max-w-[760px]">
-          <p className="mb-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
-            מה קורה באקדמיה
-          </p>
-          <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-            אימונים שמרגישים כמו משחק, ובונים שחקנים לאורך זמן.
-          </h2>
+        <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-[760px]">
+            <p className="mb-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
+              מסלולי האקדמיה
+            </p>
+            <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
+              מתוכנית בסיס ועד מעטפת שמדמה שחקן מקצועני.
+            </h2>
+          </div>
+
+          <Link
+            className="relative z-10 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[rgb(var(--cyan-rgb)/0.42)] bg-[rgb(var(--cyan-rgb)/0.1)] px-5 py-3 text-[1.02rem] font-extrabold text-[var(--cyan)] transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.72)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan-light)]"
+            href="/programs"
+          >
+            לפירוט התוכניות
+            <ArrowLeft size={20} strokeWidth={2.6} />
+          </Link>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-3">
@@ -410,11 +418,11 @@ export default function HomePage() {
               למה לבחור בנו
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              אימון טוב הוא לא רק תרגיל טוב. הוא תהליך.
+              We believe in the small details that make big difference.
             </h2>
             <p className="mt-5 max-w-[620px] text-[1.05rem] leading-[1.85] text-[#a8b3bd]">
-              נקסט לבל משלבת מקצועיות, יחס אישי ואווירה שמחזירה את השחקנים
-              למגרש עם רצון לעבוד ולהשתפר.
+              זה לא רק סלוגן. לפי חזון האקדמיה, ההבדל נמצא בהרגלי עבודה,
+              קבלת החלטות, טכניקה, ביטחון ומנטליות לאורך כל שלבי ההתפתחות.
             </p>
             <div className="group mt-8 overflow-hidden rounded-lg border border-white/10 bg-[#0b1114] shadow-[0_24px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.08)]">
               <div className="relative aspect-[16/11]">
@@ -430,7 +438,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,4,5,0.72),transparent)]" />
                 <p className="absolute bottom-4 right-4 m-0 max-w-[280px] text-[1.05rem] font-extrabold leading-[1.55] text-[#f7fbff]">
-                  סביבת אימון שמחברת מקצוענות, אנרגיה ויחס אישי לכל שחקן.
+                  מעטפת שמחברת אימון, וידאו, ליווי אישי ותהליך מקצועי.
                 </p>
               </div>
             </div>
@@ -473,7 +481,7 @@ export default function HomePage() {
               איך מצטרפים
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              שלושה צעדים פשוטים לאימון הראשון.
+              מתאימים את המסלול לשחקן, לא להפך.
             </h2>
           </div>
 
@@ -481,7 +489,7 @@ export default function HomePage() {
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.24),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
             href="/contact"
           >
-            להתחלת התהליך
+            לשיחת התאמה
             <ArrowLeft size={20} strokeWidth={2.6} />
           </Link>
         </div>
@@ -539,10 +547,10 @@ export default function HomePage() {
         <div className="mb-7 max-w-[760px]">
           <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
             <Star size={18} strokeWidth={2.4} />
-            מה אומרים עלינו
+            מתוך התוכניות
           </p>
           <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-            הורים ושחקנים מרגישים את ההבדל.
+            כך נראית מעטפת של Next Level.
           </h2>
         </div>
 
@@ -552,15 +560,8 @@ export default function HomePage() {
               className="rounded-lg border border-white/10 bg-white/[0.055] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
               key={testimonial.name}
             >
-              <div className="mb-5 flex gap-1 text-[var(--cyan)]">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star
-                    fill="currentColor"
-                    key={index}
-                    size={17}
-                    strokeWidth={2}
-                  />
-                ))}
+              <div className="mb-5 inline-grid size-11 place-items-center rounded-lg bg-[rgb(var(--cyan-rgb)/0.14)] text-[var(--cyan)]">
+                <Sparkles size={22} strokeWidth={2.4} />
               </div>
               <p className="m-0 text-[1.06rem] font-extrabold leading-[1.75] text-[#f7fbff]/88">
                 "{testimonial.quote}"
@@ -580,7 +581,7 @@ export default function HomePage() {
             למי זה מתאים
           </p>
           <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-            לכל שחקן שרוצה להתקדם בצורה נכונה.
+            משחקני כיתה ה' ועד בוגרים.
           </h2>
         </div>
 
@@ -608,14 +609,14 @@ export default function HomePage() {
               המשיכו להכיר אותנו
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              תוכניות, מחנות ורגעים מהאקדמיה.
+              תוכניות, מחנות וגלריה מתוך הפעילות.
             </h2>
           </div>
           <Link
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.24),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
             href="/contact"
           >
-            אימון ניסיון
+            בדיקת התאמה
             <ArrowLeft size={20} strokeWidth={2.6} />
           </Link>
         </div>

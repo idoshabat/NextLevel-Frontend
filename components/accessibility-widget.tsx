@@ -84,11 +84,11 @@ export function AccessibilityWidget() {
 
   return (
     <div
-      className="fixed left-0 top-1/2 z-50 flex -translate-y-1/2 items-center"
-      dir="ltr"
+      className="fixed right-0 top-1/2 z-50 -translate-y-1/2"
+      dir="rtl"
     >
       <button
-        className="grid min-h-24 w-11 place-items-center rounded-r-lg border-y border-r border-[rgb(var(--cyan-rgb)/0.5)] bg-[#030405]/86 text-[var(--cyan)] shadow-[0_18px_48px_rgba(0,0,0,0.42),0_0_28px_rgb(var(--cyan-rgb)/0.18),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:w-12 hover:border-[rgb(var(--cyan-rgb)/0.8)] hover:text-[var(--cyan-light)] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--cyan-rgb)/0.55)] max-[560px]:min-h-20 max-[560px]:w-10"
+        className="grid min-h-24 w-11 place-items-center rounded-l-lg border-y border-l border-[rgb(var(--cyan-rgb)/0.5)] bg-[#030405]/86 text-[var(--cyan)] shadow-[0_18px_48px_rgba(0,0,0,0.42),0_0_28px_rgb(var(--cyan-rgb)/0.18),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl transition duration-300 hover:w-12 hover:border-[rgb(var(--cyan-rgb)/0.8)] hover:text-[var(--cyan-light)] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--cyan-rgb)/0.55)] max-[560px]:min-h-20 max-[560px]:w-10"
         type="button"
         aria-label={isOpen ? "סגירת כלי נגישות" : "פתיחת כלי נגישות"}
         aria-expanded={isOpen}
@@ -103,13 +103,12 @@ export function AccessibilityWidget() {
       </button>
 
       <div
-        className={`ml-3 w-[min(330px,calc(100vw_-_58px))] origin-left rounded-lg border border-white/10 bg-[#030405]/92 p-4 text-right text-[#f7fbff] shadow-[0_22px_70px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl transition duration-300 max-[560px]:ml-2 ${
+        className={`absolute right-full top-1/2 mr-3 w-[min(330px,calc(100vw_-_58px))] origin-right -translate-y-1/2 rounded-lg border border-white/10 bg-[#030405]/92 p-4 text-right text-[#f7fbff] shadow-[0_22px_70px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl transition duration-300 max-[560px]:mr-2 ${
           isOpen
             ? "pointer-events-auto translate-x-0 scale-100 opacity-100"
-            : "pointer-events-none -translate-x-3 scale-[0.98] opacity-0"
+            : "pointer-events-none translate-x-3 scale-[0.98] opacity-0"
         }`}
         aria-hidden={!isOpen}
-        dir="rtl"
       >
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
