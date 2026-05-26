@@ -128,9 +128,12 @@ export function WhatsappContactForm() {
             <option value="" disabled>
               בחרו אפשרות
             </option>
-            <option>אימון ניסיון</option>
-            <option>אימון אישי</option>
-            <option>רכישת כרטיסייה</option>
+            <option>תוכנית PRO MAX</option>
+            <option>תוכנית MAX</option>
+            <option>תוכנית PRO</option>
+            <option>תוכנית CLASSIC</option>
+            <option>כרטיסיית 10 כניסות</option>
+            <option>תוכנית VIDEO ONLINE</option>
             <option>מחנה סלובניה 2026</option>
           </select>
         </label>
@@ -170,7 +173,7 @@ export function WhatsappContactForm() {
           <span className="block text-[0.9rem] font-bold leading-[1.75] text-[#a8b3bd] transition duration-300 peer-checked:text-[#d6dde3]">
             אני מאשר/ת שקראתי את{" "}
             <Link
-              className="font-extrabold text-[var(--cyan)] underline-offset-4 transition duration-300 hover:text-[var(--cyan-light)] hover:underline"
+              className="rounded-md bg-[rgb(var(--cyan-rgb)/0.12)] px-1.5 py-0.5 font-black !text-[var(--cyan)] underline decoration-[rgb(var(--cyan-rgb)/0.85)] decoration-2 underline-offset-4 ring-1 ring-[rgb(var(--cyan-rgb)/0.22)] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.2)] hover:!text-[var(--cyan-light)] hover:decoration-[var(--cyan-light)]"
               href="/privacy"
               target="_blank"
             >
@@ -178,7 +181,7 @@ export function WhatsappContactForm() {
             </Link>{" "}
             ואת{" "}
             <Link
-              className="font-extrabold text-[var(--cyan)] underline-offset-4 transition duration-300 hover:text-[var(--cyan-light)] hover:underline"
+              className="rounded-md bg-[rgb(var(--cyan-rgb)/0.12)] px-1.5 py-0.5 font-black !text-[var(--cyan)] underline decoration-[rgb(var(--cyan-rgb)/0.85)] decoration-2 underline-offset-4 ring-1 ring-[rgb(var(--cyan-rgb)/0.22)] transition duration-300 hover:bg-[rgb(var(--cyan-rgb)/0.2)] hover:!text-[var(--cyan-light)] hover:decoration-[var(--cyan-light)]"
               href="/terms"
               target="_blank"
             >
