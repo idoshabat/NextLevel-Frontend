@@ -16,40 +16,75 @@ export function AnimatedStat({
   duration = 1100,
 }: AnimatedStatProps) {
   const [value, setValue] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const animationFrameRef = useRef(0);
+  const hasPlayedInViewRef = useRef(false);
+  const isInViewRef = useRef(false);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     const element = ref.current;
 
-    if (!element || hasAnimated) {
+    if (!element) {
       return;
     }
 
+    lastScrollYRef.current = window.scrollY;
+
+    const runAnimation = () => {
+      window.cancelAnimationFrame(animationFrameRef.current);
+      setValue(0);
+
+      const startedAt = performance.now();
+
+      const tick = (currentTime: number) => {
+        const progress = Math.min((currentTime - startedAt) / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+        setValue(Math.round(end * easedProgress));
+
+        if (progress < 1) {
+          animationFrameRef.current = window.requestAnimationFrame(tick);
+        }
+      };
+
+      animationFrameRef.current = window.requestAnimationFrame(tick);
+    };
+
+    const playIfScrollingDown = () => {
+      const currentScrollY = window.scrollY;
+      const isScrollingDown = currentScrollY >= lastScrollYRef.current;
+
+      lastScrollYRef.current = currentScrollY;
+
+      if (
+        !isInViewRef.current ||
+        !isScrollingDown ||
+        hasPlayedInViewRef.current
+      ) {
+        return;
+      }
+
+      hasPlayedInViewRef.current = true;
+      runAnimation();
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry?.isIntersecting) {
+        if (!entry) {
           return;
         }
 
-        const startedAt = performance.now();
+        if (!entry.isIntersecting) {
+          isInViewRef.current = false;
+          hasPlayedInViewRef.current = false;
+          window.cancelAnimationFrame(animationFrameRef.current);
+          setValue(0);
+          return;
+        }
 
-        const tick = (currentTime: number) => {
-          const progress = Math.min((currentTime - startedAt) / duration, 1);
-          const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-          setValue(Math.round(end * easedProgress));
-
-          if (progress < 1) {
-            window.requestAnimationFrame(tick);
-            return;
-          }
-
-          setHasAnimated(true);
-          observer.unobserve(element);
-        };
-
-        window.requestAnimationFrame(tick);
+        isInViewRef.current = true;
+        playIfScrollingDown();
       },
       {
         threshold: 0.35,
@@ -57,11 +92,14 @@ export function AnimatedStat({
     );
 
     observer.observe(element);
+    window.addEventListener("scroll", playIfScrollingDown, { passive: true });
 
     return () => {
+      window.cancelAnimationFrame(animationFrameRef.current);
+      window.removeEventListener("scroll", playIfScrollingDown);
       observer.disconnect();
     };
-  }, [duration, end, hasAnimated]);
+  }, [duration, end]);
 
   return (
     <div

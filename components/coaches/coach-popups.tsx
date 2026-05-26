@@ -64,7 +64,7 @@ export function CoachPopups({ coaches }: CoachPopupsProps) {
         <div className="grid lg:grid-cols-[0.42fr_0.58fr]">
           <div className="relative min-h-[320px] bg-[#0b1114]">
             <img
-              className="absolute inset-0 h-full w-full object-cover grayscale"
+              className="absolute inset-0 h-full w-full object-cover"
               src={activeCoach.image}
               alt={`תמונה של ${activeCoach.name}`}
             />

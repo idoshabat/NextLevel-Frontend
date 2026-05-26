@@ -264,7 +264,7 @@ export default function HomePage() {
           <div className="max-w-[760px]">
             <p className="mb-4 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
               <Users size={19} strokeWidth={2.4} />
-              אקדמיית כדורסל לילדים ונוער בנס ציונה
+              אקדמיית כדורסל לילדים, נוער ובוגרים בנס ציונה
             </p>
 
             <h1 className="m-0 text-[clamp(3.4rem,9vw,8.2rem)] leading-[0.88]">
@@ -418,7 +418,7 @@ export default function HomePage() {
               למה לבחור בנו
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              We believe in the small details that make big difference.
+              We believe in the small details that make big difference
             </h2>
             <p className="mt-5 max-w-[620px] text-[1.05rem] leading-[1.85] text-[#a8b3bd]">
               זה לא רק סלוגן. לפי חזון האקדמיה, ההבדל נמצא בהרגלי עבודה,

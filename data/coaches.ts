@@ -1,9 +1,15 @@
+const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "djud4xysp";
+
+function coachImage(publicId: string) {
+  return `https://res.cloudinary.com/${cloudName}/image/upload/w_760,h_920,c_fill,g_auto,q_auto,f_auto/next-level/coaches/${publicId}`;
+}
+
 export const coaches = [
   {
     slug: "avi-eliyahu",
     name: "אבי אליהו",
     role: "מייסד ומנהל פיתוח עסקי",
-    image: "https://i.pravatar.cc/640?img=12",
+    image: coachImage("avi_eliyahu"),
     description:
       "שחקן עבר בולט בליגת העל ובליגה הלאומית, שמביא לאקדמיה חוכמת משחק, ניסיון וקשרים מקצועיים.",
     headline:
@@ -17,10 +23,10 @@ export const coaches = [
     focus: ["פיתוח הזדמנויות", "בניית קריירה", "קשרים מקצועיים"],
   },
   {
-    slug: "tal-dan",
+    slug: "tal-dunn",
     name: "טל דן",
     role: "מייסד ומנהל מקצועי",
-    image: "https://i.pravatar.cc/640?img=47",
+    image: coachImage("tal_dunn"),
     description:
       "מהסמלים המזוהים ביותר עם הכדורסל הישראלי בעשור האחרון וקפטן מיתולוגי של עירוני נס ציונה.",
     headline:
@@ -36,15 +42,15 @@ export const coaches = [
   },
   {
     slug: "dori-asaf",
-    name: "אסף דורי",
+    name: "דורי אסף",
     role: "ראש פיתוח שחקנים",
-    image: "https://i.pravatar.cc/640?img=15",
+    image: coachImage("dori_assaf"),
     description:
       "שחקן עבר בליגת העל ובליגה הלאומית, שהתמחה לאורך הקריירה במיצוי פוטנציאל ובניית יסודות.",
     headline:
       "אחראי על בניית תכניות עבודה פרטניות ושיפור טכניקה, קליעה וקבלת החלטות.",
     bio: [
-      "אסף דורי רשם קריירה מרשימה כשחקן ליגת העל, בין היתר בבני הרצליה, ובליגה הלאומית, והיה חלק בלתי נפרד מנבחרות ישראל הצעירות.",
+      "דורי אסף רשם קריירה מרשימה כשחקן ליגת העל, בין היתר בבני הרצליה, ובליגה הלאומית, והיה חלק בלתי נפרד מנבחרות ישראל הצעירות.",
       "לאורך שנותיו במגרשים, אסף בלט בכישרון יוצא דופן וזכה בתארים אישיים יוקרתיים כמו שחקן העונה בלאומית בשנת 2009 ותגלית העונה בליגת העל בשנת 2010.",
       "כראש פיתוח השחקנים באקדמיה, אסף אחראי על בניית תכניות העבודה הפרטניות.",
       "הוא מקדיש את זמנו לעבודה מעמיקה עם כל שחקן על שיפור טכניקה אישית, קליעה וקבלת החלטות.",
@@ -55,7 +61,7 @@ export const coaches = [
     slug: "ido-shabat",
     name: "עידו שבת",
     role: "מאמן כדורסל ואנליסט וידאו",
-    image: "https://i.pravatar.cc/640?img=32",
+    image: coachImage("ido_shabat"),
     description:
       "שחקן פעיל בליגת העל ובליגה הלאומית, שמוביל באקדמיה את מערך ניתוח הווידאו והאנליזה.",
     headline:
@@ -71,7 +77,7 @@ export const coaches = [
     slug: "shmuel-malkov",
     name: "שמואל מלכוב",
     role: "מאמן כדורסל",
-    image: "https://i.pravatar.cc/640?img=59",
+    image: coachImage("shmuel_malhov"),
     description:
       "שחקן ליגה לאומית ותיק ונציג נבחרת ישראל ב-3X3, שמביא לאקדמיה אופי של מנצח.",
     headline:
@@ -87,7 +93,7 @@ export const coaches = [
     slug: "ido-sanker",
     name: "עידו סנקר",
     role: "מנהל המערך הגופני ומאמן כושר",
-    image: "https://i.pravatar.cc/640?img=15",
+    image: coachImage("ido_sanker"),
     description:
       "מומחה בפיתוח גופני לכדורסלנים ומאמן הכושר של עירוני נס ציונה.",
     headline:
@@ -103,7 +109,7 @@ export const coaches = [
     slug: "or-ben-goren",
     name: "אור בן גורן",
     role: "מנהל תפעול",
-    image: "https://i.pravatar.cc/640?img=52",
+    image: coachImage("or_ben_goren"),
     description:
       "שחקן עבר בליגת העל, הליגה הלאומית והנבחרות הצעירות, שמנהל את המעטפת הלוגיסטית של האקדמיה.",
     headline:

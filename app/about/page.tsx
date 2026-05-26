@@ -36,7 +36,7 @@ const developmentPoints = [
   "בניית שחקנים חזקים קודם כל כבני אדם",
 ];
 
-const featuredCoachSlugs = ["tal-dan", "avi-eliyahu", "dori-asaf"];
+const featuredCoachSlugs = ["tal-dunn", "avi-eliyahu", "dori-asaf"];
 const featuredCoaches = featuredCoachSlugs
   .map((slug) => coaches.find((coach) => coach.slug === slug))
   .filter(Boolean) as typeof coaches;
