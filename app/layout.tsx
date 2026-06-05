@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   title: "Next Level | אקדמיית כדורסל",
   description: "אקדמיית כדורסל Next Level",
   icons: {
-    icon: "/assets/logo-navbar.png",
-    shortcut: "/assets/logo-navbar.png",
-    apple: "/assets/logo-navbar.png",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 

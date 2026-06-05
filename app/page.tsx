@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   Globe2,
   HeartHandshake,
-  MapPin,
   MessageCircle,
   ShieldCheck,
   Sparkles,
@@ -22,9 +21,9 @@ import {
 } from "lucide-react";
 
 const highlights = [
-  { value: 6, suffix: "", label: "תוכניות ליווי ואימון" },
-  { value: 36, suffix: "", label: "יחידות אימון במסלולי העונה" },
-  { value: 8, suffix: "", label: "מפגשי וידאו במסלול PRO MAX" },
+  { value: 150, suffix: "", label: "לקוחות פעילים" },
+  { value: 36, suffix: "", label: "שחקנים בתוכניות ליווי" },
+  { value: 8, suffix: "", label: "שחקני נבחרות" },
 ];
 
 const heroVideoPublicId = "NEXT LEVEL WEBSITE/Home/hero-video";
@@ -113,7 +112,7 @@ const academyMoments = [
 
 const tracks = [
   {
-    title: "מסלולי PRO, MAX ו-PRO MAX",
+    title: "מסלולי MAX , PRO ו-PRO MAX",
     text: "מעטפת מקצועית ומנטלית לשחקנים שרוצים לנהל תהליך אמיתי: אימונים אישיים, ניתוח וידאו, מעקב גופני וליווי אונליין.",
     icon: Target,
   },
@@ -152,7 +151,7 @@ const audiences = [
   "שחקנים תחרותיים שרוצים מעטפת מקצוענית",
   "שחקנים שרוצים לשפר Basketball IQ וקבלת החלטות",
   "שחקנים שצריכים ליווי מנטלי והתמודדות עם לחץ",
-  "שחקנים שרוצים אימוני סופ\"ש איכותיים",
+  "שיפור יכולות אישיות באימוני סופ\"ש   ",
   "שחקנים שמחפשים ניתוח וידאו ותמיכה מרחוק",
 ];
 
@@ -264,7 +263,7 @@ export default function HomePage() {
           <div className="max-w-[760px]">
             <p className="mb-4 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
               <Users size={19} strokeWidth={2.4} />
-              אקדמיית כדורסל לילדים, נוער ובוגרים בנס ציונה
+              אקדמיית כדורסל לילדים, נוער ובוגרים
             </p>
 
             <h1 className="m-0 text-[clamp(3.4rem,9vw,8.2rem)] leading-[0.88]">
@@ -275,14 +274,9 @@ export default function HomePage() {
               לרמות הגבוהות ביותר בשכבות הגיל שלהם.
             </p>
             <p className="mt-4 max-w-[660px] text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#a8b3bd]">
-              המטרה שלנו היא לספק מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל
-              שלבי ההתפתחות, ולמצות את הפוטנציאל הטמון בכל שחקן ושחקן.
+              אנו מספקים מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל
+              שלבי ההתפתחות, בכדי למצות את הפוטנציאל הטמון בכל שחקן ושחקן.
             </p>
-            <p className="mt-5 inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--cyan-rgb)/0.35)] bg-[#030405]/52 px-4 py-2 text-[1rem] font-extrabold text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
-              <MapPin size={19} strokeWidth={2.5} className="text-[var(--cyan)]" />
-              נס ציונה
-            </p>
-
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_34px_rgb(var(--cyan-rgb)/0.35),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
@@ -334,7 +328,7 @@ export default function HomePage() {
               רגעים מהאקדמיה
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              הפרטים הקטנים שמרכיבים את הדרך הגדולה.
+              הפרטים הקטנים שמרכיבים את המסלול המלא .
             </h2>
           </div>
           <p className="max-w-[320px] text-[1rem] font-bold leading-[1.7] text-[#a8b3bd]">
@@ -373,7 +367,7 @@ export default function HomePage() {
               מסלולי האקדמיה
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              מתוכנית בסיס ועד מעטפת שמדמה שחקן מקצועני.
+              מתוכנית בסיסית ועד מעטפת מלאה לשחקן ברמות הגבוהות.
             </h2>
           </div>
 
@@ -544,12 +538,12 @@ export default function HomePage() {
       </div>
 
       <section className="home-band home-band-deep mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
-        <div className="mb-7 max-w-[760px]">
+        <div className="mb-10">
           <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
             <Star size={18} strokeWidth={2.4} />
             מתוך התוכניות
           </p>
-          <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
+          <h2 className="m-0 whitespace-nowrap text-[clamp(2.05rem,4.15vw,3.8rem)] leading-[1.08] max-[760px]:whitespace-normal">
             כך נראית מעטפת של Next Level.
           </h2>
         </div>

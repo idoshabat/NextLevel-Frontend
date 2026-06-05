@@ -158,17 +158,11 @@ export function CoachPopups({ coaches }: CoachPopupsProps) {
                   imageFirst ? "lg:order-2" : "lg:order-1"
                 }`}
               >
-                <p className="mb-1 text-[0.82rem] font-extrabold text-[var(--cyan)]">
-                  {coach.role}
-                </p>
                 <h3 className="m-0 text-[clamp(1.35rem,2.4vw,1.85rem)] leading-tight text-[#f7fbff]">
                   {coach.name}
                 </h3>
-                <p className="mt-2 text-[0.9rem] font-extrabold leading-[1.65] text-[#f7fbff]/88">
-                  {coach.headline}
-                </p>
-                <p className="mt-2 line-clamp-2 max-w-[460px] text-[0.86rem] leading-[1.6] text-[#a8b3bd]">
-                  {coach.description}
+                <p className="mt-2 max-w-[460px] text-[0.95rem] font-extrabold leading-[1.65] text-[var(--cyan)]">
+                  {coach.role}
                 </p>
                 <span className="mt-3 inline-flex w-fit text-[0.88rem] font-extrabold text-[var(--cyan)] transition duration-300 group-hover:translate-x-[-4px]">
                   לקריאת הסיפור המלא

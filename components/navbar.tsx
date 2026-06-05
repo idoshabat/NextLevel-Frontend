@@ -9,6 +9,7 @@ import { useState } from "react";
 const navItems = [
   { href: "/", label: "ראשי" },
   { href: "/about", label: "אודות" },
+  { href: "/why-us", label: "למה  אנחנו ?" },
   // { href: "/about-option", label: "אודות 2" },
   // { href: "/team", label: "צוות" },
   { href: "/gallery", label: "גלריה" },
