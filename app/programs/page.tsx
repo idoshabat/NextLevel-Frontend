@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
   ArrowLeft,
   CalendarDays,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Dumbbell,
   Target,
   Trophy,
@@ -108,23 +113,66 @@ const programs = [
 
 const benefits = [
   {
-    title: "קבוצות לפי רמה",
-    text: "כל שחקן נכנס למסגרת שמתאימה לגיל, ניסיון וקצב התקדמות.",
-    icon: Users,
-  },
-  {
-    title: "תהליך מסודר",
-    text: "לא רק אימון בודד, אלא דרך ברורה עם מטרות ודגשים לאורך זמן.",
+    title: "משאירים פרטים",
+    text: "בוחרים תוכנית שמעניינת אתכם או שולחים הודעת WhatsApp, ואנחנו חוזרים עם הכוונה ראשונית.",
     icon: CalendarDays,
   },
   {
-    title: "יחס אישי",
-    text: "המאמנים מכירים את השחקנים ונותנים תיקונים ודגשים אישיים.",
-    icon: CheckCircle2,
+    title: "שיחת איפיון והתאמה",
+    text: "מבררים צרכים, רמה, מטרות ואת סוג המעטפת הנכון: אימוני סופ\"ש, ליווי אישי, וידאו אונליין או מסלול מלא.",
+    icon: Users,
+  },
+  {
+    title: "יוצאים לתהליך",
+    text: "לאחר הבנת הצרכים, מגיעים לאימון ניסיון ויוצאים לדרך.",
+    icon: Trophy,
   },
 ];
 
 export default function ProgramsPage() {
+  const [focusedProgramIndex, setFocusedProgramIndex] = useState(1);
+  const [isDesktopCarousel, setIsDesktopCarousel] = useState(true);
+
+  useEffect(() => {
+    const updateMode = () => {
+      const isDesktop = window.innerWidth >= 1024;
+
+      setIsDesktopCarousel(isDesktop);
+      setFocusedProgramIndex((currentIndex) => {
+        if (isDesktop) {
+          return Math.min(Math.max(currentIndex, 1), programs.length - 1);
+        }
+
+        return currentIndex === 1 ? 0 : currentIndex;
+      });
+    };
+
+    updateMode();
+    window.addEventListener("resize", updateMode);
+
+    return () => {
+      window.removeEventListener("resize", updateMode);
+    };
+  }, []);
+
+  const carouselSlots = isDesktopCarousel
+    ? [
+        focusedProgramIndex - 1 >= 0 ? focusedProgramIndex - 1 : null,
+        focusedProgramIndex,
+        focusedProgramIndex + 1 < programs.length
+          ? focusedProgramIndex + 1
+          : null,
+      ]
+    : [focusedProgramIndex];
+
+  const moveProgramFocus = (direction: "right" | "left") => {
+    setFocusedProgramIndex((currentIndex) => {
+      const nextIndex = direction === "right" ? currentIndex - 1 : currentIndex + 1;
+
+      return Math.min(Math.max(nextIndex, 0), programs.length - 1);
+    });
+  };
+
   return (
     <div className="overflow-hidden">
       <section className="relative isolate py-[clamp(56px,8vw,96px)]">
@@ -155,74 +203,122 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-4 pb-[clamp(56px,8vw,88px)] md:grid-cols-2 xl:grid-cols-3">
-        {programs.map((program) => {
-          const Icon = program.icon;
-          const programHref =
-            "href" in program && program.href ? program.href : "/contact";
-          const ctaLabel = "href" in program ? "לצפייה במחנות" : "בדיקת התאמה";
+      <section className="mx-auto w-[min(1180px,calc(100%_-_32px))] pb-[clamp(56px,8vw,88px)]">
+        <div className="relative">
+          <button
+            aria-label="התוכניות הקודמות"
+            className="absolute right-0 top-[320px] z-10 inline-grid size-12 translate-x-1/2 place-items-center rounded-lg border border-white/12 bg-[#030405]/82 text-[#f7fbff] shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)] max-[640px]:top-[280px] max-[640px]:translate-x-0"
+            onClick={() => moveProgramFocus("right")}
+            type="button"
+          >
+            <ChevronRight size={22} strokeWidth={2.5} />
+          </button>
+          <button
+            aria-label="התוכניות הבאות"
+            className="absolute left-0 top-[320px] z-10 inline-grid size-12 -translate-x-1/2 place-items-center rounded-lg border border-white/12 bg-[#030405]/82 text-[#f7fbff] shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)] max-[640px]:top-[280px] max-[640px]:translate-x-0"
+            onClick={() => moveProgramFocus("left")}
+            type="button"
+          >
+            <ChevronLeft size={22} strokeWidth={2.5} />
+          </button>
 
-          return (
-            <article
-              className="group flex min-h-full flex-col rounded-lg border border-white/10 bg-white/[0.055] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]"
-              key={program.title}
-            >
-              <div className="mb-5 grid size-13 place-items-center rounded-lg bg-[rgb(var(--cyan-rgb)/0.14)] text-[var(--cyan)] transition duration-300 group-hover:bg-[rgb(var(--cyan-rgb)/0.22)]">
-                <Icon size={27} strokeWidth={2.4} />
-              </div>
+          <div className="grid min-h-[680px] gap-4 lg:grid-cols-3">
+          {carouselSlots.map((programIndex, slotIndex) => {
+            if (programIndex === null) {
+              return (
+                <div
+                  aria-hidden="true"
+                  className="hidden rounded-lg border border-transparent lg:block"
+                  key={`empty-${slotIndex}`}
+                />
+              );
+            }
 
-              <p className="m-0 text-[0.92rem] font-extrabold text-[var(--cyan)]">
-                {program.subtitle}
-              </p>
-              <h2 className="mt-2 mb-0 text-[1.75rem] leading-tight">
-                {program.title}
-              </h2>
+            const program = programs[programIndex];
+            const Icon = program.icon;
+            const programHref =
+              "href" in program && program.href ? program.href : "/contact";
+            const ctaLabel = "href" in program ? "לצפייה במחנות" : "בדיקת התאמה";
+            const isFocused = programIndex === focusedProgramIndex;
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-lg bg-white/[0.07] px-3 py-2 text-[0.92rem] font-extrabold text-[#f7fbff]/82">
-                  {program.ages}
-                </span>
-                <span className="rounded-lg bg-white/[0.07] px-3 py-2 text-[0.92rem] font-extrabold text-[#f7fbff]/82">
-                  {program.schedule}
-                </span>
-              </div>
-
-              <p className="mt-5 text-[1rem] leading-[1.75] text-[#a8b3bd]">
-                {program.description}
-              </p>
-
-              <ul className="mt-5 mb-7 grid gap-3 p-0">
-                {program.points.map((point) => (
-                  <li
-                    className="flex items-start gap-2 text-[0.98rem] leading-[1.65] text-[#f7fbff]/82"
-                    key={point}
-                  >
-                    <CheckCircle2
-                      className="mt-1 shrink-0 text-[var(--cyan)]"
-                      size={18}
-                      strokeWidth={2.5}
-                    />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {"note" in program ? (
-                <p className="mb-7 mt-0 rounded-lg border border-[rgb(var(--cyan-rgb)/0.28)] bg-[rgb(var(--cyan-rgb)/0.08)] px-4 py-3 text-[0.95rem] font-extrabold leading-[1.65] text-[#f7fbff]/84">
-                  * {program.note}
-                </p>
-              ) : null}
-
-              <Link
-                className="mt-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.24),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
-                href={programHref}
+            return (
+              <div
+                className={`transition duration-500 ${
+                  isFocused
+                    ? "lg:scale-100 lg:opacity-100 lg:blur-0"
+                    : "cursor-pointer lg:scale-[0.96] lg:opacity-45 lg:blur-[2px]"
+                }`}
+                key={program.title}
+                onClick={
+                  isFocused
+                    ? undefined
+                    : () => setFocusedProgramIndex(programIndex)
+                }
               >
-                {ctaLabel}
-                <ArrowLeft size={20} strokeWidth={2.6} />
-              </Link>
-            </article>
-          );
-        })}
+                <article className="group flex h-full min-h-full flex-col rounded-lg border border-white/10 bg-white/[0.055] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]">
+                  <div className="mb-5 grid size-13 place-items-center rounded-lg bg-[rgb(var(--cyan-rgb)/0.14)] text-[var(--cyan)] transition duration-300 group-hover:bg-[rgb(var(--cyan-rgb)/0.22)]">
+                    <Icon size={27} strokeWidth={2.4} />
+                  </div>
+
+                  <p className="m-0 text-[0.92rem] font-extrabold text-[var(--cyan)]">
+                    {program.subtitle}
+                  </p>
+                  <h2 className="mt-2 mb-0 text-[1.75rem] leading-tight">
+                    {program.title}
+                  </h2>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <span className="rounded-lg bg-white/[0.07] px-3 py-2 text-[0.92rem] font-extrabold text-[#f7fbff]/82">
+                      {program.ages}
+                    </span>
+                    <span className="rounded-lg bg-white/[0.07] px-3 py-2 text-[0.92rem] font-extrabold text-[#f7fbff]/82">
+                      {program.schedule}
+                    </span>
+                  </div>
+
+                  <p className="mt-5 text-[1rem] leading-[1.75] text-[#a8b3bd]">
+                    {program.description}
+                  </p>
+
+                  <ul className="mt-5 mb-7 grid gap-3 p-0">
+                    {program.points.map((point) => (
+                      <li
+                        className="flex items-start gap-2 text-[0.98rem] leading-[1.65] text-[#f7fbff]/82"
+                        key={point}
+                      >
+                        <CheckCircle2
+                          className="mt-1 shrink-0 text-[var(--cyan)]"
+                          size={18}
+                          strokeWidth={2.5}
+                        />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {"note" in program ? (
+                    <p className="mb-7 mt-0 rounded-lg border border-[rgb(var(--cyan-rgb)/0.28)] bg-[rgb(var(--cyan-rgb)/0.08)] px-4 py-3 text-[0.95rem] font-extrabold leading-[1.65] text-[#f7fbff]/84">
+                      * {program.note}
+                    </p>
+                  ) : null}
+
+                  <Link
+                    className="mt-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.24),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
+                    href={programHref}
+                  >
+                    {ctaLabel}
+                    <ArrowLeft size={20} strokeWidth={2.6} />
+                  </Link>
+                </article>
+              </div>
+            );
+          })}
+            <div
+              aria-hidden="true"
+              className="hidden shrink-0 basis-1/3 lg:block"
+            />
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto w-[min(1180px,calc(100%_-_32px))] pb-[clamp(72px,10vw,120px)]">
@@ -236,21 +332,24 @@ export default function ProgramsPage() {
         </div>
 
         <div className="grid gap-4 lg:grid-cols-3">
-          {benefits.map((benefit) => {
+          {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
 
             return (
               <div
-                className="rounded-lg border border-white/10 bg-white/[0.055] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                className="relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.075]"
                 key={benefit.title}
               >
-                <div className="mb-4 inline-grid size-11 place-items-center rounded-lg bg-[rgb(var(--cyan-rgb)/0.14)] text-[var(--cyan)]">
-                  <Icon size={22} strokeWidth={2.4} />
+                <span className="absolute left-5 top-4 text-[4.4rem] font-black leading-none text-white/[0.045]">
+                  {index + 1}
+                </span>
+                <div className="mb-5 grid size-12 place-items-center rounded-lg bg-[rgb(var(--cyan-rgb)/0.14)] text-[var(--cyan)]">
+                  <Icon size={24} strokeWidth={2.4} />
                 </div>
-                <h3 className="m-0 text-[1.35rem] leading-tight">
+                <h3 className="m-0 text-[1.5rem] leading-tight">
                   {benefit.title}
                 </h3>
-                <p className="mt-2 text-[1rem] leading-[1.75] text-[#a8b3bd]">
+                <p className="mt-3 text-[1rem] leading-[1.75] text-[#a8b3bd]">
                   {benefit.text}
                 </p>
               </div>

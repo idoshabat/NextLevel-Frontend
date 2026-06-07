@@ -389,40 +389,22 @@ export default function HomePage() {
       </section>
 
       <section className="home-band home-band-smoke mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div className="lg:sticky lg:top-32">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:[direction:ltr]">
+          <div className="lg:sticky lg:top-32 lg:[direction:ltr]">
             <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
               <Sparkles size={18} strokeWidth={2.4} />
               Why Choose Us
             </p>
-            <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              We believe in the small details that make big difference
+            <h2 dir="ltr" className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
+              "We believe in the small details that make big difference"
             </h2>
-            <p className="mt-5 max-w-[620px] text-[1.05rem] leading-[1.85] text-[#a8b3bd]">
+            <p dir="rtl" className="mt-5 max-w-[620px] text-[1.05rem] leading-[1.85] text-[#a8b3bd]">
               זה לא רק סלוגן. לפי חזון האקדמיה, ההבדל נמצא בהרגלי עבודה,
               קבלת החלטות, טכניקה, ביטחון וחוסן מנטלי לאורך כל שלבי ההתפתחות.
             </p>
-            <div className="group mt-8 overflow-hidden rounded-lg border border-white/10 bg-[#0b1114] shadow-[0_24px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.08)]">
-              <div className="relative aspect-[16/11]">
-                <img
-                  className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                  src={homeImage("NEXT LEVEL WEBSITE/Personal/DSC_0217_l5c1xf", {
-                    width: 1100,
-                    height: 760,
-                    crop: "fill",
-                  })}
-                  alt="שחקנים באימון Next Level"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,4,5,0.72),transparent)]" />
-                <p className="absolute bottom-4 right-4 m-0 max-w-[280px] text-[1.05rem] font-extrabold leading-[1.55] text-[#f7fbff]">
-                  מעטפת שמחברת אימון, וידאו, ליווי אישי ותהליך מקצועי.
-                </p>
-              </div>
-            </div>
           </div>
 
-          <div className="grid gap-4">
+          <div className="grid gap-4 lg:[direction:rtl]">
             {reasons.map((reason) => {
               const Icon = reason.icon;
 
@@ -447,6 +429,25 @@ export default function HomePage() {
                 </article>
               );
             })}
+          </div>
+        </div>
+
+        <div className="group mx-auto mt-12 w-[min(980px,100%)] overflow-hidden rounded-lg border border-white/10 bg-[#0b1114] shadow-[0_24px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.08)]">
+          <div className="relative aspect-[16/8] max-[640px]:aspect-[16/11]">
+            <img
+              className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+              src={homeImage("NEXT LEVEL WEBSITE/Personal/DSC_0217_l5c1xf", {
+                width: 1400,
+                height: 700,
+                crop: "fill",
+              })}
+              alt="שחקנים באימון Next Level"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,4,5,0.72),transparent)]" />
+            <p dir="rtl" className="absolute bottom-4 right-4 m-0 max-w-[360px] text-[1.05rem] font-extrabold leading-[1.55] text-[#f7fbff]">
+              מעטפת שמחברת אימון, וידאו, ליווי אישי ותהליך מקצועי.
+            </p>
           </div>
         </div>
       </section>
