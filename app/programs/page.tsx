@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   CalendarDays,
@@ -132,6 +132,7 @@ const benefits = [
 export default function ProgramsPage() {
   const [focusedProgramIndex, setFocusedProgramIndex] = useState(1);
   const [isDesktopCarousel, setIsDesktopCarousel] = useState(true);
+  const touchStartRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const updateMode = () => {
@@ -173,6 +174,40 @@ export default function ProgramsPage() {
     });
   };
 
+  const isAtRightEdge = focusedProgramIndex === 0;
+  const isAtLeftEdge = focusedProgramIndex === programs.length - 1;
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+
+    if (!touch) {
+      return;
+    }
+
+    touchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+    };
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    const touch = event.changedTouches[0];
+
+    if (!touch) {
+      return;
+    }
+
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+    const isHorizontalSwipe = Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY);
+
+    if (!isHorizontalSwipe) {
+      return;
+    }
+
+    moveProgramFocus(deltaX > 0 ? "right" : "left");
+  };
+
   return (
     <div className="overflow-hidden">
       <section className="relative isolate py-[clamp(56px,8vw,96px)]">
@@ -207,7 +242,12 @@ export default function ProgramsPage() {
         <div className="relative">
           <button
             aria-label="התוכניות הקודמות"
-            className="absolute right-0 top-[320px] z-10 inline-grid size-12 translate-x-1/2 place-items-center rounded-lg border border-white/12 bg-[#030405]/82 text-[#f7fbff] shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)] max-[640px]:top-[280px] max-[640px]:translate-x-0"
+            className={`absolute right-0 top-[320px] z-10 inline-grid size-12 translate-x-1/2 place-items-center rounded-lg border shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 max-[640px]:top-[280px] max-[640px]:translate-x-0 ${
+              isAtRightEdge
+                ? "cursor-not-allowed border-white/8 bg-[#030405]/44 text-[#f7fbff]/28 shadow-none"
+                : "border-white/12 bg-[#030405]/82 text-[#f7fbff] hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)]"
+            }`}
+            disabled={isAtRightEdge}
             onClick={() => moveProgramFocus("right")}
             type="button"
           >
@@ -215,14 +255,23 @@ export default function ProgramsPage() {
           </button>
           <button
             aria-label="התוכניות הבאות"
-            className="absolute left-0 top-[320px] z-10 inline-grid size-12 -translate-x-1/2 place-items-center rounded-lg border border-white/12 bg-[#030405]/82 text-[#f7fbff] shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)] max-[640px]:top-[280px] max-[640px]:translate-x-0"
+            className={`absolute left-0 top-[320px] z-10 inline-grid size-12 -translate-x-1/2 place-items-center rounded-lg border shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 max-[640px]:top-[280px] max-[640px]:translate-x-0 ${
+              isAtLeftEdge
+                ? "cursor-not-allowed border-white/8 bg-[#030405]/44 text-[#f7fbff]/28 shadow-none"
+                : "border-white/12 bg-[#030405]/82 text-[#f7fbff] hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)]"
+            }`}
+            disabled={isAtLeftEdge}
             onClick={() => moveProgramFocus("left")}
             type="button"
           >
             <ChevronLeft size={22} strokeWidth={2.5} />
           </button>
 
-          <div className="grid min-h-[680px] gap-4 lg:grid-cols-3">
+          <div
+            className="grid min-h-[680px] gap-4 touch-pan-y lg:grid-cols-3"
+            onTouchEnd={handleTouchEnd}
+            onTouchStart={handleTouchStart}
+          >
           {carouselSlots.map((programIndex, slotIndex) => {
             if (programIndex === null) {
               return (
