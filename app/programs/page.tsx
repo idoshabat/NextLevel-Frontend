@@ -176,6 +176,8 @@ export default function ProgramsPage() {
 
   const isAtRightEdge = focusedProgramIndex === 0;
   const isAtLeftEdge = focusedProgramIndex === programs.length - 1;
+  const isRightArrowDisabled = isAtRightEdge;
+  const isLeftArrowDisabled = isAtLeftEdge;
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     const touch = event.touches[0];
@@ -243,11 +245,11 @@ export default function ProgramsPage() {
           <button
             aria-label="התוכניות הקודמות"
             className={`absolute right-0 top-[320px] z-10 inline-grid size-12 translate-x-1/2 place-items-center rounded-lg border shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 max-[640px]:top-[280px] max-[640px]:translate-x-0 ${
-              isAtRightEdge
+              isRightArrowDisabled
                 ? "cursor-not-allowed border-white/8 bg-[#030405]/44 text-[#f7fbff]/28 shadow-none"
                 : "border-white/12 bg-[#030405]/82 text-[#f7fbff] hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)]"
             }`}
-            disabled={isAtRightEdge}
+            disabled={isRightArrowDisabled}
             onClick={() => moveProgramFocus("right")}
             type="button"
           >
@@ -256,11 +258,11 @@ export default function ProgramsPage() {
           <button
             aria-label="התוכניות הבאות"
             className={`absolute left-0 top-[320px] z-10 inline-grid size-12 -translate-x-1/2 place-items-center rounded-lg border shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 max-[640px]:top-[280px] max-[640px]:translate-x-0 ${
-              isAtLeftEdge
+              isLeftArrowDisabled
                 ? "cursor-not-allowed border-white/8 bg-[#030405]/44 text-[#f7fbff]/28 shadow-none"
                 : "border-white/12 bg-[#030405]/82 text-[#f7fbff] hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)]"
             }`}
-            disabled={isAtLeftEdge}
+            disabled={isLeftArrowDisabled}
             onClick={() => moveProgramFocus("left")}
             type="button"
           >
