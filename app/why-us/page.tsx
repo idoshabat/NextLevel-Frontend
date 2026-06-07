@@ -65,7 +65,7 @@ export default function WhyUsPage() {
         <div className="mx-auto w-[min(1060px,calc(100%_-_32px))] text-center">
           <div className="mx-auto mb-8 inline-flex items-center gap-4 max-[640px]:gap-3">
             <span className="h-px w-[clamp(36px,8vw,110px)] bg-[linear-gradient(90deg,transparent,var(--cyan))]" />
-            <h1 className="m-0 bg-[linear-gradient(135deg,#f7fbff_0%,var(--cyan)_48%,#f7fbff_100%)] bg-clip-text text-[clamp(4rem,12vw,10.5rem)] font-black uppercase leading-[0.78] tracking-normal text-transparent drop-shadow-[0_0_32px_rgb(var(--cyan-rgb)/0.22)]">
+            <h1 dir="ltr" className="m-0 bg-[linear-gradient(135deg,#f7fbff_0%,var(--cyan)_48%,#f7fbff_100%)] bg-clip-text text-[clamp(4rem,12vw,10.5rem)] font-black uppercase leading-[0.78] tracking-normal text-transparent drop-shadow-[0_0_32px_rgb(var(--cyan-rgb)/0.22)]">
               Why us?
             </h1>
             <span className="h-px w-[clamp(36px,8vw,110px)] bg-[linear-gradient(90deg,var(--cyan),transparent)]" />

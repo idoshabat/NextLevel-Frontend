@@ -12,7 +12,7 @@ function cloudinaryFallback(publicId: string, transformation = "f_auto,q_auto,w_
 export const galleryCategories = [
   {
     slug: "weekends",
-    title: "סופשים",
+    title: "Weekend Sessions",
     eyebrow: "אימוני סוף שבוע",
     description:
       "רגעים מאימונים מרוכזים, עבודה בקצב גבוה וחוויית כדורסל אינטנסיבית בסופי שבוע.",
@@ -26,7 +26,7 @@ export const galleryCategories = [
   },
   {
     slug: "camps",
-    title: "מחנות",
+    title: "Camps",
     eyebrow: "חוויה בארץ ובחו\"ל",
     description:
       "תיעוד ממחנות האקדמיה: אימונים, משחקים, קבוצתיות ורגעים שנשארים הרבה אחרי שהמחנה נגמר.",
@@ -44,7 +44,7 @@ export const galleryCategories = [
   },
   {
     slug: "premium-training",
-    title: "אימונים אישיים",
+    title: "Personal Training",
     eyebrow: "עבודה אישית וממוקדת",
     description:
       "אימונים קטנים ומדויקים לשיפור יכולות אישיות, קליעה, שליטה בכדור וקבלת החלטות.",

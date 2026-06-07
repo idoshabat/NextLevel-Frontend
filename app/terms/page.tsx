@@ -118,7 +118,7 @@ export default function TermsPage() {
               Next Level Basketball Academy
             </p>
             <h1 className="m-0 text-[clamp(3rem,8vw,7rem)] leading-[0.9]">
-              תקנון ותנאי שימוש
+              Terms Of Use
             </h1>
           </div>
 

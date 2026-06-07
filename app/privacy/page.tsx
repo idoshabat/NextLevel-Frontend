@@ -105,7 +105,7 @@ export default function PrivacyPage() {
               Next Level Basketball Academy
             </p>
             <h1 className="m-0 text-[clamp(3rem,8vw,7rem)] leading-[0.9]">
-              מדיניות פרטיות
+              Privacy Policy
             </h1>
           </div>
 

@@ -27,7 +27,7 @@ export default async function GalleryPage() {
               גלריה
             </p>
             <h1 className="m-0 text-[clamp(3rem,8vw,7rem)] leading-[0.9]">
-              רגעים מהדרך.
+              Gallery Moments
             </h1>
           </div>
 

@@ -58,7 +58,7 @@ export default function AccessibilityPage() {
               Next Level Basketball Academy
             </p>
             <h1 className="m-0 text-[clamp(3rem,8vw,7rem)] leading-[0.9]">
-              הצהרת נגישות
+              Accessibility Statement
             </h1>
           </div>
 

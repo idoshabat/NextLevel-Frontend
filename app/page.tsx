@@ -21,9 +21,9 @@ import {
 } from "lucide-react";
 
 const highlights = [
-  { value: 150, suffix: "", label: "לקוחות פעילים" },
-  { value: 36, suffix: "", label: "שחקנים בתוכניות ליווי" },
-  { value: 8, suffix: "", label: "שחקני נבחרות" },
+  { value: 150, suffix: "+", label: "Active Players" },
+  { value: 6, suffix: "", label: "Programs & Pathways" },
+  { value: 15, suffix: "+", label: "Clubs" },
 ];
 
 const heroVideoPublicId = "NEXT LEVEL WEBSITE/Home/hero-video";
@@ -85,7 +85,7 @@ function homeImage(
 
 const academyMoments = [
   {
-    title: "אימון יסודות",
+    title: "Fundamentals Training",
     image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_0956_1_k5hnzk", {
       width: 900,
       height: 1125,
@@ -93,7 +93,7 @@ const academyMoments = [
     }),
   },
   {
-    title: "עבודה אישית",
+    title: "Personal Precision",
     image: homeImage("NEXT LEVEL WEBSITE/Personal/DSC_7180_ulybx6", {
       width: 900,
       height: 1125,
@@ -101,7 +101,7 @@ const academyMoments = [
     }),
   },
   {
-    title: "אנרגיה קבוצתית",
+    title: "Training Experience",
     image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_8458_rs9jtd", {
       width: 900,
       height: 1125,
@@ -112,7 +112,7 @@ const academyMoments = [
 
 const tracks = [
   {
-    title: "מסלולי MAX , PRO ו-PRO MAX",
+    title: "מסלולי PRO ו-PRO MAX",
     text: "מעטפת מקצועית ומנטלית לשחקנים שרוצים לנהל תהליך אמיתי: אימונים אישיים, ניתוח וידאו, מעקב גופני וליווי אונליין.",
     icon: Target,
   },
@@ -179,8 +179,8 @@ const testimonials = [
     name: "VIDEO ONLINE",
   },
   {
-    quote: "תוכנית הליווי המנטלי והמקצועי שנותנת יתרון על פני המתחרים בכל שבוע מחדש.",
-    name: "MAX",
+    quote: "עבודה אישית ומדויקת על יכולות ספציפיות, תיקון הרגלים ובניית ביטחון דרך יחס אישי מלא.",
+    name: "אימונים אישיים",
   },
   {
     quote: "המסלול היוקרתי והמקיף ביותר, המדמה את התנאים של שחקן מקצועני בליגות הבכירות.",
@@ -191,7 +191,7 @@ const testimonials = [
 const previews = [
   {
     title: "תוכניות אימון",
-    text: "PRO MAX, MAX, PRO, CLASSIC, כרטיסיית 10 כניסות ו-VIDEO ONLINE.",
+    text: "PRO MAX, PRO, CLASSIC, כרטיסיית 10 כניסות, VIDEO ONLINE ואימונים אישיים.",
     href: "/programs",
     cta: "לתוכניות",
     image: homeImage("NEXT LEVEL WEBSITE/Personal/DSC_0863_pykhho", {
@@ -263,7 +263,7 @@ export default function HomePage() {
           <div className="max-w-[760px]">
             <p className="mb-4 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
               <Users size={19} strokeWidth={2.4} />
-              אקדמיית כדורסל לילדים, נוער ובוגרים
+              Basketball Academy
             </p>
 
             <h1 className="m-0 text-[clamp(3.4rem,9vw,8.2rem)] leading-[0.88]">
@@ -325,7 +325,7 @@ export default function HomePage() {
         <div className="mb-7 flex flex-wrap items-end justify-between gap-5">
           <div className="max-w-[760px]">
             <p className="mb-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
-              רגעים מהאקדמיה
+              Academy Moments
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
               הפרטים הקטנים שמרכיבים את המסלול המלא .
@@ -364,7 +364,7 @@ export default function HomePage() {
         <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-[760px]">
             <p className="mb-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
-              מסלולי האקדמיה
+              Academy Programs
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
               מתוכנית בסיסית ועד מעטפת מלאה לשחקן ברמות הגבוהות.
@@ -409,7 +409,7 @@ export default function HomePage() {
           <div className="lg:sticky lg:top-32">
             <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
               <Sparkles size={18} strokeWidth={2.4} />
-              למה לבחור בנו
+              Why Choose Us
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
               We believe in the small details that make big difference
@@ -472,7 +472,7 @@ export default function HomePage() {
           <div className="max-w-[760px]">
             <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
               <MessageCircle size={18} strokeWidth={2.4} />
-              איך מצטרפים
+              How To Join
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
               מתאימים את המסלול לשחקן, לא להפך.
@@ -541,7 +541,7 @@ export default function HomePage() {
         <div className="mb-10">
           <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
             <Star size={18} strokeWidth={2.4} />
-            מתוך התוכניות
+            Inside The Program
           </p>
           <h2 className="m-0 whitespace-nowrap text-[clamp(2.05rem,4.15vw,3.8rem)] leading-[1.08] max-[760px]:whitespace-normal">
             כך נראית מעטפת של Next Level.
@@ -572,7 +572,7 @@ export default function HomePage() {
         <div className="mb-7 max-w-[760px]">
           <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
             <Users size={18} strokeWidth={2.4} />
-            למי זה מתאים
+            Who It Fits
           </p>
           <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
             משחקני כיתה ה' ועד בוגרים.
@@ -600,7 +600,7 @@ export default function HomePage() {
         <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-[760px]">
             <p className="mb-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
-              המשיכו להכיר אותנו
+              Explore Next Level
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
               תוכניות, מחנות וגלריה מתוך הפעילות.

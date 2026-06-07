@@ -129,12 +129,14 @@ export function WhatsappContactForm() {
               בחרו אפשרות
             </option>
             <option>תוכנית PRO MAX</option>
-            <option>תוכנית MAX</option>
             <option>תוכנית PRO</option>
             <option>תוכנית CLASSIC</option>
             <option>כרטיסיית 10 כניסות</option>
             <option>תוכנית VIDEO ONLINE</option>
+            <option>אימונים אישיים</option>
             <option>מחנה סלובניה 2026</option>
+            <option>מחנה קיץ 2026</option>
+            <option>מחנה וינגייט אוגוסט 2026</option>
           </select>
         </label>
       </div>
