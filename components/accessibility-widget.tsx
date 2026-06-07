@@ -84,7 +84,7 @@ export function AccessibilityWidget() {
 
   return (
     <div
-      className="fixed right-0 top-1/2 z-50 -translate-y-1/2"
+      className="fixed right-0 bottom-24 z-50 max-[560px]:bottom-20"
       dir="rtl"
     >
       <button
@@ -103,7 +103,7 @@ export function AccessibilityWidget() {
       </button>
 
       <div
-        className={`absolute right-full top-1/2 mr-3 w-[min(330px,calc(100vw_-_58px))] origin-right -translate-y-1/2 rounded-lg border border-white/10 bg-[#030405]/92 p-4 text-right text-[#f7fbff] shadow-[0_22px_70px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl transition duration-300 max-[560px]:mr-2 ${
+        className={`absolute right-full bottom-0 mr-3 w-[min(330px,calc(100vw_-_58px))] origin-bottom-right rounded-lg border border-white/10 bg-[#030405]/92 p-4 text-right text-[#f7fbff] shadow-[0_22px_70px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl transition duration-300 max-[560px]:mr-2 ${
           isOpen
             ? "pointer-events-auto translate-x-0 scale-100 opacity-100"
             : "pointer-events-none translate-x-3 scale-[0.98] opacity-0"
