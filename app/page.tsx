@@ -13,7 +13,6 @@ import {
   MessageCircle,
   ShieldCheck,
   Sparkles,
-  Star,
   Target,
   Trophy,
   Users,
@@ -112,12 +111,12 @@ const academyMoments = [
 
 const tracks = [
   {
-    title: "מסלולי PRO ו-PRO MAX",
+    title: "תוכניות ליווי PRO ו-PRO MAX",
     text: "מעטפת מקצועית ומנטלית לשחקנים שרוצים לנהל תהליך אמיתי: אימונים אישיים, ניתוח וידאו, מעקב גופני וליווי אונליין.",
     icon: Target,
   },
   {
-    title: "CLASSIC וכרטיסיית 10 כניסות",
+    title: "CLASSIC וכרטיסיית 10 אימונים",
     text: "אימוני סופ\"ש בקבוצות עבודה איכותיות, עם דגש על יסודות, יכולת אישית וגמישות לשחקנים שרוצים תגבור נקודתי.",
     icon: Trophy,
   },
@@ -131,7 +130,7 @@ const tracks = [
 const reasons = [
   {
     title: "הפרטים הקטנים שעושים הבדל גדול",
-    text: "האקדמיה נבנתה סביב הרעיון שההתקדמות האמיתית נמצאת בהרגלי עבודה, טכניקה נקייה, קבלת החלטות, ביטחון ומנטליות.",
+    text: "האקדמיה נבנתה סביב הרעיון שההתקדמות האמיתית נמצאת בהרגלי עבודה, טכניקה נקייה, קבלת החלטות, ביטחון וחוסן מנטלי.",
     icon: HeartHandshake,
   },
   {
@@ -162,29 +161,14 @@ const joinSteps = [
     icon: MessageCircle,
   },
   {
-    title: "מבינים את רמת השחקן",
-    text: "בודקים גיל, רמה, מטרות ואת סוג המעטפת הנכון: אימוני סופ\"ש, ליווי אישי, וידאו אונליין או מסלול מלא.",
+    title: " שיחת איפיון והתאמה",
+    text: "מבררים צרכים, רמה, מטרות ואת סוג המעטפת הנכון: אימוני סופ\"ש, ליווי אישי, וידאו אונליין או מסלול מלא.",
     icon: Users,
   },
   {
     title: "יוצאים לתהליך",
-    text: "מתחילים לעבוד עם תוכנית שמתאימה לשחקן ולמטרות שלו, על הפרקט או מרחוק.",
+    text: "לאחר הבנת הצרכים, מגיעים לאימון ניסיון ויוצאים לדרך.",
     icon: Trophy,
-  },
-];
-
-const testimonials = [
-  {
-    quote: "שירותי ליווי ותמיכה מרחוק באמצעות ניתוחי משחקי וידאו והכוונה מקצועית לפתרון בעיות בזמן אמת.",
-    name: "VIDEO ONLINE",
-  },
-  {
-    quote: "עבודה אישית ומדויקת על יכולות ספציפיות, תיקון הרגלים ובניית ביטחון דרך יחס אישי מלא.",
-    name: "אימונים אישיים",
-  },
-  {
-    quote: "המסלול היוקרתי והמקיף ביותר, המדמה את התנאים של שחקן מקצועני בליגות הבכירות.",
-    name: "PRO MAX",
   },
 ];
 
@@ -289,7 +273,7 @@ export default function HomePage() {
                 className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 bg-white/[0.06] px-5 py-3 text-[1.02rem] font-extrabold text-[#f7fbff] transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.6)] hover:bg-[rgb(var(--cyan-rgb)/0.12)]"
                 href="/programs"
               >
-                צפייה בתוכניות
+                למה אנחנו?
               </Link>
             </div>
           </div>
@@ -367,7 +351,7 @@ export default function HomePage() {
               Academy Programs
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              מתוכנית בסיסית ועד מעטפת מלאה לשחקן ברמות הגבוהות.
+              מתוכנית אימונים מקצועית ועד מעטפת מלאה לשחקן ברמות הגבוהות.
             </h2>
           </div>
 
@@ -416,7 +400,7 @@ export default function HomePage() {
             </h2>
             <p className="mt-5 max-w-[620px] text-[1.05rem] leading-[1.85] text-[#a8b3bd]">
               זה לא רק סלוגן. לפי חזון האקדמיה, ההבדל נמצא בהרגלי עבודה,
-              קבלת החלטות, טכניקה, ביטחון ומנטליות לאורך כל שלבי ההתפתחות.
+              קבלת החלטות, טכניקה, ביטחון וחוסן מנטלי לאורך כל שלבי ההתפתחות.
             </p>
             <div className="group mt-8 overflow-hidden rounded-lg border border-white/10 bg-[#0b1114] shadow-[0_24px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.08)]">
               <div className="relative aspect-[16/11]">
@@ -475,7 +459,7 @@ export default function HomePage() {
               How To Join
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              מתאימים את המסלול לשחקן, לא להפך.
+             מתאימים את המסלול הייחודי והמדויק לכל שחקן.
             </h2>
           </div>
 
@@ -537,37 +521,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      <section className="home-band home-band-deep mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
-        <div className="mb-10">
-          <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
-            <Star size={18} strokeWidth={2.4} />
-            Inside The Program
-          </p>
-          <h2 className="m-0 whitespace-nowrap text-[clamp(2.05rem,4.15vw,3.8rem)] leading-[1.08] max-[760px]:whitespace-normal">
-            כך נראית מעטפת של Next Level.
-          </h2>
-        </div>
-
-        <div className="grid gap-4 lg:grid-cols-3">
-          {testimonials.map((testimonial) => (
-            <article
-              className="rounded-lg border border-white/10 bg-white/[0.055] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
-              key={testimonial.name}
-            >
-              <div className="mb-5 inline-grid size-11 place-items-center rounded-lg bg-[rgb(var(--cyan-rgb)/0.14)] text-[var(--cyan)]">
-                <Sparkles size={22} strokeWidth={2.4} />
-              </div>
-              <p className="m-0 text-[1.06rem] font-extrabold leading-[1.75] text-[#f7fbff]/88">
-                "{testimonial.quote}"
-              </p>
-              <p className="mt-5 text-[0.95rem] font-bold text-[#a8b3bd]">
-                {testimonial.name}
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="home-band home-band-court mx-auto w-[min(1180px,calc(100%_-_32px))] py-[clamp(72px,10vw,120px)]">
         <div className="mb-7 max-w-[760px]">
           <p className="mb-2 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
@@ -575,7 +528,7 @@ export default function HomePage() {
             Who It Fits
           </p>
           <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-            משחקני כיתה ה' ועד בוגרים.
+           האם אנחנו מתאימים לך?
           </h2>
         </div>
 

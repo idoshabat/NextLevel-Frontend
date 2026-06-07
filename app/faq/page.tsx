@@ -59,7 +59,7 @@ export default function FaqPage() {
               <HelpCircle size={19} strokeWidth={2.4} />
               שאלות ותשובות
             </p>
-            <h1 className="m-0 text-[clamp(3rem,8vw,7rem)] leading-[0.9]">
+            <h1 dir="ltr" className="m-0 text-[clamp(3rem,8vw,7rem)] leading-[0.9]">
               Everything You Need To Know
             </h1>
             <p className="mt-5 max-w-[620px] text-[clamp(1.08rem,2vw,1.25rem)] leading-[1.85] text-[#a8b3bd]">
