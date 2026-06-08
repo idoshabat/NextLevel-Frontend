@@ -448,6 +448,44 @@ main > section:nth-of-type(3).scroll-reveal {
   }
 }
 
+@keyframes program-carousel-swipe-left {
+  from {
+    opacity: 0.55;
+    transform: translate3d(-28px, 0, 0) scale(0.985);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes program-carousel-swipe-right {
+  from {
+    opacity: 0.55;
+    transform: translate3d(28px, 0, 0) scale(0.985);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 1023px) {
+  .program-carousel-card-mobile[data-swipe="left"] {
+    animation: program-carousel-swipe-left 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .program-carousel-card-mobile[data-swipe="right"] {
+    animation: program-carousel-swipe-right 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal {
     opacity: 1;
@@ -462,7 +500,8 @@ main > section:nth-of-type(3).scroll-reveal {
   .scroll-hint,
   .back-to-top::before,
   .coach-popup-backdrop,
-  .coach-popup-panel {
+  .coach-popup-panel,
+  .program-carousel-card-mobile {
     animation: none;
   }
 }

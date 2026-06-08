@@ -132,7 +132,13 @@ const benefits = [
 export default function ProgramsPage() {
   const [focusedProgramIndex, setFocusedProgramIndex] = useState(1);
   const [isDesktopCarousel, setIsDesktopCarousel] = useState(true);
+  const [touchSwipeDirection, setTouchSwipeDirection] = useState<
+    "left" | "right" | null
+  >(null);
   const touchStartRef = useRef({ x: 0, y: 0 });
+  const touchAnimationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   useEffect(() => {
     const updateMode = () => {
@@ -153,6 +159,14 @@ export default function ProgramsPage() {
 
     return () => {
       window.removeEventListener("resize", updateMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (touchAnimationTimeoutRef.current) {
+        clearTimeout(touchAnimationTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -208,7 +222,16 @@ export default function ProgramsPage() {
       return;
     }
 
+    setTouchSwipeDirection(deltaX > 0 ? "right" : "left");
     moveProgramFocus(deltaX > 0 ? "left" : "right");
+
+    if (touchAnimationTimeoutRef.current) {
+      clearTimeout(touchAnimationTimeoutRef.current);
+    }
+
+    touchAnimationTimeoutRef.current = setTimeout(() => {
+      setTouchSwipeDirection(null);
+    }, 360);
   };
 
   return (
@@ -319,11 +342,12 @@ export default function ProgramsPage() {
 
             return (
               <div
-                className={`transition duration-500 ${
+                className={`program-carousel-card-mobile transition duration-500 ${
                   isFocused
                     ? "lg:scale-100 lg:opacity-100 lg:blur-0"
                     : "cursor-pointer lg:scale-[0.96] lg:opacity-45 lg:blur-[2px]"
                 }`}
+                data-swipe={isFocused ? touchSwipeDirection ?? undefined : undefined}
                 key={program.title}
                 onClick={
                   isFocused
