@@ -16,7 +16,6 @@ const allowedFolders = new Set([
   "NEXT LEVEL WEBSITE/Personal",
   "next-level/home",
   "next-level/coaches",
-  "next-level/players",
   "next-level/camps",
 ]);
 

@@ -10,9 +10,6 @@ const navItems = [
   { href: "/", label: "ראשי" },
   { href: "/about", label: "אודות" },
   { href: "/why-us", label: "למה  אנחנו?" },
-  // { href: "/about-option", label: "אודות 2" },
-  // { href: "/team", label: "צוות" },
-  // { href: "/gallery", label: "גלריה" },
   { href: "/programs", label: "תוכניות" },
   { href: "/camps", label: "מחנות" },
   { href: "/contact", label: "צור קשר" },
@@ -26,7 +23,7 @@ const contactItems = [
     icon: Phone,
   },
   {
-    href: "mailto:info@nextlevel.co.il",
+    href: "mailto:Next.level.acadmy@gmail.com",
     label: "אימייל",
     icon: Mail,
   },

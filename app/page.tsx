@@ -21,8 +21,8 @@ import {
 
 const highlights = [
   { value: 150, suffix: "+", label: "Active Players" },
-  { value: 6, suffix: "", label: "Programs & Pathways" },
-  { value: 15, suffix: "+", label: "Clubs" },
+  { value: 15, suffix: "+", label: "Partner Clubs" },
+  { value: 25, suffix: "", label: "Top League & National Team" },
 ];
 
 const heroVideoPublicId = "NEXT LEVEL WEBSITE/Home/hero-video";
@@ -146,11 +146,11 @@ const reasons = [
 ];
 
 const audiences = [
-  "ספורטאים החל מכיתה ה' ועד לבוגרים",
-  "שחקנים תחרותיים שרוצים מעטפת מקצוענית",
+  "שחקני כדורסל מקצועיים בליגות השונות החל מליגת הקט סל ועד בוגרים",
+  "שחקנים מובילים שמחפשים לקחת תמשחק צעד קדימה",
   "שחקנים שרוצים לשפר Basketball IQ וקבלת החלטות",
   "שחקנים שצריכים ליווי מנטלי והתמודדות עם לחץ",
-  "שיפור יכולות אישיות באימוני סופ\"ש   ",
+  "שחקנים שצריכים ליווי והכוונה להמשך הקריירה",
   "שחקנים שמחפשים ניתוח וידאו ותמיכה מרחוק",
 ];
 
@@ -198,10 +198,10 @@ const previews = [
     icon: Globe2,
   },
   {
-    title: "גלריה",
-    text: "רגעים מסופ\"שים, מחנות ואימונים אישיים מתוך הפעילות האמיתית של האקדמיה.",
-    href: "/gallery",
-    cta: "לגלריה",
+    title: "ניהול קריירה לאחר גיל נוער",
+    text: "חיבור לסוכנים וקבוצות, תכנון קריירה והכנה לקולג׳.",
+    href: "/why-us",
+    cta: "למה אנחנו?",
     image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_8820_llzmmn", {
       width: 900,
       height: 720,
@@ -254,8 +254,7 @@ export default function HomePage() {
               Next Level
             </h1>
             <p className="mt-5 max-w-[680px] text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-[1.45] text-[#f7fbff]">
-              אקדמיה לפיתוח יכולות אישיות בכדורסל, שנועדה להקפיץ שחקנים
-              לרמות הגבוהות ביותר בשכבות הגיל שלהם.
+              אקדמיה לפיתוח יכולות אישיות בכדורסל, שגורמת לשחקנים להגיע לקצה גבול היכולת שלהם.
             </p>
             <p className="mt-4 max-w-[660px] text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#a8b3bd]">
               אנו מספקים מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל
@@ -312,12 +311,12 @@ export default function HomePage() {
               Academy Moments
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              הפרטים הקטנים שמרכיבים את המסלול המלא .
+              ההשגיות האמיתית נמצאת בפרטים הקטנים
             </h2>
           </div>
           <p className="max-w-[320px] text-[1rem] font-bold leading-[1.7] text-[#a8b3bd]">
-            אימוני סופ"ש, עבודה אישית ומחנות הם חלק מאותה שיטה: עבודה מדויקת,
-            מעטפת מקצועית וליווי שממשיך מעבר לאימון עצמו.
+            מודל אימונים ייחודי . שיטת עבודה מוכחת .
+            סינרגיה מושלמת בין עבודה אישית , אימוני סוף שבוע ומחנות מקצועיים , המייצרת מעטפת ליווי מדוייקת ומקיפה בכל שלב בהתפתחות
           </p>
         </div>
 
@@ -396,7 +395,7 @@ export default function HomePage() {
               Why Choose Us
             </p>
             <h2 dir="ltr" className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-              "We believe in the small details that make big difference"
+              We believe in the small details that make big difference
             </h2>
             <p dir="rtl" className="mt-5 max-w-[620px] text-[1.05rem] leading-[1.85] text-[#a8b3bd]">
               זה לא רק סלוגן. לפי חזון האקדמיה, ההבדל נמצא בהרגלי עבודה,
@@ -460,7 +459,7 @@ export default function HomePage() {
               How To Join
             </p>
             <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-             מתאימים את המסלול הייחודי והמדויק לכל שחקן.
+              מתאימים את המסלול הייחודי והמדויק לכל שחקן.
             </h2>
           </div>
 
@@ -529,7 +528,7 @@ export default function HomePage() {
             Who It Fits
           </p>
           <h2 className="m-0 text-[clamp(2.2rem,5vw,4.8rem)] leading-none">
-           האם אנחנו מתאימים לך?
+            האם אתה מתאים?
           </h2>
         </div>
 

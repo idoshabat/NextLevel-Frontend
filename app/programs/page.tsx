@@ -130,7 +130,7 @@ const benefits = [
 ];
 
 export default function ProgramsPage() {
-  const [focusedProgramIndex, setFocusedProgramIndex] = useState(1);
+  const [focusedProgramIndex, setFocusedProgramIndex] = useState(0);
   const [isDesktopCarousel, setIsDesktopCarousel] = useState(true);
   const [touchSwipeDirection, setTouchSwipeDirection] = useState<
     "left" | "right" | null
@@ -147,10 +147,10 @@ export default function ProgramsPage() {
       setIsDesktopCarousel(isDesktop);
       setFocusedProgramIndex((currentIndex) => {
         if (isDesktop) {
-          return Math.min(Math.max(currentIndex, 1), programs.length - 1);
+          return Math.min(Math.max(currentIndex, 0), programs.length - 1);
         }
 
-        return currentIndex === 1 ? 0 : currentIndex;
+        return currentIndex;
       });
     };
 

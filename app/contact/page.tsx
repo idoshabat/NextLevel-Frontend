@@ -28,8 +28,8 @@ const contactMethods = [
   },
   {
     title: "אימייל",
-    value: "info@nextlevel.co.il",
-    href: "mailto:info@nextlevel.co.il",
+    value: "Next.level.acadmy@gmail.com",
+    href: "mailto:Next.level.acadmy@gmail.com",
     icon: Mail,
   },
   {

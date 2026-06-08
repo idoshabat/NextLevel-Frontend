@@ -164,6 +164,9 @@ export function CoachPopups({ coaches }: CoachPopupsProps) {
                 <p className="mt-2 max-w-[460px] text-[0.95rem] font-extrabold leading-[1.65] text-[var(--cyan)]">
                   {coach.role}
                 </p>
+                <p className="mt-3 max-w-[500px] text-[0.96rem] leading-[1.75] text-[#c4cbd1]">
+                  {coach.description}
+                </p>
                 <span className="mt-3 inline-flex w-fit text-[0.88rem] font-extrabold text-[var(--cyan)] transition duration-300 group-hover:translate-x-[-4px]">
                   לקריאת הסיפור המלא
                 </span>

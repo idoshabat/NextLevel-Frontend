@@ -36,11 +36,6 @@ const developmentPoints = [
   "בניית שחקנים חזקים קודם כל כבני אדם",
 ];
 
-const featuredCoachSlugs = ["tal-dunn", "avi-eliyahu", "dori-asaf"];
-const featuredCoaches = featuredCoachSlugs
-  .map((slug) => coaches.find((coach) => coach.slug === slug))
-  .filter(Boolean) as typeof coaches;
-
 export default function AboutPage() {
   return (
     <div className="min-h-screen overflow-hidden">
@@ -76,36 +71,6 @@ export default function AboutPage() {
               ההתפתחות, ולמצות את הפוטנציאל הטמון בכל שחקן ושחקן.
             </p>
           </div>
-
-          {/* <div className="mx-auto mt-11 grid max-w-[820px] gap-5">
-            {featuredCoaches.map((coach) => (
-              <Link
-                className="group grid gap-4 rounded-lg border border-white/10 bg-white/[0.045] p-4 text-right transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.45)] hover:bg-white/[0.07] sm:grid-cols-[1fr_116px] sm:items-center"
-                href={`/coaches/${coach.slug}`}
-                key={coach.slug}
-              >
-                <div>
-                  <h2 className="m-0 text-[1.28rem] leading-tight">
-                    <span className="text-[var(--cyan)]">{coach.name}</span>
-                    <span className="mx-2 text-[#f7fbff]/42">/</span>
-                    <span className="text-[#f7fbff]/86">{coach.role}</span>
-                  </h2>
-                  <p className="mt-2 text-[0.98rem] leading-[1.75] text-[#c4cbd1]">
-                    {coach.bio[0]}
-                  </p>
-                </div>
-
-                <div className="order-first h-[116px] overflow-hidden rounded-lg border-2 border-[var(--cyan)] bg-[#0b1114] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.2)] sm:order-none">
-                  <img
-                    className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                    src={coach.image}
-                    alt={`תמונה של ${coach.name}`}
-                    loading="lazy"
-                  />
-                </div>
-              </Link>
-            ))}
-          </div> */}
         </div>
       </section>
 
