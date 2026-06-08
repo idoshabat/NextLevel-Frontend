@@ -178,6 +178,7 @@ export default function ProgramsPage() {
   const isAtLeftEdge = focusedProgramIndex === programs.length - 1;
   const isRightArrowDisabled = isAtRightEdge;
   const isLeftArrowDisabled = isAtLeftEdge;
+  const currentProgramNumber = focusedProgramIndex + 1;
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     const touch = event.touches[0];
@@ -207,7 +208,7 @@ export default function ProgramsPage() {
       return;
     }
 
-    moveProgramFocus(deltaX > 0 ? "right" : "left");
+    moveProgramFocus(deltaX > 0 ? "left" : "right");
   };
 
   return (
@@ -242,6 +243,30 @@ export default function ProgramsPage() {
 
       <section className="mx-auto w-[min(1180px,calc(100%_-_32px))] pb-[clamp(56px,8vw,88px)]">
         <div className="relative">
+          <div className="mb-6 flex items-center justify-center gap-4" dir="ltr">
+            <span className="rounded-lg border border-white/10 bg-[#030405]/72 px-4 py-2 text-[0.92rem] font-black tracking-[0.16em] text-[#f7fbff] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md">
+              {String(currentProgramNumber).padStart(2, "0")}
+              <span className="mx-2 text-[var(--cyan)]">/</span>
+              {String(programs.length).padStart(2, "0")}
+            </span>
+            <div className="flex items-center gap-2" aria-hidden="true">
+              {[...programs].reverse().map((program, reverseIndex) => {
+                const index = programs.length - 1 - reverseIndex;
+
+                return (
+                <span
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    index === focusedProgramIndex
+                      ? "w-8 bg-[var(--cyan)] shadow-[0_0_18px_rgb(var(--cyan-rgb)/0.45)]"
+                      : "w-2 bg-white/20"
+                  }`}
+                  key={program.title}
+                />
+                );
+              })}
+            </div>
+          </div>
+
           <button
             aria-label="התוכניות הקודמות"
             className={`absolute right-0 top-[320px] z-10 inline-grid size-12 translate-x-1/2 place-items-center rounded-lg border shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 max-[640px]:top-[280px] max-[640px]:translate-x-0 ${
