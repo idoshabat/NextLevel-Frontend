@@ -58,7 +58,7 @@ export default async function GalleryCategoryPage({
               {category.description}
             </h2>
             <p className="mt-5 max-w-[720px] text-[clamp(1.05rem,2vw,1.22rem)] leading-[1.85] text-[#a8b3bd]">
-              רגעים מתוך הפעילות, האימונים והחוויה שמלווים את השחקנים
+              רגעים מתוך הפעילות, האימונים והחוויה שמלווים את השחקנים והשחקניות
               לאורך הדרך.
             </p>
           </div>
