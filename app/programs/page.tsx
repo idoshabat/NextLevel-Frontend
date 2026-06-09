@@ -170,15 +170,13 @@ export default function ProgramsPage() {
     };
   }, []);
 
-  const carouselSlots = isDesktopCarousel
-    ? [
-        focusedProgramIndex - 1 >= 0 ? focusedProgramIndex - 1 : null,
-        focusedProgramIndex,
-        focusedProgramIndex + 1 < programs.length
-          ? focusedProgramIndex + 1
-          : null,
-      ]
-    : [focusedProgramIndex];
+  const carouselSlots = [
+    focusedProgramIndex - 1 >= 0 ? focusedProgramIndex - 1 : null,
+    focusedProgramIndex,
+    focusedProgramIndex + 1 < programs.length
+      ? focusedProgramIndex + 1
+      : null,
+  ];
 
   const moveProgramFocus = (direction: "right" | "left") => {
     setFocusedProgramIndex((currentIndex) => {
@@ -318,7 +316,7 @@ export default function ProgramsPage() {
           </button>
 
           <div
-            className="grid min-h-[680px] gap-4 touch-pan-y lg:grid-cols-3"
+            className="grid min-h-[680px] grid-cols-[34px_minmax(0,1fr)_34px] gap-2 overflow-hidden touch-pan-y lg:grid-cols-3 lg:gap-4 lg:overflow-visible"
             onTouchEnd={handleTouchEnd}
             onTouchStart={handleTouchStart}
           >
@@ -327,7 +325,7 @@ export default function ProgramsPage() {
               return (
                 <div
                   aria-hidden="true"
-                  className="hidden rounded-lg border border-transparent lg:block"
+                  className="rounded-lg border border-transparent"
                   key={`empty-${slotIndex}`}
                 />
               );
@@ -347,6 +345,9 @@ export default function ProgramsPage() {
                     ? "lg:scale-100 lg:opacity-100 lg:blur-0"
                     : "cursor-pointer lg:scale-[0.96] lg:opacity-45 lg:blur-[2px]"
                 }`}
+                data-peek={
+                  isFocused ? "center" : slotIndex === 0 ? "left" : "right"
+                }
                 data-swipe={isFocused ? touchSwipeDirection ?? undefined : undefined}
                 key={program.title}
                 onClick={

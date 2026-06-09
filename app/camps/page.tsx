@@ -263,13 +263,11 @@ function CampCarousel({ title, text, icon: Icon, campList }: CampCarouselProps) 
     };
   }, []);
 
-  const carouselSlots = isDesktopCarousel
-    ? [
-        focusedCampIndex - 1 >= 0 ? focusedCampIndex - 1 : null,
-        focusedCampIndex,
-        focusedCampIndex + 1 < campList.length ? focusedCampIndex + 1 : null,
-      ]
-    : [focusedCampIndex];
+  const carouselSlots = [
+    focusedCampIndex - 1 >= 0 ? focusedCampIndex - 1 : null,
+    focusedCampIndex,
+    focusedCampIndex + 1 < campList.length ? focusedCampIndex + 1 : null,
+  ];
 
   const moveCampFocus = (direction: "right" | "left") => {
     setFocusedCampIndex((currentIndex) => {
@@ -389,7 +387,7 @@ function CampCarousel({ title, text, icon: Icon, campList }: CampCarouselProps) 
         </button>
 
         <div
-          className="grid min-h-[760px] gap-4 touch-pan-y lg:grid-cols-3"
+          className="grid min-h-[760px] grid-cols-[34px_minmax(0,1fr)_34px] gap-2 overflow-hidden touch-pan-y lg:grid-cols-3 lg:gap-4 lg:overflow-visible"
           dir="rtl"
           onTouchEnd={handleTouchEnd}
           onTouchStart={handleTouchStart}
@@ -399,7 +397,7 @@ function CampCarousel({ title, text, icon: Icon, campList }: CampCarouselProps) 
               return (
                 <div
                   aria-hidden="true"
-                  className="hidden rounded-lg border border-transparent lg:block"
+                  className="rounded-lg border border-transparent"
                   key={`empty-${title}-${slotIndex}`}
                 />
               );
@@ -417,6 +415,9 @@ function CampCarousel({ title, text, icon: Icon, campList }: CampCarouselProps) 
                     ? "lg:scale-100 lg:opacity-100 lg:blur-0"
                     : "cursor-pointer lg:scale-[0.96] lg:opacity-45 lg:blur-[2px]"
                 }`}
+                data-peek={
+                  isFocused ? "center" : slotIndex === 0 ? "left" : "right"
+                }
                 data-swipe={isFocused ? touchSwipeDirection ?? undefined : undefined}
                 key={`${camp.title}-${camp.date}-${camp.ages}`}
                 onClick={isFocused ? undefined : () => setFocusedCampIndex(campIndex)}
