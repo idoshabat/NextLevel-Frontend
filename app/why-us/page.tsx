@@ -190,7 +190,7 @@ export default function WhyUsPage() {
             לתיאום פגישת אפיון ומבדק ביצועים על המגרש לגמרי בחינם 👇
           </p>
           <p className="mx-auto mt-4 max-w-[720px] text-[0.98rem] font-bold leading-[1.7] text-[#d6edf2]/76">
-            כדי לשמור על יחס אישי, אנחנו מקבלים רק 5 שחקנים ושחקניות חדשים החודש.
+            לתוכניות הליווי אנו מקבלים מספר מוגבל של שחקנים בשנה
           </p>
           <Link
             className="mt-7 inline-flex min-h-13 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-7 py-3.5 text-[1.05rem] font-extrabold text-[#001013] shadow-[0_0_34px_rgb(var(--cyan-rgb)/0.24),inset_0_1px_0_rgba(255,255,255,0.55)] transition duration-300 hover:-translate-y-0.5 hover:brightness-110"
