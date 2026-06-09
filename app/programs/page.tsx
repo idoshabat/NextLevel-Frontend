@@ -295,7 +295,7 @@ export default function ProgramsPage() {
             className={`absolute right-0 top-[320px] z-10 inline-grid size-12 translate-x-1/2 place-items-center rounded-lg border shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 max-[640px]:top-[280px] max-[640px]:translate-x-0 ${
               isRightArrowDisabled
                 ? "cursor-not-allowed border-white/8 bg-[#030405]/44 text-[#f7fbff]/28 shadow-none"
-                : "border-white/12 bg-[#030405]/82 text-[#f7fbff] hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)]"
+                : "carousel-arrow-active border-[rgb(var(--cyan-rgb)/0.48)] bg-[#031014]/88 text-[var(--cyan)] hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.82)] hover:bg-[var(--cyan-light)] hover:text-[#001013]"
             }`}
             disabled={isRightArrowDisabled}
             onClick={() => moveProgramFocus("right")}
@@ -308,7 +308,7 @@ export default function ProgramsPage() {
             className={`absolute left-0 top-[320px] z-10 inline-grid size-12 -translate-x-1/2 place-items-center rounded-lg border shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-md transition duration-300 max-[640px]:top-[280px] max-[640px]:translate-x-0 ${
               isLeftArrowDisabled
                 ? "cursor-not-allowed border-white/8 bg-[#030405]/44 text-[#f7fbff]/28 shadow-none"
-                : "border-white/12 bg-[#030405]/82 text-[#f7fbff] hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.62)] hover:bg-[rgb(var(--cyan-rgb)/0.16)] hover:text-[var(--cyan)]"
+                : "carousel-arrow-active border-[rgb(var(--cyan-rgb)/0.48)] bg-[#031014]/88 text-[var(--cyan)] hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.82)] hover:bg-[var(--cyan-light)] hover:text-[#001013]"
             }`}
             disabled={isLeftArrowDisabled}
             onClick={() => moveProgramFocus("left")}
