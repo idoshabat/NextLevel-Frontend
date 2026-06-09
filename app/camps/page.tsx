@@ -387,7 +387,7 @@ function CampCarousel({ title, text, icon: Icon, campList }: CampCarouselProps) 
         </button>
 
         <div
-          className="grid min-h-[760px] grid-cols-[34px_minmax(0,1fr)_34px] gap-2 overflow-hidden touch-pan-y lg:grid-cols-3 lg:gap-4 lg:overflow-visible"
+          className="grid min-h-[760px] grid-cols-[46px_minmax(0,1fr)_46px] gap-2 overflow-hidden touch-pan-y lg:grid-cols-3 lg:gap-4 lg:overflow-visible"
           dir="rtl"
           onTouchEnd={handleTouchEnd}
           onTouchStart={handleTouchStart}

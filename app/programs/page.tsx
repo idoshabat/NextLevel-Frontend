@@ -316,7 +316,7 @@ export default function ProgramsPage() {
           </button>
 
           <div
-            className="grid min-h-[680px] grid-cols-[34px_minmax(0,1fr)_34px] gap-2 overflow-hidden touch-pan-y lg:grid-cols-3 lg:gap-4 lg:overflow-visible"
+            className="grid min-h-[680px] grid-cols-[46px_minmax(0,1fr)_46px] gap-2 overflow-hidden touch-pan-y lg:grid-cols-3 lg:gap-4 lg:overflow-visible"
             onTouchEnd={handleTouchEnd}
             onTouchStart={handleTouchStart}
           >
