@@ -24,12 +24,13 @@ function cloudinaryFallback(publicId: string, transformation: string) {
   return `https://res.cloudinary.com/djud4xysp/image/upload/${transformation}/${encodedPublicId}`;
 }
 
-function campImage(publicId: string) {
+function campImage(publicId: string, version?: number) {
   const transformation = "f_auto,q_auto,w_900,h_720,c_fill,g_auto";
+  const versionedPublicId = version ? `v${version}/${publicId}` : publicId;
 
   return getCloudinaryImageUrl(
-    publicId,
-    cloudinaryFallback(publicId, transformation),
+    versionedPublicId,
+    cloudinaryFallback(versionedPublicId, transformation),
     {
       width: 900,
       height: 720,
@@ -49,7 +50,8 @@ const camps = [
     statusTone: "muted",
     date: "קיץ 2024",
     ages: "גילאי 12-16",
-    image: campImage("NEXT LEVEL WEBSITE/Camps/Serbia (2025)/IMG_8522_sgteiu"),
+    image: campImage("belgrade2024", 1781002880),
+    gallerySlug: "serbia-2024",
     description:
       "מחנה בינלאומי ראשון שנתן לשחקנים טעימה מאימונים בקצב גבוה, תרבות כדורסל אירופאית וחוויה קבוצתית מחוץ לארץ.",
     highlights: [
@@ -67,7 +69,8 @@ const camps = [
     statusTone: "muted",
     date: "קיץ 2025",
     ages: "גילאי 12-16",
-    image: campImage("NEXT LEVEL WEBSITE/Camps/Serbia (2025)/IMG_8522_sgteiu"),
+    image: campImage("belgrade2025", 1781002902),
+    gallerySlug: "serbia-2025",
     description:
       "המשך טבעי למחנה הראשון, עם רמת אימון גבוהה יותר, דגש על תחרותיות, משמעת קבוצתית והתמודדות עם אתגרים חדשים.",
     highlights: [
@@ -85,7 +88,7 @@ const camps = [
     statusTone: "soldOut",
     date: "יוני 2026",
     ages: "גילאי 12-16",
-    image: campImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_3908_ohowgk"),
+    image: campImage("slovenia2026", 1781003002),
     description:
       "המחנה הקרוב של האקדמיה יוצא לסלובניה ביוני 2026. המחנה מיועד לשחקנים שרוצים להתאמן בסביבה מקצועית, לחוות כדורסל בינלאומי ולהתקדם ברמה האישית והקבוצתית.",
     highlights: [
@@ -103,7 +106,8 @@ const camps = [
     statusTone: "muted",
     date: "קיץ 2025",
     ages: "גילאי 14 ועד בוגרים",
-    image: campImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_4350_c7k9h4"),
+    image: campImage("summer2025", 1781003348),
+    gallerySlug: "summer-2025",
     description:
       "מחנה קיץ אינטנסיבי לשחקני נוער ובוגרים שרוצים לשמור על קצב עבודה גבוה, לשפר יכולות אישיות ולהגיע מוכנים יותר לעונה.",
     highlights: [
@@ -121,7 +125,7 @@ const camps = [
     statusTone: "active",
     date: "קיץ 2026",
     ages: "גילאי 14 ועד בוגרים",
-    image: campImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_5705-3_djzvui"),
+    image: campImage("summer2026", 1781003072),
     description:
       "מחנה קיץ לשחקני נוער ובוגרים, עם מעטפת אימונים מקצועית ועבודה ממוקדת על יכולות המשחק.",
     highlights: [
@@ -139,7 +143,7 @@ const camps = [
     statusTone: "active",
     date: "אוגוסט 2026",
     ages: "גילאי 11-16",
-    image: campImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_3908_ohowgk"),
+    image: campImage("wingate2026", 1781003612),
     description:
       "מחנה המיועד לשחקנים צעירים שרוצים להיכנס למסגרת מקצועית, לשפר יסודות ולבנות הרגלי עבודה נכונים כבר בגיל צעיר.",
     highlights: [
@@ -157,7 +161,8 @@ const camps = [
     statusTone: "muted",
     date: "פסח 2025",
     ages: "גילאי 12-16",
-    image: campImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_4350_c7k9h4"),
+    image: campImage("passover2025", 1781003681),
+    gallerySlug: "passover-2025",
     description:
       "מחנה פסח באווירה קבוצתית ומקצועית, עם אימונים אינטנסיביים וחוויית כדורסל שממשיכה מעבר למגרש.",
     highlights: [
@@ -402,7 +407,8 @@ function CampCarousel({ title, text, icon: Icon, campList }: CampCarouselProps) 
 
             const camp = campList[campIndex];
             const isFocused = campIndex === focusedCampIndex;
-            const hasGallery = !camp.date.includes("2026");
+            const galleryHref =
+              "gallerySlug" in camp ? `/gallery/${camp.gallerySlug}` : null;
 
             return (
               <div
@@ -505,10 +511,10 @@ function CampCarousel({ title, text, icon: Icon, campList }: CampCarouselProps) 
                         </p>
                       )}
 
-                      {hasGallery ? (
+                      {galleryHref ? (
                         <Link
                           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[rgb(var(--cyan-rgb)/0.34)] bg-[rgb(var(--cyan-rgb)/0.08)] px-5 py-3 text-[1rem] font-extrabold text-[var(--cyan)] transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.68)] hover:bg-[rgb(var(--cyan-rgb)/0.14)] hover:text-[var(--cyan-light)]"
-                          href="/gallery/camps"
+                          href={galleryHref}
                         >
                           לגלריית המחנה
                           <Camera size={18} strokeWidth={2.5} />

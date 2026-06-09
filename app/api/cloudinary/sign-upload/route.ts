@@ -5,18 +5,15 @@ import {
 } from "@/lib/cloudinary";
 
 const allowedFolders = new Set([
-  "next-level/gallery/weekends",
-  "next-level/gallery/camps",
-  "next-level/gallery/premium-training",
-  "NEXT LEVEL WEBSITE/Weekends",
-  "NEXT LEVEL WEBSITE/Camps",
-  "NEXT LEVEL WEBSITE/Camps/Passover",
-  "NEXT LEVEL WEBSITE/Camps/Serbia (2025)",
-  "NEXT LEVEL WEBSITE/Camps/Summer (2025)",
-  "NEXT LEVEL WEBSITE/Personal",
-  "next-level/home",
-  "next-level/coaches",
-  "next-level/camps",
+  "NEXT LEVEL WEBSITE/home",
+  "NEXT LEVEL WEBSITE/coaches",
+  "NEXT LEVEL WEBSITE/weekends",
+  "NEXT LEVEL WEBSITE/premium_training",
+  "NEXT LEVEL WEBSITE/camps",
+  "NEXT LEVEL WEBSITE/camps/passover (2025)",
+  "NEXT LEVEL WEBSITE/camps/summer (2025)",
+  "NEXT LEVEL WEBSITE/camps/serbia (2024)",
+  "NEXT LEVEL WEBSITE/camps/serbia (2025)",
 ]);
 
 export async function POST(request: Request) {

@@ -1,7 +1,19 @@
 const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "djud4xysp";
 
-function coachImage(publicId: string) {
-  return `https://res.cloudinary.com/${cloudName}/image/upload/w_760,h_920,c_fill,g_auto,q_auto,f_auto/next-level/coaches/${publicId}`;
+const coachImages = {
+  avi_eliyahu: { publicId: "avi_eliyahu_u8h5fz", version: 1780906978 },
+  tal_dunn: { publicId: "tal_dunn_a8xtlw", version: 1780906945 },
+  dori_assaf: { publicId: "dori_assaf_c70cgf", version: 1780906949 },
+  ido_shabat: { publicId: "ido_shabat_u4ff9t", version: 1780906959 },
+  shmuel_malhov: { publicId: "shmuel_malhov_xc6euy", version: 1780906951 },
+  ido_sanker: { publicId: "ido_sanker_ybtkpu", version: 1780906963 },
+  or_ben_goren: { publicId: "or_ben_goren_rwiiwe", version: 1780906946 },
+} as const;
+
+function coachImage(key: keyof typeof coachImages) {
+  const image = coachImages[key];
+
+  return `https://res.cloudinary.com/${cloudName}/image/upload/w_760,h_920,c_fill,g_auto,q_auto,f_auto/v${image.version}/${image.publicId}`;
 }
 
 export const coaches = [

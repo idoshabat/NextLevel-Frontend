@@ -25,8 +25,8 @@ const highlights = [
   { value: 25, suffix: "", label: "Top League & National Team" },
 ];
 
-const heroVideoPublicId = "NEXT LEVEL WEBSITE/Home/hero-video";
-const heroPosterPublicId = "NEXT LEVEL WEBSITE/Home/hero-poster";
+const heroVideoPublicId = "hero-video";
+const heroPosterPublicId = "hero-poster";
 const heroVideoFallback = "/assets/hero-video.mp4";
 const heroVideoMobile = getCloudinaryVideoUrl(
   heroVideoPublicId,
@@ -85,7 +85,7 @@ function homeImage(
 const academyMoments = [
   {
     title: "Fundamentals Training",
-    image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_0956_1_k5hnzk", {
+    image: homeImage("moments_fundamentals", {
       width: 900,
       height: 1125,
       crop: "fill",
@@ -93,7 +93,7 @@ const academyMoments = [
   },
   {
     title: "Personal Precision",
-    image: homeImage("NEXT LEVEL WEBSITE/Personal/DSC_7180_ulybx6", {
+    image: homeImage("moment_precision", {
       width: 900,
       height: 1125,
       crop: "fill",
@@ -101,7 +101,7 @@ const academyMoments = [
   },
   {
     title: "Training Experience",
-    image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_8458_rs9jtd", {
+    image: homeImage("moment_training", {
       width: 900,
       height: 1125,
       crop: "fill",
@@ -178,7 +178,7 @@ const previews = [
     text: "PRO MAX, PRO, CLASSIC, כרטיסיית 10 כניסות, VIDEO ONLINE ואימונים אישיים.",
     href: "/programs",
     cta: "לתוכניות",
-    image: homeImage("NEXT LEVEL WEBSITE/Personal/DSC_0863_pykhho", {
+    image: homeImage("explore_programs", {
       width: 900,
       height: 720,
       crop: "fill",
@@ -190,7 +190,7 @@ const previews = [
     text: "בלגרד 2024 ו-2025 כבר מאחורינו. סלובניה 2026 היא התחנה הבאה ביוני הקרוב.",
     href: "/camps",
     cta: "למחנות",
-    image: homeImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_3706_xsxxo5", {
+    image: homeImage("explore_camps", {
       width: 900,
       height: 720,
       crop: "fill",
@@ -202,7 +202,7 @@ const previews = [
     text: "חיבור לסוכנים וקבוצות, תכנון קריירה והכנה לקולג׳.",
     href: "/why-us",
     cta: "למה אנחנו?",
-    image: homeImage("NEXT LEVEL WEBSITE/Weekends/DSC_8820_llzmmn", {
+    image: homeImage("explore_manage", {
       width: 900,
       height: 720,
       crop: "fill",
@@ -258,7 +258,7 @@ export default function HomePage() {
             </p>
             <p className="mt-4 max-w-[660px] text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#a8b3bd]">
               אנו מספקים מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל
-              שלבי ההתפתחות, בכדי למצות את הפוטנציאל הטמון בכל שחקן ושחקן.
+              שלבי ההתפתחות, בכדי למצות את הפוטנציאל הטמון בכל שחקן ושחקנית.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -435,7 +435,7 @@ export default function HomePage() {
           <div className="relative aspect-[16/8] max-[640px]:aspect-[16/11]">
             <img
               className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
-              src={homeImage("NEXT LEVEL WEBSITE/Personal/DSC_0217_l5c1xf", {
+              src={homeImage("why_choose_us", {
                 width: 1400,
                 height: 700,
                 crop: "fill",
@@ -504,7 +504,7 @@ export default function HomePage() {
           <div className="aspect-[16/7] max-[640px]:aspect-[16/10]">
             <img
               className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
-              src={homeImage("NEXT LEVEL WEBSITE/Camps/Summer (2025)/DSC_5705-3_djzvui", {
+              src={homeImage("how_to_join", {
                 width: 1400,
                 height: 760,
                 crop: "fill",
@@ -580,7 +580,7 @@ export default function HomePage() {
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-[#0b1114]">
                   <img
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
                     src={preview.image}
                     alt={preview.title}
                     loading="lazy"

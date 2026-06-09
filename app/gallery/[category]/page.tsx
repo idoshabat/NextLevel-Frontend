@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Camera } from "lucide-react";
+import { Camera } from "lucide-react";
+import { GalleryBackButton } from "@/components/gallery/gallery-back-button";
 import { GalleryLightbox } from "@/components/gallery/gallery-lightbox";
 import {
   galleryCategories,
@@ -43,13 +43,7 @@ export default async function GalleryCategoryPage({
 
         <div className="mx-auto grid w-[min(1180px,calc(100%_-_32px))] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <Link
-              className="mb-5 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[#a8b3bd] transition duration-300 hover:text-[var(--cyan)]"
-              href="/gallery"
-            >
-              <ArrowRight size={18} strokeWidth={2.5} />
-              חזרה לגלריות
-            </Link>
+            <GalleryBackButton />
             <p className="mb-3 inline-flex items-center gap-2 text-[0.95rem] font-extrabold tracking-normal text-[var(--cyan)]">
               <Camera size={19} strokeWidth={2.4} />
               {category.eyebrow}

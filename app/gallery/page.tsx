@@ -9,10 +9,12 @@ export const revalidate = 300;
 
 export default async function GalleryPage() {
   const categories = await Promise.all(
-    galleryCategories.map(async (category) => ({
-      ...category,
-      preview: await getGalleryCategoryPreview(category),
-    }))
+    galleryCategories
+      .filter((category) => category.includeInIndex)
+      .map(async (category) => ({
+        ...category,
+        preview: await getGalleryCategoryPreview(category),
+      }))
   );
 
   return (
