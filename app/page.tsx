@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { preload } from "react-dom";
 import { AnimatedStat } from "@/components/animated-stat";
 import { getCloudinaryImageUrl, getCloudinaryVideoUrl } from "@/lib/cloudinary";
+import { pageSeo } from "@/lib/seo";
 import {
   ArrowLeft,
   CalendarDays,
@@ -18,6 +20,16 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+
+const seo = pageSeo("/");
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  alternates: {
+    canonical: seo.path,
+  },
+};
 
 const highlights = [
   { value: 150, suffix: "+", label: "Active Players" },
@@ -270,7 +282,7 @@ export default function HomePage() {
               </Link>
               <Link
                 className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 bg-white/[0.06] px-5 py-3 text-[1.02rem] font-extrabold text-[#f7fbff] transition duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--cyan-rgb)/0.6)] hover:bg-[rgb(var(--cyan-rgb)/0.12)]"
-                href="/programs"
+                href="/why-us"
               >
                 למה אנחנו?
               </Link>

@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { WhatsappContactForm } from "@/components/contact/whatsapp-contact-form";
+import { pageSeo } from "@/lib/seo";
 import {
   ArrowLeft,
   AtSign,
@@ -9,6 +11,16 @@ import {
   MessageCircle,
   Phone,
 } from "lucide-react";
+
+const seo = pageSeo("/contact");
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  alternates: {
+    canonical: seo.path,
+  },
+};
 
 const whatsappHref =
   "https://wa.me/972553090366?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%A7%D7%93%D7%9E%D7%99%D7%99%D7%AA%20Next%20Level";

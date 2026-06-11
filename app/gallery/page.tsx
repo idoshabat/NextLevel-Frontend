@@ -1,11 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Camera, Images } from "lucide-react";
 import {
   galleryCategories,
   getGalleryCategoryPreview,
 } from "@/data/gallery";
+import { pageSeo } from "@/lib/seo";
 
 export const revalidate = 300;
+
+const seo = pageSeo("/gallery");
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  alternates: {
+    canonical: seo.path,
+  },
+};
 
 export default async function GalleryPage() {
   const categories = await Promise.all(

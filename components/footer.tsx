@@ -7,7 +7,7 @@ const currentYear = new Date().getFullYear();
 const navLinks = [
   { href: "/", label: "ראשי" },
   { href: "/about", label: "אודות" },
-  { href: "/why-us", label: "למה לבחור בנו" },
+  { href: "/why-us", label: "למה אנחנו?" },
   { href: "/gallery", label: "גלריה" },
   { href: "/programs", label: "תוכניות" },
   { href: "/camps", label: "מחנות" },

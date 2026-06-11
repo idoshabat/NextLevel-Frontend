@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Camera } from "lucide-react";
 import { GalleryBackButton } from "@/components/gallery/gallery-back-button";
@@ -7,6 +8,7 @@ import {
   getGalleryImagesForCategory,
   type GalleryCategorySlug,
 } from "@/data/gallery";
+import { absoluteUrl } from "@/lib/seo";
 
 type GalleryCategoryPageProps = {
   params: Promise<{
@@ -20,6 +22,36 @@ export function generateStaticParams() {
   return galleryCategories.map((category) => ({
     category: category.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: GalleryCategoryPageProps): Promise<Metadata> {
+  const { category: categorySlug } = await params;
+  const category = galleryCategories.find((item) => item.slug === categorySlug);
+
+  if (!category) {
+    return {};
+  }
+
+  return {
+    title: `${category.title} Gallery`,
+    description: category.description,
+    alternates: {
+      canonical: `/gallery/${category.slug}`,
+    },
+    openGraph: {
+      title: `${category.title} Gallery`,
+      description: category.description,
+      url: absoluteUrl(`/gallery/${category.slug}`),
+      images: [
+        {
+          url: category.image,
+          alt: category.title,
+        },
+      ],
+    },
+  };
 }
 
 export default async function GalleryCategoryPage({

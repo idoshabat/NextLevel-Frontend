@@ -17,13 +17,15 @@ type GalleryLightboxImage = {
   image: string;
   width?: number;
   height?: number;
+  featured?: boolean;
 };
 
 type GalleryLightboxProps = {
   images: GalleryLightboxImage[];
+  variant?: "masonry" | "whatsapp";
 };
 
-export function GalleryLightbox({ images }: GalleryLightboxProps) {
+export function GalleryLightbox({ images, variant = "masonry" }: GalleryLightboxProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -334,10 +336,22 @@ export function GalleryLightbox({ images }: GalleryLightboxProps) {
 
   return (
     <>
-      <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
+      <div
+        className={
+          variant === "whatsapp"
+            ? "grid grid-cols-2 gap-3 md:gap-5 xl:grid-cols-4"
+            : "columns-1 gap-4 sm:columns-2 lg:columns-3"
+        }
+      >
         {images.map((item, index) => (
           <article
-            className="group mb-4 break-inside-avoid overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.24)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]"
+            className={
+              variant === "whatsapp"
+                ? `group overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-[rgb(var(--cyan-rgb)/0.4)] hover:shadow-[0_25px_70px_rgb(var(--cyan-rgb)/0.12)] ${
+                    item.featured ? "xl:-translate-y-3" : ""
+                  }`
+                : "group mb-4 break-inside-avoid overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_rgba(0,0,0,0.24)] transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--cyan-rgb)/0.42)] hover:bg-white/[0.075]"
+            }
             key={`${item.title}-${item.image}`}
             data-scroll-reveal
             data-scroll-reveal-direction={index % 2 === 0 ? "right" : "left"}
@@ -349,13 +363,25 @@ export function GalleryLightbox({ images }: GalleryLightboxProps) {
               onClick={() => openLightbox(index)}
             >
               <div
-                className="gallery-image-frame relative overflow-hidden bg-[#0b1114]"
-                style={{
-                  aspectRatio: `${item.width ?? 1} / ${item.height ?? 1}`,
-                }}
+                className={
+                  variant === "whatsapp"
+                    ? "relative overflow-hidden bg-[#0b1114]"
+                    : "gallery-image-frame relative overflow-hidden bg-[#0b1114]"
+                }
+                style={
+                  variant === "masonry"
+                    ? {
+                        aspectRatio: `${item.width ?? 1} / ${item.height ?? 1}`,
+                      }
+                    : undefined
+                }
               >
                 <img
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  className={
+                    variant === "whatsapp"
+                      ? "w-full transition duration-500 group-hover:scale-[1.03]"
+                      : "h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  }
                   src={item.image}
                   alt={item.title}
                   loading="lazy"

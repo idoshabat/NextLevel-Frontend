@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -9,6 +10,17 @@ import {
   UserRoundCheck,
   Users,
 } from "lucide-react";
+import { pageSeo } from "@/lib/seo";
+
+const seo = pageSeo("/privacy");
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  alternates: {
+    canonical: seo.path,
+  },
+};
 
 const policySections = [
   {

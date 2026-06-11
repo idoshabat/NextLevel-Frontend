@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, HelpCircle, MessageCircle, Phone } from "lucide-react";
+import { pageSeo } from "@/lib/seo";
+
+const seo = pageSeo("/faq");
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  alternates: {
+    canonical: seo.path,
+  },
+};
 
 const whatsappHref =
   "https://wa.me/972553090366?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%A7%D7%93%D7%9E%D7%99%D7%99%D7%AA%20Next%20Level";
@@ -47,9 +59,30 @@ const faqGroups = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqGroups.flatMap((group) =>
+    group.questions.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    }))
+  ),
+};
+
 export default function FaqPage() {
   return (
     <div className="overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd),
+        }}
+      />
       <section className="relative isolate py-[clamp(56px,8vw,96px)]">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_22%_8%,rgb(var(--cyan-rgb)/0.18),transparent_24rem)]" />
 

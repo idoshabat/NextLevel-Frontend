@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   CheckCircle2,
   ShieldCheck,
@@ -8,6 +9,17 @@ import {
 } from "lucide-react";
 import { CoachPopups } from "@/components/coaches/coach-popups";
 import { coaches } from "@/data/coaches";
+import { pageSeo } from "@/lib/seo";
+
+const seo = pageSeo("/about");
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  alternates: {
+    canonical: seo.path,
+  },
+};
 
 const pillars = [
   {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -12,6 +13,17 @@ import {
   ShieldAlert,
   ShieldCheck,
 } from "lucide-react";
+import { pageSeo } from "@/lib/seo";
+
+const seo = pageSeo("/terms");
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  alternates: {
+    canonical: seo.path,
+  },
+};
 
 const termsSections = [
   {
