@@ -41,17 +41,6 @@ const academyWrap = [
   },
 ];
 
-const proofItems = [
-  {
-    title: "מ-4 דקות על הספסל לחמישייה הפותחת ותואר ה-MVP!",
-  },
-  {
-    title: "הזימון הרשמי לסגל נבחרת ישראל.",
-  },
-  {
-    title: "הילד חזר לחייך ולקחת אחריות - השינוי המנטלי מטורף.",
-  },
-];
 
 const whatsappScreenshots = [
   {
@@ -187,23 +176,6 @@ export default function WhyUsPage() {
           התוצאות מדברות מהשטח:
         </p>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {proofItems.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-lg border border-white/10 bg-white/[0.055] p-6 text-right shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
-            >
-              <CheckCircle2
-                className="mb-5 text-[var(--cyan)]"
-                size={28}
-                strokeWidth={2.5}
-              />
-              <h3 className="m-0 text-[1.28rem] font-extrabold leading-tight text-[var(--cyan)]">
-                {item.title}
-              </h3>
-            </article>
-          ))}
-        </div>
 
         {/* WHATSAPP ADDITION ONLY */}
         <div className="mt-20">
