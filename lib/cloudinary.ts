@@ -9,7 +9,7 @@ type CloudinaryImageOptions = {
   height?: number;
   crop?: "fill" | "fit" | "limit" | "scale";
   gravity?: "auto" | "face" | "center";
-  quality?: "auto" | number;
+  quality?: "auto" | "auto:eco" | "auto:good" | number;
   format?: "auto" | "webp" | "jpg" | "png";
 };
 

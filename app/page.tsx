@@ -43,17 +43,17 @@ const heroVideoFallback = "/assets/hero-video.mp4";
 const heroVideoMobile = getCloudinaryVideoUrl(
   heroVideoPublicId,
   heroVideoFallback,
-  "f_auto,q_auto:good,w_800,c_limit"
+  "f_auto,q_auto:eco,w_720,c_limit"
 );
 const heroVideoDesktop = getCloudinaryVideoUrl(
   heroVideoPublicId,
   heroVideoFallback,
-  "f_auto,q_auto:good,w_1600,c_limit"
+  "f_auto,q_auto:good,w_1440,c_limit"
 );
 const heroPoster = getCloudinaryImageUrl(heroPosterPublicId, "", {
-  width: 1600,
+  width: 1100,
   crop: "limit",
-  quality: "auto",
+  quality: "auto:eco",
   format: "auto",
 });
 
@@ -243,7 +243,7 @@ export default function HomePage() {
           muted
           playsInline
           poster={heroPoster || undefined}
-          preload="auto"
+          preload="metadata"
         >
           <source
             src={heroVideoMobile}
