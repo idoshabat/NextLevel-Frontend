@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     "אימונים אישיים בכדורסל",
     "מחנות כדורסל",
     "ניתוח וידאו כדורסל",
+    "נקסט לבל",
     "Next Level Basketball Academy",
     "basketball academy Israel",
     "basketball training Ness Ziona",
