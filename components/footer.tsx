@@ -89,12 +89,12 @@ export function Footer() {
             <Link
               className="inline-flex items-center max-[640px]:justify-center"
               href="/"
-              aria-label="Next Level - מעבר לעמוד הבית"
+              aria-label="נקסט לבל - מעבר לעמוד הבית"
             >
               <Image
                 className="h-auto w-32 object-contain max-[640px]:w-20"
                 src="/assets/logo-navbar.png"
-                alt="Next Level"
+                alt="נקסט לבל - Next Level Basketball Academy"
                 width={160}
                 height={110}
               />

@@ -7,6 +7,12 @@ export function GET() {
 
 ${siteDescription}
 
+## Brand Names
+
+- נקסט לבל
+- Next Level
+- Next Level Basketball Academy
+
 ## Primary Audience
 
 Basketball players and families in Israel looking for professional basketball development, personal training, weekend academy sessions, video analysis, mental support, and basketball camps in Israel and abroad.

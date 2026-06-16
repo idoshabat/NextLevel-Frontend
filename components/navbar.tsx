@@ -103,7 +103,7 @@ export function Navbar() {
             <Image
               className="h-full w-full object-contain p-0.5 transition duration-300 group-hover:brightness-110"
               src="/assets/logo-navbar.png"
-              alt="Next Level"
+              alt="נקסט לבל - Next Level Basketball Academy"
               width={110}
               height={76}
               priority

@@ -259,14 +259,13 @@ export default function HomePage() {
           <div className="max-w-[760px]">
             <p className="mb-4 inline-flex items-center gap-2 text-[0.95rem] font-extrabold text-[var(--cyan)]">
               <Users size={19} strokeWidth={2.4} />
-              Basketball Academy
-            </p>
+              Basketball Academy            </p>
 
             <h1 className="m-0 text-[clamp(3.4rem,9vw,8.2rem)] leading-[0.88]">
               Next Level
             </h1>
             <p className="mt-5 max-w-[680px] text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-[1.45] text-[#f7fbff]">
-              אקדמיה לפיתוח יכולות אישיות בכדורסל, שגורמת לשחקנים ולשחקניות להגיע לקצה גבול היכולת שלהם.
+              נקסט לבל היא אקדמיה לפיתוח יכולות אישיות בכדורסל, שגורמת לשחקנים ולשחקניות להגיע לקצה גבול היכולת שלהם.
             </p>
             <p className="mt-4 max-w-[660px] text-[clamp(1.02rem,1.8vw,1.18rem)] leading-[1.85] text-[#a8b3bd]">
               אנו מספקים מעטפת מקצועית, מנטאלית וליווי אישי לאורך כל

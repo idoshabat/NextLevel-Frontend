@@ -3,9 +3,10 @@ export const siteUrl =
   "https://next-level-basketball-academy.vercel.app";
 
 export const siteName = "Next Level Basketball Academy";
-export const siteTitle = "Next Level Basketball Academy | אקדמיית כדורסל בנס ציונה";
+export const siteTitle =
+  "נקסט לבל | Next Level Basketball Academy | אקדמיית כדורסל בנס ציונה";
 export const siteDescription =
-  "אקדמיית כדורסל לילדים, נוער ובוגרים בנס ציונה: אימוני סוף שבוע, אימונים אישיים, תוכניות ליווי, ניתוח וידאו ומחנות בארץ ובחו״ל.";
+  "נקסט לבל - Next Level Basketball Academy: אקדמיית כדורסל לילדים, נוער ובוגרים בנס ציונה עם אימוני סוף שבוע, אימונים אישיים, תוכניות ליווי, ניתוח וידאו ומחנות בארץ ובחו״ל.";
 
 export const contact = {
   phone: "+972553090366",
@@ -24,16 +25,16 @@ export const seoPages = [
   },
   {
     path: "/about",
-    title: "About Next Level | צוות אקדמיית הכדורסל",
+    title: "אודות נקסט לבל | About Next Level",
     description:
-      "הכירו את Next Level Basketball Academy ואת צוות המאמנים: שחקני עבר והווה שמובילים תהליך מקצועי, אישי ומנטלי לשחקנים ושחקניות.",
+      "הכירו את נקסט לבל - Next Level Basketball Academy ואת צוות המאמנים: שחקני עבר והווה שמובילים תהליך מקצועי, אישי ומנטלי לשחקנים ושחקניות.",
     priority: 0.9,
   },
   {
     path: "/why-us",
-    title: "Why Us? | למה לבחור ב-Next Level",
+    title: "Why Us? | למה לבחור בנקסט לבל",
     description:
-      "למה לבחור ב-Next Level: תוכנית מותאמת תפקיד, קריאת משחק, ניתוח וידאו, ליווי מנטלי והוכחות מהשטח.",
+      "למה לבחור בנקסט לבל - Next Level: תוכנית מותאמת תפקיד, קריאת משחק, ניתוח וידאו, ליווי מנטלי והוכחות מהשטח.",
     priority: 0.9,
   },
   {
@@ -47,46 +48,46 @@ export const seoPages = [
     path: "/camps",
     title: "Camps | מחנות כדורסל בארץ ובחו״ל",
     description:
-      "מחנות כדורסל של Next Level בארץ ובחו״ל: בלגרד, סלובניה, מחנות קיץ, וינגייט וקטורה.",
+      "מחנות כדורסל של נקסט לבל - Next Level בארץ ובחו״ל: בלגרד, סלובניה, מחנות קיץ, וינגייט וקטורה.",
     priority: 0.85,
   },
   {
     path: "/gallery",
     title: "Gallery | גלריית האקדמיה",
     description:
-      "גלריית תמונות מאימוני סוף שבוע, מחנות ואימונים אישיים של Next Level Basketball Academy.",
+      "גלריית תמונות מאימוני סוף שבוע, מחנות ואימונים אישיים של נקסט לבל - Next Level Basketball Academy.",
     priority: 0.75,
   },
   {
     path: "/faq",
     title: "FAQ | שאלות ותשובות",
     description:
-      "שאלות ותשובות על אימוני Next Level, תוכניות ליווי, אימונים אונליין, גילאים, סוכנים וקליעה למכללות.",
+      "שאלות ותשובות על אימוני נקסט לבל - Next Level, תוכניות ליווי, אימונים אונליין, גילאים, סוכנים וקליעה למכללות.",
     priority: 0.7,
   },
   {
     path: "/contact",
     title: "Contact | יצירת קשר והרשמה",
     description:
-      "השאירו פרטים או שלחו WhatsApp לתיאום שיחת התאמה, אימון ניסיון או הרשמה לתוכניות ומחנות Next Level.",
+      "השאירו פרטים או שלחו WhatsApp לתיאום שיחת התאמה, אימון ניסיון או הרשמה לתוכניות ומחנות נקסט לבל - Next Level.",
     priority: 0.85,
   },
   {
     path: "/privacy",
     title: "Privacy Policy | מדיניות פרטיות",
-    description: "מדיניות הפרטיות של Next Level Basketball Academy.",
+    description: "מדיניות הפרטיות של נקסט לבל - Next Level Basketball Academy.",
     priority: 0.25,
   },
   {
     path: "/terms",
     title: "Terms | תקנון ותנאי שימוש",
-    description: "תקנון ותנאי השימוש באתר Next Level Basketball Academy.",
+    description: "תקנון ותנאי השימוש באתר נקסט לבל - Next Level Basketball Academy.",
     priority: 0.25,
   },
   {
     path: "/accessibility",
     title: "Accessibility | הצהרת נגישות",
-    description: "הצהרת הנגישות של אתר Next Level Basketball Academy.",
+    description: "הצהרת הנגישות של אתר נקסט לבל - Next Level Basketball Academy.",
     priority: 0.25,
   },
 ] as const;

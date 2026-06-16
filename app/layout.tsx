@@ -83,7 +83,7 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["SportsOrganization", "LocalBusiness"],
   name: siteName,
-  alternateName: "Next Level",
+  alternateName: ["נקסט לבל", "Next Level", "Next Level Academy"],
   description: siteDescription,
   url: siteUrl,
   logo: absoluteUrl("/icon.png"),
