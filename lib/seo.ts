@@ -11,7 +11,7 @@ export const siteDescription =
 export const contact = {
   phone: "+972553090366",
   displayPhone: "+972 55 309 0366",
-  email: "Next.level.acadmy@gmail.com",
+  email: "Office@nextlevelacademy.co.il",
   instagram: "https://www.instagram.com/next_level_basketball_academy/",
   location: "נס ציונה, ישראל",
 };

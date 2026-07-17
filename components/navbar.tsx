@@ -23,7 +23,7 @@ const contactItems = [
     icon: Phone,
   },
   {
-    href: "mailto:Next.level.acadmy@gmail.com",
+    href: "mailto:Office@nextlevelacademy.co.il",
     label: "אימייל",
     icon: Mail,
   },

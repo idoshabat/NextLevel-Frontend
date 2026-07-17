@@ -38,7 +38,7 @@ const policySections = [
     paragraphs: [
       "האקדמיה מייחסת חשיבות עליונה להגנה על פרטיותם של ילדים ובני נוער.",
       "איסוף מידע לגבי שחקנים ושחקניות קטינים מתחת לגיל 18 יתבצע אך ורק באישור ובתיווך של הורה או אפוטרופוס חוקי.",
-      "במידה שהורה או אפוטרופוס מגלה כי ילדו מסר מידע אישי באתר ללא הסכמתו, הוא מוזמן לפנות אלינו מיידית לכתובת המייל: Next.level.acadmy@gmail.com ואנו נמחוק את המידע בהקדם.",
+      "במידה שהורה או אפוטרופוס מגלה כי ילדו מסר מידע אישי באתר ללא הסכמתו, הוא מוזמן לפנות אלינו מיידית לכתובת המייל: Office@nextlevelacademy.co.il ואנו נמחוק את המידע בהקדם.",
     ],
   },
   {
@@ -180,9 +180,9 @@ export default function PrivacyPage() {
           </p>
           <a
             className="mt-4 inline-flex items-center gap-2 font-extrabold text-[var(--cyan)] transition duration-300 hover:translate-x-[-4px] hover:text-[var(--cyan-light)]"
-            href="mailto:Next.level.acadmy@gmail.com"
+            href="mailto:Office@nextlevelacademy.co.il"
           >
-            Next.level.acadmy@gmail.com
+            Office@nextlevelacademy.co.il
             <ArrowLeft size={18} strokeWidth={2.6} />
           </a>
           <p className="mt-5 text-[0.92rem] font-bold text-[#f7fbff]/68">

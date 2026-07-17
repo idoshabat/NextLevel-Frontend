@@ -133,9 +133,9 @@ export default function AccessibilityPage() {
           <div className="mt-4 flex flex-wrap gap-3">
             <a
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[linear-gradient(135deg,var(--cyan),var(--cyan-light))] px-5 py-3 text-[1.02rem] font-extrabold text-[#001013] shadow-[0_0_28px_rgb(var(--cyan-rgb)/0.24),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5"
-              href="mailto:Next.level.acadmy@gmail.com"
+              href="mailto:Office@nextlevelacademy.co.il"
             >
-              Next.level.acadmy@gmail.com
+              Office@nextlevelacademy.co.il
               <Mail size={19} strokeWidth={2.5} />
             </a>
             <a

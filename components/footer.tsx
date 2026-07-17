@@ -22,8 +22,8 @@ const contactLinks = [
     icon: Phone,
   },
   {
-    href: "mailto:Next.level.acadmy@gmail.com",
-    label: "Next.level.acadmy@gmail.com",
+    href: "mailto:Office@nextlevelacademy.co.il",
+    label: "Office@nextlevelacademy.co.il",
     icon: Mail,
   },
   {
